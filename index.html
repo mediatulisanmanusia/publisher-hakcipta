@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tulisanmanusia - Premium Publishing & legalitas</title>
+    <title>Media Tulisan Manusia - Premium Publishing & Legalitas</title>
     
     <!-- Import Font Simpel & Elegan (Poppins) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -67,7 +67,7 @@
         .dark .glass {
             background: rgba(20, 20, 20, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
         }
     </style>
     <script>
@@ -78,17 +78,19 @@
 </head>
 <body class="bg-gray-100 text-gray-900 dark:text-white font-sans pb-4 md:pb-0 transition-colors duration-500">
 
-    <div class="max-w-7xl mx-auto min-h-screen relative shadow-2xl bg-gradient-to-br from-[#F5F5F5] via-[#C0C0C0] to-[#D4AF37] dark:from-[#1a1c1e] dark:via-[#2d2f31] dark:to-[#6b581c] overflow-hidden transition-all duration-500">
+    <!-- Container Utama: Gradasi Hitam & Emas Dibuat Lebih Kuat dan Dibalik Saat Dark Mode -->
+    <div class="max-w-7xl mx-auto min-h-screen relative shadow-2xl bg-gradient-to-br dark:bg-gradient-to-tl from-[#F5F5F5] via-[#C0C0C0] to-[#D4AF37] dark:from-black dark:via-[#111111] dark:to-[#D4AF37] overflow-hidden transition-all duration-500">
 
         <!-- HEADER -->
-        <header class="fixed top-4 left-1/2 transform -translate-x-1/2 w-11/12 max-w-[1200px] glass rounded-full px-6 py-3 flex items-center justify-between z-50 transition-all">
+        <header class="fixed top-4 left-1/2 transform -translate-x-1/2 w-11/12 max-w-[1200px] glass rounded-full px-5 py-3 flex items-center justify-between z-50 transition-all">
             <div class="flex items-center gap-3">
                 <svg class="h-8 md:h-10 text-gray-900 dark:text-white drop-shadow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                     <polygon points="12 2 22 7 22 17 12 22 2 17 2 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     <line x1="12" y1="9" x2="12" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                 </svg>
                 <div class="hidden sm:flex flex-col">
-                    <span class="font-bold text-xl tracking-tight leading-none text-gray-900 dark:text-white transition-colors">Tulisanmanusia.</span>
+                    <!-- Penyesuaian agar teks tetap satu baris (whitespace-nowrap) -->
+                    <span class="font-bold text-base md:text-xl tracking-tight leading-none text-gray-900 dark:text-white transition-colors whitespace-nowrap">Media Tulisan Manusia.</span>
                     <span class="text-[8px] md:text-[9px] text-gray-600 dark:text-gray-300 uppercase tracking-[0.15em] mt-1 font-bold transition-colors">Publisher & Legal Consultan</span>
                 </div>
             </div>
@@ -122,25 +124,27 @@
                 </p>
                 <div class="w-16 h-1 bg-gray-800 dark:bg-gray-300 mx-auto rounded-full mb-4"></div>
                 <p class="text-sm md:text-base text-gray-700 dark:text-gray-400 font-medium">
-                    Eksplorasi mahakarya tanpa batas bersama Tulisanmanusia Group.
+                    Eksplorasi mahakarya tanpa batas bersama Media Tulisan Manusia.
                 </p>
             </section>
 
             <!-- SEKSI PROFIL SINGKAT & KLIEN -->
             <section class="px-5 md:px-10 pt-16 md:pt-24 relative z-10 max-w-4xl mx-auto text-center">
-                <h3 class="text-2xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-6 tracking-tight">Mitra Strategis Karya & Legalitas Anda</h3>
-                <p class="text-sm md:text-base text-gray-700 dark:text-gray-300 leading-relaxed font-medium mb-12">
-                    <strong class="text-gray-900 dark:text-white">Media Tulisan Manusia</strong> adalah perusahaan profesional yang bergerak di bidang penerbitan premium (Publisher) dan pengurusan Hak Kekayaan Intelektual (HKI). Kami hadir untuk memastikan setiap gagasan Anda dirawat melalui proses kurasi tingkat tinggi, diproduksi dengan standar elegan, dan diberikan perlindungan hukum absolut agar sepenuhnya aman dari plagiarisme.
-                </p>
-                
-                <!-- Badge Pencapaian Klien -->
-                <div class="glass inline-block px-8 py-5 rounded-[2rem] border border-white/50 dark:border-white/10 shadow-lg hover:-translate-y-1 transition duration-300">
-                    <p class="text-xl md:text-3xl font-extrabold text-gray-900 dark:text-white mb-2">Dipercaya oleh 30+ Klien</p>
-                    <p class="text-xs md:text-sm text-gray-600 dark:text-gray-400 font-bold uppercase tracking-widest flex items-center justify-center gap-3">
-                        <span>Startup</span> <span class="w-1 h-1 bg-gray-400 rounded-full"></span> 
-                        <span>UMKM</span> <span class="w-1 h-1 bg-gray-400 rounded-full"></span> 
-                        <span>Penulis Buku</span>
+                <div class="glass p-8 md:p-12 rounded-[2.5rem] shadow-xl border border-white/50 dark:border-white/10">
+                    <h3 class="text-2xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-6 tracking-tight">Mitra Strategis Karya & Legalitas Anda</h3>
+                    <p class="text-sm md:text-base text-gray-700 dark:text-gray-300 leading-relaxed font-medium mb-10">
+                        <strong class="text-gray-900 dark:text-white">Media Tulisan Manusia</strong> adalah perusahaan profesional yang bergerak di bidang penerbitan premium (Publisher) dan pengurusan Hak Kekayaan Intelektual (HKI). Kami hadir untuk memastikan setiap gagasan Anda dirawat melalui proses kurasi tingkat tinggi, diproduksi dengan standar elegan, dan diberikan perlindungan hukum absolut agar sepenuhnya aman dari plagiarisme.
                     </p>
+                    
+                    <!-- Badge Pencapaian Klien -->
+                    <div class="bg-white/50 dark:bg-black/40 inline-block px-8 py-5 rounded-[2rem] border border-white dark:border-gray-700 shadow-md hover:-translate-y-1 transition duration-300">
+                        <p class="text-xl md:text-3xl font-extrabold text-gray-900 dark:text-white mb-2">Dipercaya oleh 30+ Klien</p>
+                        <p class="text-xs md:text-sm text-gray-600 dark:text-gray-400 font-bold uppercase tracking-widest flex items-center justify-center gap-3">
+                            <span>Startup</span> <span class="w-1 h-1 bg-gray-400 rounded-full"></span> 
+                            <span>UMKM</span> <span class="w-1 h-1 bg-gray-400 rounded-full"></span> 
+                            <span>Penulis Buku</span>
+                        </p>
+                    </div>
                 </div>
             </section>
 
@@ -153,7 +157,7 @@
                 </div>
                 <div class="flex flex-row overflow-x-auto md:flex-wrap md:justify-center gap-5 md:gap-8 px-5 md:px-10 pb-8 no-scrollbar snap-x">
                     
-                    <a href="https://wa.me/6288294448222?text=Halo%20Tulisanmanusia,%20saya%20tertarik%20membeli%20buku%20Modul%20UMKM%20Kopi" target="_blank" class="min-w-[200px] md:w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-8 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-center items-center text-center h-[220px] md:h-[260px] border border-white/40 dark:border-white/10 shadow-md hover:shadow-xl block">
+                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Modul%20UMKM%20Kopi" target="_blank" class="min-w-[200px] md:w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-8 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-center items-center text-center h-[220px] md:h-[260px] border border-white/40 dark:border-white/10 shadow-md hover:shadow-xl block">
                         <div>
                             <p class="text-[10px] md:text-xs text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-3">Team Desa Wonorejo</p>
                             <h4 class="font-bold text-lg md:text-xl leading-tight text-gray-900 dark:text-white group-hover:text-gray-600 transition mb-5">Modul UMKM Kopi</h4>
@@ -162,7 +166,7 @@
                         <p class="text-base md:text-lg text-gray-800 dark:text-gray-200 font-extrabold tracking-wide">Rp 55.000</p>
                     </a>
                     
-                    <a href="https://wa.me/6288294448222?text=Halo%20Tulisanmanusia,%20saya%20tertarik%20membeli%20buku%20Menuju%20Surga%20Beracun" target="_blank" class="min-w-[200px] md:w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-8 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-center items-center text-center h-[220px] md:h-[260px] border border-white/40 dark:border-white/10 shadow-md hover:shadow-xl block">
+                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Menuju%20Surga%20Beracun" target="_blank" class="min-w-[200px] md:w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-8 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-center items-center text-center h-[220px] md:h-[260px] border border-white/40 dark:border-white/10 shadow-md hover:shadow-xl block">
                         <div>
                             <p class="text-[10px] md:text-xs text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-3">Gatot Sarmidi Dkk</p>
                             <h4 class="font-bold text-lg md:text-xl leading-tight text-gray-900 dark:text-white group-hover:text-gray-600 transition mb-5">Menuju Surga Beracun</h4>
@@ -171,7 +175,7 @@
                         <p class="text-base md:text-lg text-gray-800 dark:text-gray-200 font-extrabold tracking-wide">Rp 85.000</p>
                     </a>
                     
-                    <a href="https://wa.me/6288294448222?text=Halo%20Tulisanmanusia,%20saya%20tertarik%20membeli%20buku%20Untukmu%20yang%20Sedang%20Mengabdi" target="_blank" class="min-w-[200px] md:w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-8 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-center items-center text-center h-[220px] md:h-[260px] border border-white/40 dark:border-white/10 shadow-md hover:shadow-xl block">
+                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Untukmu%20yang%20Sedang%20Mengabdi" target="_blank" class="min-w-[200px] md:w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-8 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-center items-center text-center h-[220px] md:h-[260px] border border-white/40 dark:border-white/10 shadow-md hover:shadow-xl block">
                         <div>
                             <p class="text-[10px] md:text-xs text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-3">Rara Ayunda Dkk</p>
                             <h4 class="font-bold text-lg md:text-xl leading-tight text-gray-900 dark:text-white group-hover:text-gray-600 transition mb-5">Untukmu yang Sedang Mengabdi</h4>
@@ -180,7 +184,7 @@
                         <p class="text-base md:text-lg text-gray-800 dark:text-gray-200 font-extrabold tracking-wide">Rp 100.000</p>
                     </a>
 
-                    <a href="https://wa.me/6288294448222?text=Halo%20Tulisanmanusia,%20saya%20tertarik%20membeli%20buku%20Pelangi%20Kisah%20Kehidupan" target="_blank" class="min-w-[200px] md:w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-8 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-center items-center text-center h-[220px] md:h-[260px] border border-white/40 dark:border-white/10 shadow-md hover:shadow-xl block">
+                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Pelangi%20Kisah%20Kehidupan" target="_blank" class="min-w-[200px] md:w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-8 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-center items-center text-center h-[220px] md:h-[260px] border border-white/40 dark:border-white/10 shadow-md hover:shadow-xl block">
                         <div>
                             <p class="text-[10px] md:text-xs text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-3">Abi Pangestu Dkk</p>
                             <h4 class="font-bold text-lg md:text-xl leading-tight text-gray-900 dark:text-white group-hover:text-gray-600 transition mb-5">Pelangi Kisah Kehidupan</h4>
@@ -189,7 +193,7 @@
                         <p class="text-base md:text-lg text-gray-800 dark:text-gray-200 font-extrabold tracking-wide">Rp 85.000</p>
                     </a>
 
-                    <a href="https://wa.me/6288294448222?text=Halo%20Tulisanmanusia,%20saya%20tertarik%20membeli%20buku%20Pulang%20Dalam%20Perjalanan" target="_blank" class="min-w-[200px] md:w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-8 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-center items-center text-center h-[220px] md:h-[260px] border border-white/40 dark:border-white/10 shadow-md hover:shadow-xl block">
+                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Pulang%20Dalam%20Perjalanan" target="_blank" class="min-w-[200px] md:w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-8 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-center items-center text-center h-[220px] md:h-[260px] border border-white/40 dark:border-white/10 shadow-md hover:shadow-xl block">
                         <div>
                             <p class="text-[10px] md:text-xs text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-3">Mira Santika Dkk</p>
                             <h4 class="font-bold text-lg md:text-xl leading-tight text-gray-900 dark:text-white group-hover:text-gray-600 transition mb-5">Pulang Dalam Perjalanan</h4>
@@ -198,7 +202,7 @@
                         <p class="text-base md:text-lg text-gray-800 dark:text-gray-200 font-extrabold tracking-wide">Rp 85.000</p>
                     </a>
 
-                    <a href="https://wa.me/6288294448222?text=Halo%20Tulisanmanusia,%20saya%20tertarik%20membeli%20buku%20Tanpamu" target="_blank" class="min-w-[200px] md:w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-8 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-center items-center text-center h-[220px] md:h-[260px] border border-white/40 dark:border-white/10 shadow-md hover:shadow-xl block">
+                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Tanpamu" target="_blank" class="min-w-[200px] md:w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-8 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-center items-center text-center h-[220px] md:h-[260px] border border-white/40 dark:border-white/10 shadow-md hover:shadow-xl block">
                         <div>
                             <p class="text-[10px] md:text-xs text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-3">Sufyanwahyudi</p>
                             <h4 class="font-bold text-lg md:text-xl leading-tight text-gray-900 dark:text-white group-hover:text-gray-600 transition mb-5">Tanpamu</h4>
@@ -207,7 +211,7 @@
                         <p class="text-base md:text-lg text-gray-800 dark:text-gray-200 font-extrabold tracking-wide">Rp 85.000</p>
                     </a>
 
-                    <a href="https://wa.me/6288294448222?text=Halo%20Tulisanmanusia,%20saya%20tertarik%20membeli%20buku%20Bukan%20Lagi%20Tentangmu" target="_blank" class="min-w-[200px] md:w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-8 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-center items-center text-center h-[220px] md:h-[260px] border border-white/40 dark:border-white/10 shadow-md hover:shadow-xl block">
+                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Bukan%20Lagi%20Tentangmu" target="_blank" class="min-w-[200px] md:w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-8 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-center items-center text-center h-[220px] md:h-[260px] border border-white/40 dark:border-white/10 shadow-md hover:shadow-xl block">
                         <div>
                             <p class="text-[10px] md:text-xs text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-3">Amalia Nabil</p>
                             <h4 class="font-bold text-lg md:text-xl leading-tight text-gray-900 dark:text-white group-hover:text-gray-600 transition mb-5">Bukan Lagi Tentangmu</h4>
@@ -216,7 +220,7 @@
                         <p class="text-base md:text-lg text-gray-800 dark:text-gray-200 font-extrabold tracking-wide">Rp 100.000</p>
                     </a>
 
-                    <a href="https://wa.me/6288294448222?text=Halo%20Tulisanmanusia,%20saya%20tertarik%20membeli%20buku%20PILU" target="_blank" class="min-w-[200px] md:w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-8 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-center items-center text-center h-[220px] md:h-[260px] border border-white/40 dark:border-white/10 shadow-md hover:shadow-xl block">
+                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20PILU" target="_blank" class="min-w-[200px] md:w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-8 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-center items-center text-center h-[220px] md:h-[260px] border border-white/40 dark:border-white/10 shadow-md hover:shadow-xl block">
                         <div>
                             <p class="text-[10px] md:text-xs text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-3">Amalia Nabil</p>
                             <h4 class="font-bold text-lg md:text-xl leading-tight text-gray-900 dark:text-white group-hover:text-gray-600 transition mb-5">PILU</h4>
@@ -225,7 +229,7 @@
                         <p class="text-base md:text-lg text-gray-800 dark:text-gray-200 font-extrabold tracking-wide">Rp 85.000</p>
                     </a>
 
-                    <a href="https://wa.me/6288294448222?text=Halo%20Tulisanmanusia,%20saya%20tertarik%20membeli%20buku%20The%20Word%20Bears%20Witness%20ti%20us%20Together" target="_blank" class="min-w-[200px] md:w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-8 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-center items-center text-center h-[220px] md:h-[260px] border border-white/40 dark:border-white/10 shadow-md hover:shadow-xl block">
+                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20The%20Word%20Bears%20Witness%20ti%20us%20Together" target="_blank" class="min-w-[200px] md:w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-8 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-center items-center text-center h-[220px] md:h-[260px] border border-white/40 dark:border-white/10 shadow-md hover:shadow-xl block">
                         <div>
                             <p class="text-[10px] md:text-xs text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-3">Licchi Angelica</p>
                             <h4 class="font-bold text-lg md:text-xl leading-tight text-gray-900 dark:text-white group-hover:text-gray-600 transition mb-5">The Word Bears Witness to us Together</h4>
@@ -234,7 +238,7 @@
                         <p class="text-base md:text-lg text-gray-800 dark:text-gray-200 font-extrabold tracking-wide">Rp 125.000</p>
                     </a>
 
-                    <a href="https://wa.me/6288294448222?text=Halo%20Tulisanmanusia,%20saya%20tertarik%20membeli%20buku%20Ragam%20Hias%20Jawa%20Daerah%20Malang" target="_blank" class="min-w-[200px] md:w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-8 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-center items-center text-center h-[220px] md:h-[260px] border border-white/40 dark:border-white/10 shadow-md hover:shadow-xl block">
+                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Ragam%20Hias%20Jawa%20Daerah%20Malang" target="_blank" class="min-w-[200px] md:w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-8 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-center items-center text-center h-[220px] md:h-[260px] border border-white/40 dark:border-white/10 shadow-md hover:shadow-xl block">
                         <div>
                             <p class="text-[10px] md:text-xs text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-3">Alfina Rosita Oktafiana</p>
                             <h4 class="font-bold text-lg md:text-xl leading-tight text-gray-900 dark:text-white group-hover:text-gray-600 transition mb-5">Ragam Hias Jawa Daerah Malang</h4>
@@ -243,7 +247,7 @@
                         <p class="text-base md:text-lg text-gray-800 dark:text-gray-200 font-extrabold tracking-wide">Rp 85.000</p>
                     </a>
 
-                    <a href="https://wa.me/6288294448222?text=Halo%20Tulisanmanusia,%20saya%20tertarik%20membeli%20buku%20Ensiklopedia%20Arjuna" target="_blank" class="min-w-[200px] md:w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-8 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-center items-center text-center h-[220px] md:h-[260px] border border-white/40 dark:border-white/10 shadow-md hover:shadow-xl block">
+                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Ensiklopedia%20Arjuna" target="_blank" class="min-w-[200px] md:w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-8 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-center items-center text-center h-[220px] md:h-[260px] border border-white/40 dark:border-white/10 shadow-md hover:shadow-xl block">
                         <div>
                             <p class="text-[10px] md:text-xs text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-3">Firnanda Maulidya</p>
                             <h4 class="font-bold text-lg md:text-xl leading-tight text-gray-900 dark:text-white group-hover:text-gray-600 transition mb-5">Ensiklopedia Arjuna</h4>
@@ -252,7 +256,7 @@
                         <p class="text-base md:text-lg text-gray-800 dark:text-gray-200 font-extrabold tracking-wide">Rp 100.000</p>
                     </a>
 
-                    <a href="https://wa.me/6288294448222?text=Halo%20Tulisanmanusia,%20saya%20tertarik%20membeli%20buku%20Formula%20Kepenulisan" target="_blank" class="min-w-[200px] md:w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-8 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-center items-center text-center h-[220px] md:h-[260px] border border-white/40 dark:border-white/10 shadow-md hover:shadow-xl block">
+                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Formula%20Kepenulisan" target="_blank" class="min-w-[200px] md:w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-8 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-center items-center text-center h-[220px] md:h-[260px] border border-white/40 dark:border-white/10 shadow-md hover:shadow-xl block">
                         <div>
                             <p class="text-[10px] md:text-xs text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-3">Sufyanwahyudi</p>
                             <h4 class="font-bold text-lg md:text-xl leading-tight text-gray-900 dark:text-white group-hover:text-gray-600 transition mb-5">Formula Kepenulisan</h4>
@@ -446,7 +450,7 @@
                     <div class="min-w-[200px] md:w-[300px] snap-start group glass rounded-[2.5rem] p-8 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-center items-center text-center h-[220px] md:h-[260px] border border-white/40 dark:border-white/10 shadow-md hover:shadow-xl">
                         <div>
                             <p class="text-[10px] md:text-xs text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-3">Sertifikat HKI</p>
-                            <h4 class="font-bold text-lg md:text-xl leading-tight text-gray-900 dark:text-white transition mb-5">Tulisanmanusia</h4>
+                            <h4 class="font-bold text-lg md:text-xl leading-tight text-gray-900 dark:text-white transition mb-5">Media Tulisan Manusia</h4>
                         </div>
                         <div class="w-8 h-1 bg-gray-300 dark:bg-gray-600 rounded-full mb-5"></div>
                         <p class="text-sm md:text-base text-gray-800 dark:text-gray-200 font-extrabold tracking-wide">Ach. Sufyan Wahyudi</p>
@@ -499,7 +503,7 @@
                                 <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold">Mulai Dari</p>
                                 <p class="text-2xl md:text-2xl font-extrabold text-gray-900 dark:text-white mt-1 mb-6">Rp 500.000</p>
                             </div>
-                            <a href="https://wa.me/6288294448222?text=Halo%20Tulisanmanusia,%20saya%20ingin%20konsultasi%20mengenai%20paket%20Penerbitan%20Buku" target="_blank" class="bg-gray-900 dark:bg-white text-white dark:text-black font-extrabold py-3 px-6 rounded-full shadow-lg uppercase tracking-widest text-xs hover:scale-[1.02] transition-transform duration-300">
+                            <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20ingin%20konsultasi%20mengenai%20paket%20Penerbitan%20Buku" target="_blank" class="bg-gray-900 dark:bg-white text-white dark:text-black font-extrabold py-3 px-6 rounded-full shadow-lg uppercase tracking-widest text-xs hover:scale-[1.02] transition-transform duration-300">
                                 Konsultasi Penerbitan
                             </a>
                         </div>
@@ -518,7 +522,7 @@
                                     <span class="text-lg md:text-xl font-extrabold text-gray-900 dark:text-white">Rp 1,1 juta</span>
                                 </div>
                             </div>
-                            <a href="https://wa.me/6288294448222?text=Halo%20Tulisanmanusia,%20saya%20ingin%20konsultasi%20mengenai%20pendaftaran%20Hak%20Cipta%20(HKI)" target="_blank" class="glass border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white font-extrabold py-3 px-6 rounded-full shadow-sm uppercase tracking-widest text-xs hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300">
+                            <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20ingin%20konsultasi%20mengenai%20pendaftaran%20Hak%20Cipta%20(HKI)" target="_blank" class="glass border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white font-extrabold py-3 px-6 rounded-full shadow-sm uppercase tracking-widest text-xs hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300">
                                 Konsultasi Hak Cipta
                             </a>
                         </div>
@@ -532,10 +536,10 @@
                     <h3 class="text-2xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-2 md:mb-4">Mulai Langkahmu Sekarang</h3>
                     <p class="text-sm md:text-base text-gray-700 dark:text-gray-300 mb-6 md:mb-8 font-medium">Hubungi kami melalui WhatsApp untuk mengirimkan naskah atau mendaftarkan Hak Cipta.</p>
                     <div class="flex flex-col md:flex-row justify-center gap-4">
-                        <a href="https://wa.me/6288294448222?text=Halo%20Tulisanmanusia,%20saya%20ingin%20mengirimkan%20naskah%20untuk%20diterbitkan." target="_blank" class="w-full md:w-auto md:px-10 bg-gray-900 dark:bg-white text-white dark:text-black font-extrabold py-4 rounded-full shadow-lg uppercase tracking-widest text-sm hover:scale-[1.02] transition-transform duration-300 inline-block text-center">
+                        <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20ingin%20mengirimkan%20naskah%20untuk%20diterbitkan." target="_blank" class="w-full md:w-auto md:px-10 bg-gray-900 dark:bg-white text-white dark:text-black font-extrabold py-4 rounded-full shadow-lg uppercase tracking-widest text-sm hover:scale-[1.02] transition-transform duration-300 inline-block text-center">
                             Kirim Naskah via WA
                         </a>
-                        <a href="https://wa.me/6288294448222?text=Halo%20Tulisanmanusia,%20saya%20ingin%20mendaftarkan%20Hak%20Cipta%20karya%20saya." target="_blank" class="w-full md:w-auto md:px-10 glass border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white font-extrabold py-3.5 rounded-full shadow-sm uppercase tracking-widest text-sm hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 inline-block text-center">
+                        <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20ingin%20mendaftarkan%20Hak%20Cipta%20karya%20saya." target="_blank" class="w-full md:w-auto md:px-10 glass border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white font-extrabold py-3.5 rounded-full shadow-sm uppercase tracking-widest text-sm hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 inline-block text-center">
                             Daftar Hak Cipta via WA
                         </a>
                     </div>
@@ -550,12 +554,13 @@
                     <line x1="12" y1="9" x2="12" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                 </svg>
 
-                <h2 class="font-extrabold text-2xl tracking-tight leading-none text-gray-900 dark:text-white mb-1">Tulisanmanusia.</h2>
+                <!-- Penyesuaian agar teks tetap satu baris (whitespace-nowrap) -->
+                <h2 class="font-extrabold text-xl md:text-2xl tracking-tight leading-none text-gray-900 dark:text-white mb-1 whitespace-nowrap">Media Tulisan Manusia.</h2>
                 <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-[0.2em] font-bold mb-10">Publisher & Legal Consultan</p>
                 
                 <h3 class="font-bold text-xl md:text-2xl mb-4 text-gray-900 dark:text-white">Tentang Kami</h3>
                 <p class="text-xs md:text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-8 max-w-xl mx-auto font-medium">
-                    Tulisanmanusia adalah platform eksklusif yang berdedikasi mengangkat literatur ke tingkat yang lebih tinggi. Kami percaya bahwa setiap karya bermakna berhak mendapatkan apresiasi terbaik.
+                    Media Tulisan Manusia adalah platform eksklusif yang berdedikasi mengangkat literatur ke tingkat yang lebih tinggi. Kami percaya bahwa setiap karya bermakna berhak mendapatkan apresiasi terbaik.
                 </p>
                 
                 <!-- IKON MEDIA SOSIAL -->
@@ -570,7 +575,7 @@
                     </a>
                 </div>
                 
-                <p class="text-xs md:text-sm text-gray-500 uppercase tracking-widest font-bold">&copy; 2026 Tulisanmanusia Group. Hak Cipta Dilindungi.</p>
+                <p class="text-xs md:text-sm text-gray-500 uppercase tracking-widest font-bold">&copy; 2026 Media Tulisan Manusia. Hak Cipta Dilindungi.</p>
             </footer>
         </div>
 
