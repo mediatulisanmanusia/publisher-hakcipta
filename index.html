@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Media Tulisan Manusia - Penerbit & Legalitas Hak Cipta</title>
+    <title>Media Tulisan Manusia - Premium Publishing & Legalitas</title>
     
     <!-- Favicon / Logo Tab Browser -->
     <link rel="icon" type="image/png" href="favicon.png">
@@ -128,10 +128,12 @@
         function kirimPesanKontak(event) {
             event.preventDefault();
             
-            const nama = document.getElementById('kontak-nama').value;
-            const email = document.getElementById('kontak-email').value;
-            const pesan = document.getElementById('kontak-pesan').value;
-            const tombol = event.target.querySelector('button[type="submit"]');
+            // Mengambil form yang sedang disubmit agar bisa digunakan di banyak tempat
+            const form = event.target;
+            const nama = form.querySelector('.input-nama').value;
+            const email = form.querySelector('.input-email').value;
+            const pesan = form.querySelector('.input-pesan').value;
+            const tombol = form.querySelector('button[type="submit"]');
             
             // Ubah teks tombol menjadi loading sementara
             const teksAsli = tombol.innerText;
@@ -155,7 +157,7 @@
             .then(response => response.json())
             .then(data => {
                 alert("Pesan berhasil terkirim! Tim kami akan membalas ke email Anda segera.");
-                event.target.reset(); // Kosongkan form otomatis setelah terkirim
+                form.reset(); // Kosongkan form otomatis setelah terkirim
                 tombol.innerText = teksAsli;
                 tombol.disabled = false;
             })
@@ -182,7 +184,7 @@
         <div class="absolute bottom-[20%] left-10 w-80 h-80 bg-black/5 dark:bg-white/5 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[100px] z-0"></div>
 
         <!-- HEADER / NAVBAR MELAYANG -->
-        <header class="fixed top-4 left-0 right-0 mx-auto w-11/12 max-w-[1200px] glass rounded-full px-5 py-3 flex items-center justify-between z-50">
+        <header class="fixed top-4 left-0 right-0 mx-auto w-11/12 max-w-[1200px] glass rounded-full px-5 py-3 flex items-center justify-between z-50 shadow-lg">
             <div class="flex items-center gap-3 cursor-pointer" onclick="bukaHalaman('beranda')">
                 <img src="96361_2.png" alt="Logo PT Media Tulisan Manusia" class="h-12 md:h-16 w-auto object-contain drop-shadow-sm rounded-lg">
             </div>
@@ -226,7 +228,7 @@
                 <div class="glass p-8 md:p-12 rounded-[2.5rem] transition duration-500">
                     <h3 class="text-lg sm:text-xl md:text-3xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight leading-snug text-center">Mitra Strategis Karya & Legalitas Anda</h3>
                     <p class="text-[11px] sm:text-xs md:text-base text-gray-800 dark:text-gray-300 leading-relaxed font-medium mb-8 md:mb-10 text-justify md:text-center">
-                        <strong class="text-gray-900 dark:text-white">Media Tulisan Manusia</strong> adalah perusahaan profesional yang bergerak di bidang penerbitan premium (Publisher) dan pengurusan Hak Kekayaan Intelektual (HKI). Kami hadir untuk memastikan setiap gagasan Anda dirawat melalui proses kurasi tingkat tinggi, diproduksi dengan standar elegan, dan diberikan perlindungan hukum absolut agar sepenuhnya aman dari plagiarisme.
+                        <strong class="text-gray-900 dark:text-white">Media Tulisan Manusia</strong> adalah perusahaan profesional yang bergerak di bidang penerbitan premium (Publisher) dan pengurusan Hak Kekayaan Intelektual (HKI) Hak Cipta. Kami hadir untuk memastikan setiap gagasan Anda dirawat melalui proses kurasi tingkat tinggi, diproduksi dengan standar elegan, dan diberikan perlindungan hukum absolut agar sepenuhnya aman dari plagiarisme.
                     </p>
                     
                     <a href="https://instagram.com/mediatulisanmanusia" target="_blank" class="block w-full max-w-lg mx-auto bg-gray-900 dark:bg-white px-3 sm:px-4 py-4 md:py-6 rounded-3xl shadow-lg transition duration-300 hover:scale-[1.05] cursor-pointer" title="Lihat Portofolio Klien di Instagram">
@@ -618,33 +620,33 @@
                 </div>
             </section>
 
-            <!-- SEKSI PENCARIAN PDKI -->
+            <!-- SEKSI PENCARIAN DJKI -->
             <section class="px-5 md:px-10 pt-4 pb-12 relative z-10 max-w-4xl mx-auto">
                 <div class="glass p-8 md:p-12 rounded-[2.5rem] text-center transition duration-500 animate-fade-up">
                     <img src="djki.png" alt="Logo DJKI" class="h-14 md:h-20 w-auto object-contain mx-auto mb-5 drop-shadow-sm">
-                    <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-900 dark:text-white mb-3 tracking-tight w-full leading-tight">Penelusuran Hak Cipta (PDKI)</h3>
+                    <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-900 dark:text-white mb-3 tracking-tight w-full leading-tight">Penelusuran Hak Cipta</h3>
                     <p class="text-sm md:text-base text-gray-800 dark:text-gray-300 mb-8 font-medium max-w-2xl mx-auto">Masukkan judul karya atau nama pencipta untuk langsung melacak status legalitasnya di database resmi Direktorat Jenderal Kekayaan Intelektual.</p>
                     
                     <form onsubmit="cariDJKI(event)" class="flex flex-col sm:flex-row gap-3 justify-center max-w-2xl mx-auto">
                         <input type="text" id="input-keyword-djki" required placeholder="Cth: Tulisanmanusia / Ach. Sufyan Wahyudi" class="flex-grow bg-white/70 dark:bg-black/60 border border-gray-300 dark:border-gray-700 rounded-full px-5 py-4 text-[10px] sm:text-xs md:text-sm focus:outline-none focus:border-gray-500 transition font-medium text-gray-900 dark:text-white shadow-inner">
                         <button type="submit" class="bg-gray-900 dark:bg-white text-white dark:text-black font-extrabold py-4 px-8 rounded-full shadow-lg uppercase tracking-widest text-xs md:text-sm hover:scale-105 transition-transform duration-300 flex-shrink-0">
-                            Cari di PDKI
+                            Telusuri
                         </button>
                     </form>
                 </div>
             </section>
 
-            <!-- SEKSI PERSUASI / LAYANAN -->
+            <!-- SEKSI PERSUASI / LAYANAN (Perataan Tengah di HP & Kiri Kanan Pas) -->
             <section id="layanan" class="px-5 md:px-10 pt-10 pb-4 md:py-10 relative z-10 max-w-5xl mx-auto">
                 <div class="md:flex md:gap-8">
                     <!-- Promo Naskah -->
-                    <div class="glass p-6 md:p-10 rounded-[2rem] mb-6 md:mb-0 transition duration-500 flex-1 flex flex-col justify-between animate-fade-up hover:shadow-2xl">
+                    <div class="glass p-6 md:p-10 rounded-[2rem] shadow-lg mb-6 md:mb-0 transition duration-500 flex-1 flex flex-col justify-between animate-fade-up">
                         <div>
                             <div class="flex flex-col sm:flex-row items-center sm:items-start justify-center sm:justify-start gap-3 md:gap-4 mb-4 text-center sm:text-left">
                                 <div class="p-3 bg-gray-900 dark:bg-white rounded-full text-white dark:text-gray-900 flex-shrink-0">
                                     <svg class="w-6 h-6 md:w-8 md:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
                                 </div>
-                                <h3 class="text-[17px] sm:text-xl md:text-2xl font-extrabold text-gray-900 dark:text-white tracking-tight w-full leading-tight">Kenapa Menerbitkan di Sini?</h3>
+                                <h3 class="text-[17px] sm:text-xl md:text-2xl font-extrabold text-gray-900 dark:text-white tracking-tight w-full leading-tight">Menerbitkan di Sini?</h3>
                             </div>
                             <p class="text-[11px] sm:text-sm md:text-[15px] text-gray-800 dark:text-gray-300 leading-relaxed font-medium text-center sm:text-justify px-2 sm:px-0">
                                 Kami merawat gagasan literatur Anda ke tingkat kualitas tertinggi melalui kurasi mendalam, penyuntingan komprehensif, desain profesional, serta penomoran standar internasional QRCBN secara transparan dan terpercaya.
@@ -653,7 +655,7 @@
                     </div>
 
                     <!-- Promo HKI -->
-                    <div class="glass p-6 md:p-10 rounded-[2rem] transition duration-500 flex-1 flex flex-col justify-between animate-fade-up hover:shadow-2xl" style="animation-delay: 0.1s;">
+                    <div class="glass p-6 md:p-10 rounded-[2rem] transition duration-500 flex-1 flex flex-col justify-between animate-fade-up" style="animation-delay: 0.1s;">
                         <div>
                             <div class="flex flex-col sm:flex-row items-center sm:items-start justify-center sm:justify-start gap-3 md:gap-4 mb-4 text-center sm:text-left">
                                 <div class="p-3 bg-gray-900 dark:bg-white rounded-full text-white dark:text-gray-900 flex-shrink-0">
@@ -682,7 +684,8 @@
                         <div class="bg-white/70 dark:bg-black/40 p-6 md:p-8 rounded-[2rem] border border-gray-300 dark:border-gray-700 text-center hover:shadow-xl transition duration-300 flex flex-col justify-between">
                             <div>
                                 <h4 class="text-[17px] md:text-2xl font-extrabold text-gray-900 dark:text-white mb-2">Penerbitan Buku</h4>
-                                <p class="text-[11px] sm:text-sm text-gray-700 dark:text-gray-400 mb-6 font-medium">Cetak, Layout, QRCBN & Distribusi</p>
+                                <p class="text-[11px] sm:text-sm text-gray-700 dark:text-gray-400 mb-6 font-medium">Cetak, Layout, & QRCBN
+                                </p>
                                 
                                 <div class="flex justify-between items-center border-b border-gray-400 dark:border-gray-600 pb-3 mb-3 text-left">
                                     <span class="text-xs sm:text-sm md:text-base font-bold text-gray-900 dark:text-gray-200">Standar</span>
@@ -738,9 +741,9 @@
             </section>
 
             <!-- TOMBOL PINTASAN CTA UTAMA KE WA -->
-            <section class="px-5 md:px-10 pt-4 pb-16 md:pb-24 relative z-10 max-w-3xl mx-auto">
-                <div class="glass p-8 md:p-12 rounded-[2rem] text-center border-t-4 border-gray-900 dark:border-white transition duration-500 animate-fade-up hover:shadow-2xl">
-                    <h3 class="text-2xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-2 md:mb-4">Mulai Langkahmu Sekarang</h3>
+            <section class="px-5 md:px-10 pt-4 pb-8 md:pb-12 relative z-10 max-w-3xl mx-auto">
+                <div class="glass p-8 md:p-12 rounded-[2rem] text-center border-t-4 border-gray-900 dark:border-white transition duration-500 animate-fade-up">
+                    <h3 class="text-2xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-2 md:mb-4">Mulai Langkahmu</h3>
                     <p class="text-[11px] sm:text-sm md:text-base text-gray-800 dark:text-gray-300 mb-6 md:mb-8 font-medium">Hubungi kami melalui WhatsApp untuk mengirimkan naskah atau mendaftarkan Hak Cipta.</p>
                     <div class="flex flex-col md:flex-row justify-center gap-4">
                         <a href="https://wa.me/6288294448222?text=Halo%20PT%20Media%20Tulisan%20Manusia,%20saya%20ingin%20mengirimkan%20naskah%20untuk%20diterbitkan." target="_blank" class="w-full md:w-auto md:px-10 bg-gray-900 dark:bg-white text-white dark:text-black font-extrabold py-4 rounded-full shadow-lg uppercase tracking-widest text-[11px] sm:text-sm hover:scale-105 transition-transform duration-300 inline-block text-center">
@@ -753,10 +756,27 @@
                 </div>
             </section>
 
+            <!-- SEKSI FORM KONTAK BERANDA -->
+            <section class="px-5 md:px-10 pt-2 pb-16 md:pb-24 relative z-10 max-w-xl mx-auto">
+                <div class="glass p-6 md:p-8 rounded-[2rem] shadow-xl text-center transition duration-500 animate-fade-up">
+                    <h3 class="text-[17px] md:text-2xl font-extrabold text-gray-900 dark:text-white mb-2 tracking-tight">Kirim Pesan Langsung</h3>
+                    <p class="text-[11px] sm:text-xs md:text-sm text-gray-800 dark:text-gray-300 mb-5 font-medium">Punya pertanyaan spesifik? Kirimkan pesan, kami akan merespons via email.</p>
+                    
+                    <form onsubmit="kirimPesanKontak(event)" class="space-y-4">
+                        <input type="text" required placeholder="Nama Lengkap Anda" class="input-nama w-full bg-white/70 dark:bg-black/60 border border-gray-300 dark:border-gray-700 rounded-2xl p-3.5 text-xs md:text-sm focus:outline-none focus:border-gray-500 transition font-medium text-gray-900 dark:text-white shadow-inner">
+                        <input type="email" required placeholder="Alamat Email Anda" class="input-email w-full bg-white/70 dark:bg-black/60 border border-gray-300 dark:border-gray-700 rounded-2xl p-3.5 text-xs md:text-sm focus:outline-none focus:border-gray-500 transition font-medium text-gray-900 dark:text-white shadow-inner">
+                        <textarea required placeholder="Tuliskan pesan atau pertanyaan Anda..." rows="3" class="input-pesan w-full bg-white/70 dark:bg-black/60 border border-gray-300 dark:border-gray-700 rounded-2xl p-3.5 text-xs md:text-sm focus:outline-none focus:border-gray-500 transition font-medium text-gray-900 dark:text-white shadow-inner"></textarea>
+                        <button type="submit" class="w-full bg-gray-900 dark:bg-white text-white dark:text-black font-extrabold py-3.5 rounded-full shadow-lg uppercase tracking-widest text-[10px] sm:text-xs hover:scale-105 transition-transform duration-300 mt-1">
+                            Kirim Pesan
+                        </button>
+                    </form>
+                </div>
+            </section>
+
             <!-- Footer / About Us -->
             <footer class="mt-4 px-6 pt-16 pb-16 bg-white/90 dark:bg-black/90 backdrop-blur-xl text-center relative z-10 rounded-t-[3rem] shadow-[0_-10px_40px_rgba(0,0,0,0.05)] dark:shadow-[0_-10px_40px_rgba(255,255,255,0.05)] border-t border-gray-200 dark:border-gray-800 overflow-hidden">
                 <div class="relative z-10 flex flex-col items-center">
-                    <img src="96361_2.png" alt="Logo PT Media Tulisan Manusia" class="h-20 md:h-28 w-auto object-contain mb-2 rounded-xl drop-shadow-sm hover:scale-105 transition duration-300">
+                    <img src="96361_2.png" alt="Logo PT Media Tulisan Manusia" class="h-20 md:h-28 w-auto object-contain mb-2 rounded-xl drop-shadow-sm">
                     <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-500 uppercase tracking-[0.2em] font-bold mb-4">Publisher & Legal Consultant</p>
                     
                     <h3 class="font-bold text-sm sm:text-base md:text-2xl mb-2 md:mb-3 text-gray-900 dark:text-white">Tentang Kami</h3>
@@ -876,7 +896,7 @@
                         </div>
                         <div>
                             <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold mb-1">Jam Operasional</p>
-                            <p class="font-medium text-xs md:text-sm text-gray-800 dark:text-gray-300 leading-relaxed">Senin - Sabtu: 09.00 - 17.00 WIB<br>Minggu: Tutup</p>
+                            <p class="font-medium text-xs md:text-sm text-gray-800 dark:text-gray-300 leading-relaxed">Senin - Sabtu: 08.00 - 16.00 WIB<br>Minggu: Tutup</p>
                         </div>
                         <div>
                             <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold mb-1">Virtual Office Kami</p>
@@ -890,9 +910,9 @@
                     <!-- Form Pesan -->
                     <div class="flex-1 text-left">
                         <form onsubmit="kirimPesanKontak(event)" class="space-y-4">
-                            <input type="text" id="kontak-nama" required placeholder="Nama Lengkap Anda" class="w-full bg-white/70 dark:bg-black/60 border border-gray-300 dark:border-gray-700 rounded-2xl p-4 text-xs md:text-sm focus:outline-none focus:border-gray-500 transition font-medium text-gray-900 dark:text-white">
-                            <input type="email" id="kontak-email" required placeholder="Alamat Email Anda" class="w-full bg-white/70 dark:bg-black/60 border border-gray-300 dark:border-gray-700 rounded-2xl p-4 text-xs md:text-sm focus:outline-none focus:border-gray-500 transition font-medium text-gray-900 dark:text-white">
-                            <textarea id="kontak-pesan" required placeholder="Tuliskan pesan atau pertanyaan Anda di sini..." rows="4" class="w-full bg-white/70 dark:bg-black/60 border border-gray-300 dark:border-gray-700 rounded-2xl p-4 text-xs md:text-sm focus:outline-none focus:border-gray-500 transition font-medium text-gray-900 dark:text-white"></textarea>
+                            <input type="text" required placeholder="Nama Lengkap Anda" class="input-nama w-full bg-white/70 dark:bg-black/60 border border-gray-300 dark:border-gray-700 rounded-2xl p-4 text-xs md:text-sm focus:outline-none focus:border-gray-500 transition font-medium text-gray-900 dark:text-white">
+                            <input type="email" required placeholder="Alamat Email Anda" class="input-email w-full bg-white/70 dark:bg-black/60 border border-gray-300 dark:border-gray-700 rounded-2xl p-4 text-xs md:text-sm focus:outline-none focus:border-gray-500 transition font-medium text-gray-900 dark:text-white">
+                            <textarea required placeholder="Tuliskan pesan atau pertanyaan Anda di sini..." rows="4" class="input-pesan w-full bg-white/70 dark:bg-black/60 border border-gray-300 dark:border-gray-700 rounded-2xl p-4 text-xs md:text-sm focus:outline-none focus:border-gray-500 transition font-medium text-gray-900 dark:text-white"></textarea>
                             <button type="submit" class="w-full bg-gray-900 dark:bg-white text-white dark:text-black font-extrabold py-4 rounded-full shadow-lg uppercase tracking-widest text-xs md:text-sm hover:scale-105 transition-transform duration-300 mt-2">
                                 Kirim Pesan
                             </button>
