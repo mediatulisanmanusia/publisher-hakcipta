@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Media Tulisan Manusia - Penerbitan & Legalitas Hak Cipta</title>
+    <title>Media Tulisan Manusia - Penerbita & Legalitas Hak Cipta</title>
     
     <!-- Favicon / Logo Tab Browser -->
     <link rel="icon" type="image/png" href="favicon.png">
@@ -31,18 +31,11 @@
                         'fade-up': 'fadeUp 0.8s ease-out forwards',
                         'blob': 'blob 15s infinite',
                         'pulse-slow': 'pulse 5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'bounce-slow': 'bounce 4s infinite',
                     },
                     keyframes: {
                         fadeUp: {
                             '0%': { opacity: '0', transform: 'translateY(25px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -40px) scale(1.05)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.95)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
                         }
                     }
                 }
@@ -55,7 +48,7 @@
         
         body { transition: background-color 0.5s ease, color 0.5s ease; }
 
-        /* Gradasi Latar Belakang: Terang seimbang & Mode Gelap Hitam Merata dengan Sentuhan Putih Halus */
+        /* Gradasi Latar Belakang */
         .bg-custom-gradient {
             background: linear-gradient(135deg, #e4e4e9 0%, #f6f6f8 50%, #e4e4e9 100%);
         }
@@ -75,22 +68,19 @@
             background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 1px, transparent 2px);
         }
 
-        /* Efek Kaca (Glassmorphism) dengan tambahan efek gradasi hitam di pinggirannya */
+        /* Efek Kaca (Glassmorphism) dengan Bayangan Gradasi Hitam Super Halus dan Estetik */
         .glass {
-            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.85) 30%, rgba(230, 230, 230, 0.5) 100%);
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.88) 20%, rgba(235, 235, 235, 0.6) 100%);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(0, 0, 0, 0.15);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12), inset 0 0 25px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03), inset 0 0 25px rgba(0, 0, 0, 0.05);
         }
         .dark .glass {
-            background: radial-gradient(circle at center, rgba(24, 24, 24, 0.85) 30%, rgba(12, 12, 12, 0.8) 100%);
-            border: 1px solid rgba(0, 0, 0, 0.8);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), inset 0 0 35px rgba(0, 0, 0, 0.85);
+            background: radial-gradient(circle at center, rgba(24, 24, 26, 0.85) 30%, rgba(12, 12, 14, 0.8) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45), 0 4px 15px rgba(0, 0, 0, 0.3), inset 0 0 40px rgba(0, 0, 0, 0.5);
         }
-
-        .animation-delay-2000 { animation-delay: 2s; }
-        .animation-delay-4000 { animation-delay: 4s; }
     </style>
     <script>
         let isLoggedIn = false;
@@ -151,12 +141,7 @@
         <!-- Latar Belakang Pola Bintik Gradasi -->
         <div class="pattern-overlay"></div>
 
-        <!-- Elemen Animasi Tambahan Menyeluruh -->
-        <div class="absolute top-10 -left-10 w-96 h-96 bg-black/10 dark:bg-white/5 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[100px] animate-blob z-0"></div>
-        <div class="absolute top-[35%] -right-10 w-96 h-96 bg-gray-500/15 dark:bg-gray-400/5 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[120px] animate-blob animation-delay-2000 z-0"></div>
-        <div class="absolute bottom-[20%] left-10 w-80 h-80 bg-black/10 dark:bg-white/5 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[100px] animate-blob animation-delay-4000 z-0"></div>
-
-        <!-- HEADER / NAVBAR MELAYANG TANPA ANIMASI BERGERAK, DI TENGAH SEMUA DEVICE -->
+        <!-- HEADER / NAVBAR MELAYANG DI TENGAH (TANPA ANIMASI BERGERAK) -->
         <header class="fixed top-4 left-0 right-0 mx-auto w-11/12 max-w-[1200px] glass rounded-full px-5 py-3 flex items-center justify-between z-50 transition-all shadow-xl">
             <div class="flex items-center gap-3 cursor-pointer" onclick="bukaHalaman('beranda')">
                 <img src="96361_2.png" alt="Logo PT Media Tulisan Manusia" class="h-12 md:h-16 w-auto object-contain drop-shadow-sm rounded-lg hover:scale-105 transition duration-300">
@@ -183,14 +168,14 @@
         <div id="hal-beranda" class="halaman-konten animate-fade-up relative z-10">
             
             <!-- Banner Tipografi Modern -->
-            <section class="relative min-h-[380px] md:min-h-[480px] mx-2 md:mx-6 rounded-[2.5rem] md:rounded-[4rem] overflow-hidden flex flex-col justify-center items-center text-center p-6 sm:p-8 md:p-14 glass transition-all duration-700 animate-fade-up">
+            <section class="relative mx-2 md:mx-6 rounded-[2.5rem] md:rounded-[4rem] overflow-hidden flex flex-col justify-center items-center text-center py-10 px-6 sm:px-8 md:p-12 glass transition-all duration-700 animate-fade-up">
                 <h2 class="text-xl sm:text-2xl md:text-5xl font-black tracking-tight text-gray-900 dark:text-white mb-2 z-10 uppercase w-full px-1 leading-snug">
                     GAGASANMU BERHARGA.
                 </h2>
-                <p class="text-gray-800 dark:text-gray-200 font-bold tracking-wide text-xs sm:text-sm md:text-2xl mb-4 z-10 uppercase w-full px-1 leading-snug">
+                <p class="text-gray-800 dark:text-gray-200 font-bold tracking-wide text-xs sm:text-sm md:text-2xl mb-3 z-10 uppercase w-full px-1 leading-snug">
                     KAMI TERBITKAN DAN LINDUNGI SEPENUHNYA.
                 </p>
-                <div class="w-24 h-0.5 bg-gray-400 dark:bg-gray-600 mx-auto rounded-full mb-4 z-10 opacity-70 animate-pulse-slow"></div>
+                <div class="w-20 h-0.5 bg-gray-400 dark:bg-gray-600 mx-auto rounded-full mb-3 z-10 opacity-70 animate-pulse-slow"></div>
                 <p class="text-xs md:text-base text-gray-700 dark:text-gray-300 font-medium z-10 max-w-xl leading-relaxed">
                     Eksplorasi mahakarya tanpa batas bersama Media Tulisan Manusia. Kami hadir untuk melegalkan dan menerbitkan dedikasi intelektual Anda.
                 </p>
@@ -198,20 +183,22 @@
 
             <!-- SEKSI PROFIL SINGKAT & KLIEN -->
             <section class="px-5 md:px-10 pt-16 md:pt-24 relative z-10 max-w-4xl mx-auto text-center">
-                <div class="glass p-8 md:p-12 rounded-[2.5rem] hover:shadow-2xl transition duration-500 animate-fade-up">
-                    <h3 class="text-2xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-6 tracking-tight">Mitra Strategis Karya & Legalitas Anda</h3>
-                    <p class="text-sm md:text-base text-gray-800 dark:text-gray-300 leading-relaxed font-medium mb-10 text-center">
+                <div class="glass p-6 sm:p-8 md:p-12 rounded-[2.5rem] hover:shadow-2xl transition duration-500 animate-fade-up">
+                    <h3 class="text-lg sm:text-xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-6 tracking-tight leading-snug px-1">Mitra Strategis Karya & Legalitas Anda</h3>
+                    <p class="text-xs sm:text-sm md:text-base text-gray-800 dark:text-gray-300 leading-relaxed font-medium mb-10 text-justify">
                         <strong class="text-gray-900 dark:text-white">Media Tulisan Manusia</strong> adalah perusahaan profesional yang bergerak di bidang penerbitan premium (Publisher) dan pengurusan Hak Kekayaan Intelektual (HKI). Kami hadir untuk memastikan setiap gagasan Anda dirawat melalui proses kurasi tingkat tinggi, diproduksi dengan standar elegan, dan diberikan perlindungan hukum absolut agar sepenuhnya aman dari plagiarisme.
                     </p>
                     
-                    <div class="bg-gray-900 dark:bg-white inline-block w-full max-w-sm px-6 py-5 rounded-[2rem] shadow-lg transition duration-300 hover:scale-105">
-                        <p class="text-xl md:text-3xl font-extrabold text-white dark:text-gray-900 mb-2 text-center">Dipercaya oleh 100+ Klien</p>
-                        <div class="flex flex-wrap items-center justify-center gap-2 text-xs md:text-sm text-gray-400 dark:text-gray-600 font-bold uppercase tracking-widest text-center">
-                            <span>Startup</span> 
+                    <div class="bg-gray-900 dark:bg-white inline-block w-full max-w-md px-4 sm:px-6 py-4 sm:py-5 rounded-[2rem] shadow-lg transition duration-300 hover:scale-105">
+                        <p class="text-sm sm:text-lg md:text-2xl font-extrabold text-white dark:text-gray-900 mb-1.5 sm:mb-2 text-center tracking-wide">Dipercaya oleh 100+ Klien</p>
+                        <div class="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 text-[9px] sm:text-xs md:text-sm text-gray-400 dark:text-gray-600 font-bold uppercase tracking-widest text-center">
+                            <span>Penulis</span> 
                             <span class="w-1 h-1 bg-gray-500 rounded-full inline-block"></span> 
                             <span>UMKM</span> 
                             <span class="w-1 h-1 bg-gray-500 rounded-full inline-block"></span> 
-                            <span>Penulis</span>
+                            <span>Startup</span>
+                            <span class="w-1 h-1 bg-gray-500 rounded-full inline-block"></span> 
+                            <span>Content Creator</span>
                         </div>
                     </div>
                 </div>
@@ -339,7 +326,7 @@
                     <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Ensiklopedia%20Arjuna" target="_blank" class="min-w-[220px] md:min-w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] block shadow-lg">
                         <div class="w-full">
                             <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Firnanda Maulidya</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white group-hover:text-gray-500 transition">Ensiklopedia Arjuna</h4>
+                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white transition">Ensiklopedia Arjuna</h4>
                         </div>
                         <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
                         <div class="w-full">
@@ -350,7 +337,7 @@
                     <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Formula%20Kepenulisan" target="_blank" class="min-w-[220px] md:min-w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] block shadow-lg">
                         <div class="w-full">
                             <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Ach. Sufyan Wahyudi</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white group-hover:text-gray-500 transition">Formula Kepenulisan</h4>
+                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white transition">Formula Kepenulisan</h4>
                         </div>
                         <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
                         <div class="w-full">
@@ -606,7 +593,7 @@
                 </div>
             </section>
 
-            <!-- SEKSI PERSUASI / LAYANAN (Judul Rata Kanan-Kiri/Sejajar, Teks Justify Sesuai Permintaan) -->
+            <!-- SEKSI PERSUASI / LAYANAN -->
             <section id="layanan" class="px-5 md:px-10 pt-10 pb-4 md:py-10 relative z-10 max-w-5xl mx-auto">
                 <div class="md:flex md:gap-8">
                     <!-- Promo Naskah -->
@@ -758,120 +745,6 @@
                     <p class="text-[9px] sm:text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold w-full text-center">&copy; 2026 Media Tulisan Manusia. Hak Cipta Dilindungi.</p>
                 </div>
             </footer>
-        </div>
-
-        <!-- ================= HALAMAN SYARAT & KETENTUAN ================= -->
-        <div id="hal-syarat" class="halaman-konten hidden p-6 md:p-12 pb-32 animate-fade-up relative z-10 max-w-4xl mx-auto">
-            <button onclick="bukaHalaman('beranda')" class="mb-8 flex items-center gap-2 text-sm font-bold text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition glass px-5 py-2.5 rounded-full inline-flex border border-gray-300 dark:border-gray-700">
-                &larr; Kembali ke Beranda
-            </button>
-            <div class="glass p-8 md:p-14 rounded-[2rem] md:rounded-[3rem] shadow-2xl">
-                <h2 class="text-3xl md:text-4xl font-extrabold mb-6 text-gray-900 dark:text-white tracking-tight border-b border-gray-300 dark:border-gray-700 pb-4 text-center">Syarat & Ketentuan</h2>
-                
-                <div class="space-y-6 text-sm md:text-base text-gray-800 dark:text-gray-300 leading-relaxed font-medium text-center">
-                    <p>Selamat datang di <strong>Media Tulisan Manusia</strong>. Sebelum menggunakan layanan kami, harap membaca dengan saksama persyaratan dan ketentuan di bawah ini. Penggunaan layanan kami menandakan persetujuan Anda terhadap seluruh poin berikut:</p>
-                    
-                    <div>
-                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">1. Orisinalitas Karya</h4>
-                        <p>Klien menjamin bahwa seluruh materi, naskah, atau karya intelektual yang diserahkan adalah murni hasil karya sendiri (orisinal), tidak memuat unsur plagiarisme, serta tidak melanggar hak cipta pihak ketiga mana pun. Segala tuntutan hukum yang timbul akibat sengketa keaslian karya sepenuhnya menjadi tanggung jawab Klien.</p>
-                    </div>
-
-                    <div>
-                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">2. Etika Konten</h4>
-                        <p>Karya yang diajukan tidak boleh memuat konten yang berpotensi memicu kebencian (SARA), pornografi, ujaran kebencian, pencemaran nama baik, atau bertentangan dengan perundang-undangan yang berlaku di Negara Kesatuan Republik Indonesia.</p>
-                    </div>
-
-                    <div>
-                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">3. Layanan Hak Cipta (HKI)</h4>
-                        <p>Media Tulisan Manusia bertindak sebagai fasilitator legalitas yang membantu proses administrasi Hak Cipta ke Direktorat Jenderal Kekayaan Intelektual (DJKI) Kemenkumham RI. Hak Cipta dan seluruh kepemilikan komersial tetap dipegang penuh oleh Pencipta karya.</p>
-                    </div>
-
-                    <div>
-                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">4. Kebijakan Pembayaran & Pengembalian Dana</h4>
-                        <p>Semua biaya layanan yang tercantum dan disepakati di awal bersifat mengikat. Proses penerbitan atau pendaftaran HKI akan dimulai setelah pembayaran diterima sesuai dengan syarat termin pembayaran kami. Biaya yang telah disetorkan tidak dapat dikembalikan (<em>non-refundable</em>) apabila klien membatalkan proyek secara sepihak.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================= HALAMAN KEBIJAKAN PRIVASI ================= -->
-        <div id="hal-privasi" class="halaman-konten hidden p-6 md:p-12 pb-32 animate-fade-up relative z-10 max-w-4xl mx-auto">
-            <button onclick="bukaHalaman('beranda')" class="mb-8 flex items-center gap-2 text-sm font-bold text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition glass px-5 py-2.5 rounded-full inline-flex border border-gray-300 dark:border-gray-700">
-                &larr; Kembali ke Beranda
-            </button>
-            <div class="glass p-8 md:p-14 rounded-[2rem] md:rounded-[3rem] shadow-2xl">
-                <h2 class="text-3xl md:text-4xl font-extrabold mb-6 text-gray-900 dark:text-white tracking-tight border-b border-gray-300 dark:border-gray-700 pb-4 text-center">Kebijakan Privasi</h2>
-                
-                <div class="space-y-6 text-sm md:text-base text-gray-800 dark:text-gray-300 leading-relaxed font-medium text-center">
-                    <p>Privasi Anda adalah prioritas tertinggi kami. <strong>Media Tulisan Manusia</strong> berkomitmen penuh untuk menjaga keamanan, kerahasiaan, dan integritas data pribadi serta karya intelektual yang Anda percayakan kepada kami.</p>
-                    
-                    <div>
-                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">1. Jaminan Kerahasiaan Naskah (NDA)</h4>
-                        <p>Setiap naskah atau karya yang Anda kirimkan untuk proses peninjauan, penyuntingan, atau pendaftaran HKI dilindungi oleh prinsip <em>Non-Disclosure Agreement</em> (NDA) kami. Kami tidak akan mempublikasikan, menggandakan, atau mendistribusikan karya Anda kepada pihak eksternal tanpa izin tertulis dari Anda.</p>
-                    </div>
-
-                    <div>
-                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">2. Pengumpulan Data Pribadi</h4>
-                        <p>Kami hanya mengumpulkan informasi yang esensial, seperti salinan Kartu Tanda Penduduk (KTP), Nama Lengkap, Email, dan Nomor Telepon. Data ini digunakan secara eksklusif untuk administrasi legalitas penerbitan (QRCBN/ISBN) dan pendaftaran sertifikat Hak Cipta di Kementerian Hukum dan HAM RI.</p>
-                    </div>
-
-                    <div>
-                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">3. Keamanan Data</h4>
-                        <p>Data pribadi Anda disimpan dalam sistem digital yang aman dengan protokol enkripsi standar industri. Kami tidak akan memperjualbelikan, menyewakan, atau membagikan data identitas Anda kepada pihak ketiga untuk kepentingan pemasaran.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================= HALAMAN HUBUNGI KAMI ================= -->
-        <div id="hal-hubungi" class="halaman-konten hidden p-6 md:p-12 pb-32 animate-fade-up relative z-10 max-w-4xl mx-auto">
-            <button onclick="bukaHalaman('beranda')" class="mb-8 flex items-center gap-2 text-sm font-bold text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition glass px-5 py-2.5 rounded-full inline-flex border border-gray-300 dark:border-gray-700">
-                &larr; Kembali ke Beranda
-            </button>
-            
-            <div class="glass p-8 md:p-14 rounded-[2rem] md:rounded-[3rem] shadow-2xl">
-                <div class="text-center mb-10">
-                    <h2 class="text-3xl md:text-5xl font-extrabold mb-4 text-gray-900 dark:text-white tracking-tight">Hubungi Kami</h2>
-                    <p class="text-sm md:text-base text-gray-700 dark:text-gray-300 font-medium">Tim kami siap membantu mewujudkan karya dan melindungi legalitas Anda.</p>
-                </div>
-
-                <div class="md:flex gap-10">
-                    <!-- Informasi Kontak -->
-                    <div class="flex-1 space-y-6 mb-10 md:mb-0 text-center md:text-left">
-                        <div>
-                            <p class="text-xs text-gray-500 uppercase tracking-widest font-bold mb-1">WhatsApp & Telepon</p>
-                            <p class="font-bold text-xs md:text-lg text-gray-900 dark:text-white">0882 9444 8222</p>
-                        </div>
-                        <div>
-                            <p class="text-xs text-gray-500 uppercase tracking-widest font-bold mb-1">Email Resmi</p>
-                            <p class="font-bold text-xs sm:text-sm md:text-base text-gray-900 dark:text-white break-all">ptmediatulisanmanusia@gmail.com</p>
-                        </div>
-                        <div>
-                            <p class="text-xs text-gray-500 uppercase tracking-widest font-bold mb-1">Jam Operasional</p>
-                            <p class="font-medium text-sm text-gray-800 dark:text-gray-300">Senin - Sabtu: 09.00 - 17.00 WIB<br> Minggu: Tutup</p>
-                        </div>
-                        <div>
-                            <p class="text-xs text-gray-500 uppercase tracking-widest font-bold mb-1">Virtual Office Kami</p>
-                            <p class="font-medium text-sm text-gray-800 dark:text-gray-300 space-y-2">
-                                <span class="block">Jl. Supriyadi No. 48, Malang</span>
-                                <span class="block">Jl. Raya Malang-Surabaya No. 101, Pasuruan</span>
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Form Pesan -->
-                    <div class="flex-1">
-                        <form onsubmit="kirimPesanKontak(event)" class="space-y-5">
-                            <input type="text" id="kontak-nama" required placeholder="Nama Lengkap Anda" class="w-full bg-white/70 dark:bg-black/60 border border-gray-300 dark:border-gray-700 rounded-2xl p-4 text-sm focus:outline-none focus:border-gray-500 transition font-medium text-gray-900 dark:text-white">
-                            <input type="email" id="kontak-email" required placeholder="Alamat Email Anda" class="w-full bg-white/70 dark:bg-black/60 border border-gray-300 dark:border-gray-700 rounded-2xl p-4 text-sm focus:outline-none focus:border-gray-500 transition font-medium text-gray-900 dark:text-white">
-                            <textarea id="kontak-pesan" required placeholder="Tuliskan pesan atau pertanyaan Anda di sini..." rows="4" class="w-full bg-white/70 dark:bg-black/60 border border-gray-300 dark:border-gray-700 rounded-2xl p-4 text-sm focus:outline-none focus:border-gray-500 transition font-medium text-gray-900 dark:text-white"></textarea>
-                            <button type="submit" class="w-full bg-gray-900 dark:bg-white text-white dark:text-black font-extrabold py-4 rounded-full shadow-lg uppercase tracking-widest text-sm hover:scale-105 transition-transform duration-300">
-                                Kirim Pesan ke Email
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
         </div>
 
     </div>
