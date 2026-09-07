@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
     <!-- Import Font Simpel & Elegan (Poppins) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -24,17 +24,16 @@
                         sans: ['Poppins', 'sans-serif'],
                     },
                     colors: {
-                        dark: '#121212',
-                        darker: '#0a0a0a'
+                        dark: '#050505',
+                        darker: '#000000'
                     },
                     animation: {
-                        'fade-up': 'fadeUp 0.8s ease-out forwards',
-                        'blob': 'blob 15s infinite',
-                        'pulse-slow': 'pulse 5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-up': 'fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     },
                     keyframes: {
                         fadeUp: {
-                            '0%': { opacity: '0', transform: 'translateY(25px)' },
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
                         }
                     }
@@ -43,43 +42,49 @@
         }
     </script>
     <style>
+        /* Optimasi Scroll Bar */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
         body { transition: background-color 0.5s ease, color 0.5s ease; }
 
-        /* Gradasi Latar Belakang */
+        /* Gradasi Latar Belakang Premium */
         .bg-custom-gradient {
-            background: linear-gradient(135deg, #e4e4e9 0%, #f6f6f8 50%, #e4e4e9 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #f4f4f5 50%, #e4e4e7 100%);
         }
         .dark .bg-custom-gradient {
-            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.04) 0%, #0d0d0d 60%, #050505 100%);
+            background: linear-gradient(135deg, #09090b 0%, #121214 50%, #000000 100%);
         }
 
+        /* Pola Bintik Super Tipis */
         .pattern-overlay {
             position: absolute;
             inset: 0;
-            background-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.01) 1px, transparent 2px);
+            background-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.03) 0%, rgba(0, 0, 0, 0.01) 1px, transparent 2px);
             background-size: 32px 32px;
             z-index: 0;
             pointer-events: none;
         }
         .dark .pattern-overlay {
-            background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 1px, transparent 2px);
+            background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.01) 1px, transparent 2px);
         }
 
-        /* Efek Kaca (Glassmorphism) dengan Bayangan Gradasi Hitam Super Halus dan Estetik */
+        /* Efek Kaca (Glassmorphism) - Dioptimalkan untuk performa agar tidak lag */
         .glass {
-            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.88) 20%, rgba(235, 235, 235, 0.6) 100%);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03), inset 0 0 25px rgba(0, 0, 0, 0.05);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 245, 250, 0.7) 100%);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            /* Bayangan & Gradasi hitam halus di pinggiran gelembung */
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1), inset 0 -4px 20px -5px rgba(0, 0, 0, 0.04);
+            transform: translateZ(0); /* Akselerasi Hardware GPU */
         }
         .dark .glass {
-            background: radial-gradient(circle at center, rgba(24, 24, 26, 0.85) 30%, rgba(12, 12, 14, 0.8) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45), 0 4px 15px rgba(0, 0, 0, 0.3), inset 0 0 40px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, rgba(25, 25, 28, 0.9) 0%, rgba(10, 10, 12, 0.7) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            /* Bayangan & Gradasi hitam lebih pekat di mode gelap */
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7), inset 0 -4px 20px -5px rgba(0, 0, 0, 0.5);
+            transform: translateZ(0);
         }
     </style>
     <script>
@@ -138,11 +143,16 @@
     <!-- Container Utama -->
     <div class="max-w-7xl mx-auto min-h-screen relative shadow-2xl bg-custom-gradient overflow-hidden transition-all duration-700">
 
-        <!-- Latar Belakang Pola Bintik Gradasi -->
+        <!-- Latar Belakang Pola Bintik -->
         <div class="pattern-overlay"></div>
 
-        <!-- HEADER / NAVBAR MELAYANG DI TENGAH (TANPA ANIMASI BERGERAK) -->
-        <header class="fixed top-4 left-0 right-0 mx-auto w-11/12 max-w-[1200px] glass rounded-full px-5 py-3 flex items-center justify-between z-50 transition-all shadow-xl">
+        <!-- Elemen Bayangan Blur Statis -->
+        <div class="absolute top-10 -left-10 w-96 h-96 bg-black/5 dark:bg-white/5 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[100px] z-0"></div>
+        <div class="absolute top-[35%] -right-10 w-96 h-96 bg-gray-500/10 dark:bg-gray-400/5 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[120px] z-0"></div>
+        <div class="absolute bottom-[20%] left-10 w-80 h-80 bg-black/5 dark:bg-white/5 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[100px] z-0"></div>
+
+        <!-- HEADER / NAVBAR MELAYANG -->
+        <header class="fixed top-4 left-0 right-0 mx-auto w-11/12 max-w-[1200px] glass rounded-full px-5 py-3 flex items-center justify-between z-50 shadow-lg">
             <div class="flex items-center gap-3 cursor-pointer" onclick="bukaHalaman('beranda')">
                 <img src="96361_2.png" alt="Logo PT Media Tulisan Manusia" class="h-12 md:h-16 w-auto object-contain drop-shadow-sm rounded-lg hover:scale-105 transition duration-300">
             </div>
@@ -167,38 +177,39 @@
         <!-- ================= HALAMAN BERANDA ================= -->
         <div id="hal-beranda" class="halaman-konten animate-fade-up relative z-10">
             
-            <!-- Banner Tipografi Modern -->
-            <section class="relative mx-2 md:mx-6 rounded-[2.5rem] md:rounded-[4rem] overflow-hidden flex flex-col justify-center items-center text-center py-10 px-6 sm:px-8 md:p-12 glass transition-all duration-700 animate-fade-up">
-                <h2 class="text-xl sm:text-2xl md:text-5xl font-black tracking-tight text-gray-900 dark:text-white mb-2 z-10 uppercase w-full px-1 leading-snug">
+            <!-- Banner Tipografi Premium -->
+            <section class="relative mx-3 md:mx-6 rounded-[2.5rem] md:rounded-[4rem] overflow-hidden flex flex-col justify-center items-center text-center py-12 px-6 sm:px-8 md:p-14 glass transition-all duration-700">
+                <h2 class="text-[22px] sm:text-2xl md:text-5xl font-black tracking-tight text-gray-900 dark:text-white mb-2 z-10 uppercase w-full leading-snug">
                     GAGASANMU BERHARGA.
                 </h2>
-                <p class="text-gray-800 dark:text-gray-200 font-bold tracking-wide text-xs sm:text-sm md:text-2xl mb-3 z-10 uppercase w-full px-1 leading-snug">
+                <p class="text-gray-800 dark:text-gray-200 font-extrabold tracking-widest text-[10px] sm:text-xs md:text-xl mb-4 z-10 uppercase w-full leading-snug text-center max-w-2xl mx-auto">
                     KAMI TERBITKAN DAN LINDUNGI SEPENUHNYA.
                 </p>
-                <div class="w-20 h-0.5 bg-gray-400 dark:bg-gray-600 mx-auto rounded-full mb-3 z-10 opacity-70 animate-pulse-slow"></div>
-                <p class="text-xs md:text-base text-gray-700 dark:text-gray-300 font-medium z-10 max-w-xl leading-relaxed">
-                    Eksplorasi mahakarya tanpa batas bersama Media Tulisan Manusia. Kami hadir untuk melegalkan dan menerbitkan dedikasi intelektual Anda.
+                <div class="w-16 h-[3px] bg-gray-400 dark:bg-gray-600 mx-auto rounded-full mb-4 z-10 opacity-70"></div>
+                <p class="text-[11px] md:text-base text-gray-700 dark:text-gray-300 font-medium z-10 max-w-xl leading-relaxed">
+                    Eksplorasi mahakarya tanpa batas bersama Media Tulisan Manusia.
                 </p>
             </section>
 
             <!-- SEKSI PROFIL SINGKAT & KLIEN -->
-            <section class="px-5 md:px-10 pt-16 md:pt-24 relative z-10 max-w-4xl mx-auto text-center">
-                <div class="glass p-6 sm:p-8 md:p-12 rounded-[2.5rem] hover:shadow-2xl transition duration-500 animate-fade-up">
-                    <h3 class="text-base sm:text-lg md:text-3xl font-extrabold text-gray-900 dark:text-white mb-6 tracking-tight leading-snug px-1">Mitra Strategis Karya & Legalitas Anda</h3>
-                    <p class="text-xs sm:text-sm md:text-base text-gray-800 dark:text-gray-300 leading-relaxed font-medium mb-10 text-justify">
+            <section class="px-4 md:px-10 pt-12 md:pt-20 relative z-10 max-w-4xl mx-auto text-center">
+                <div class="glass p-8 md:p-12 rounded-[2.5rem] hover:shadow-2xl transition duration-500">
+                    <h3 class="text-lg sm:text-xl md:text-3xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight leading-snug text-center">Mitra Strategis Karya & Legalitas Anda</h3>
+                    <p class="text-[11px] sm:text-xs md:text-base text-gray-800 dark:text-gray-300 leading-relaxed font-medium mb-8 md:mb-10 text-justify md:text-center">
                         <strong class="text-gray-900 dark:text-white">Media Tulisan Manusia</strong> adalah perusahaan profesional yang bergerak di bidang penerbitan premium (Publisher) dan pengurusan Hak Kekayaan Intelektual (HKI). Kami hadir untuk memastikan setiap gagasan Anda dirawat melalui proses kurasi tingkat tinggi, diproduksi dengan standar elegan, dan diberikan perlindungan hukum absolut agar sepenuhnya aman dari plagiarisme.
                     </p>
                     
-                    <div class="bg-gray-900 dark:bg-white inline-block w-full max-w-md px-4 sm:px-6 py-4 sm:py-5 rounded-[2rem] shadow-lg transition duration-300 hover:scale-105">
-                        <p class="text-sm sm:text-lg md:text-2xl font-extrabold text-white dark:text-gray-900 mb-1.5 sm:mb-2 text-center tracking-wide">Dipercaya oleh 100+ Klien</p>
-                        <div class="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 text-[9px] sm:text-xs md:text-sm text-gray-400 dark:text-gray-600 font-bold uppercase tracking-widest text-center">
-                            <span>Penulis</span> 
-                            <span class="w-1 h-1 bg-gray-500 rounded-full inline-block"></span> 
-                            <span>UMKM</span> 
-                            <span class="w-1 h-1 bg-gray-500 rounded-full inline-block"></span> 
-                            <span>Startup</span>
-                            <span class="w-1 h-1 bg-gray-500 rounded-full inline-block"></span> 
-                            <span>Content Creator</span>
+                    <div class="bg-gray-900 dark:bg-white inline-block w-full max-w-lg px-4 py-4 md:py-6 rounded-3xl shadow-lg hover:scale-[1.02] transition duration-300">
+                        <p class="text-xs sm:text-sm md:text-xl font-extrabold text-white dark:text-gray-900 mb-2 md:mb-3 text-center tracking-wide uppercase">Dipercaya Oleh 100+ Klien</p>
+                        <!-- List Klien Sejajar -->
+                        <div class="flex flex-row flex-nowrap items-center justify-center gap-1.5 sm:gap-3 text-[8px] sm:text-[10px] md:text-sm text-gray-400 dark:text-gray-600 font-bold uppercase tracking-widest text-center w-full overflow-hidden">
+                            <span class="whitespace-nowrap">Penulis</span> 
+                            <span class="w-1 h-1 bg-gray-600 dark:bg-gray-400 rounded-full inline-block flex-shrink-0"></span> 
+                            <span class="whitespace-nowrap">UMKM</span> 
+                            <span class="w-1 h-1 bg-gray-600 dark:bg-gray-400 rounded-full inline-block flex-shrink-0"></span> 
+                            <span class="whitespace-nowrap">Startup</span>
+                            <span class="w-1 h-1 bg-gray-600 dark:bg-gray-400 rounded-full inline-block flex-shrink-0"></span> 
+                            <span class="whitespace-nowrap">Content Creator</span>
                         </div>
                     </div>
                 </div>
@@ -207,141 +218,142 @@
             <!-- Terbitan Terbaru -->
             <section id="katalog" class="pt-16 md:pt-24 relative z-10">
                 <div class="px-5 md:px-10 mb-8 flex items-center justify-center text-center">
-                    <h3 class="text-2xl md:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+                    <h3 class="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight">
                         Terbitan Terbaru
                     </h3>
                 </div>
-                <div class="flex flex-row overflow-x-auto gap-5 md:gap-8 px-5 md:px-10 pb-8 no-scrollbar snap-x">
+                <!-- Kartu Katalog dengan struktur flex-1 yang rapat -->
+                <div class="flex flex-row overflow-x-auto gap-4 md:gap-6 px-5 md:px-10 pb-8 no-scrollbar snap-x">
                     
-                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Modul%20UMKM%20Kopi" target="_blank" class="min-w-[220px] md:min-w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] block shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Team Desa Wonorejo</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white group-hover:text-gray-500 transition">Modul UMKM Kopi</h4>
+                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Modul%20UMKM%20Kopi" target="_blank" class="min-w-[200px] md:min-w-[260px] snap-start cursor-pointer group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Team Desa Wonorejo</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">Modul UMKM Kopi</h4>
                         </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-lg text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Rp 55.000</p>
-                        </div>
-                    </a>
-                    
-                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Menuju%20Surga%20Beracun" target="_blank" class="min-w-[220px] md:min-w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] block shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Gatot Sarmidi Dkk</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white group-hover:text-gray-500 transition">Menuju Surga Beracun</h4>
-                        </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-lg text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Rp 85.000</p>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Rp 55.000</p>
                         </div>
                     </a>
                     
-                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Untukmu%20yang%20Sedang%20Mengabdi" target="_blank" class="min-w-[220px] md:min-w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] block shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Rara Ayunda Dkk</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white group-hover:text-gray-500 transition">Untukmu yang Sedang Mengabdi</h4>
+                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Menuju%20Surga%20Beracun" target="_blank" class="min-w-[200px] md:min-w-[260px] snap-start cursor-pointer group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Gatot Sarmidi Dkk</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">Menuju Surga Beracun</h4>
                         </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-lg text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Rp 100.000</p>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Rp 85.000</p>
+                        </div>
+                    </a>
+                    
+                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Untukmu%20yang%20Sedang%20Mengabdi" target="_blank" class="min-w-[200px] md:min-w-[260px] snap-start cursor-pointer group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Rara Ayunda Dkk</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">Untukmu yang Sedang Mengabdi</h4>
+                        </div>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Rp 100.000</p>
                         </div>
                     </a>
 
-                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Pelangi%20Kisah%20Kehidupan" target="_blank" class="min-w-[220px] md:min-w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] block shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Abi Pangestu Dkk</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white group-hover:text-gray-500 transition">Pelangi Kisah Kehidupan</h4>
+                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Pelangi%20Kisah%20Kehidupan" target="_blank" class="min-w-[200px] md:min-w-[260px] snap-start cursor-pointer group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Abi Pangestu Dkk</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">Pelangi Kisah Kehidupan</h4>
                         </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-lg text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Rp 85.000</p>
-                        </div>
-                    </a>
-
-                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Pulang%20Dalam%20Perjalanan" target="_blank" class="min-w-[220px] md:min-w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] block shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Mira Santika Dkk</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white group-hover:text-gray-500 transition">Pulang Dalam Perjalanan</h4>
-                        </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-lg text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Rp 85.000</p>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Rp 85.000</p>
                         </div>
                     </a>
 
-                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Tanpamu" target="_blank" class="min-w-[220px] md:min-w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] block shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Ach. Sufyan Wahyudi</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white group-hover:text-gray-500 transition">Tanpamu</h4>
+                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Pulang%20Dalam%20Perjalanan" target="_blank" class="min-w-[200px] md:min-w-[260px] snap-start cursor-pointer group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Mira Santika Dkk</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">Pulang Dalam Perjalanan</h4>
                         </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-lg text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Rp 85.000</p>
-                        </div>
-                    </a>
-
-                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Bukan%20Lagi%20Tentangmu" target="_blank" class="min-w-[220px] md:min-w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] block shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Amalia Nabil</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white group-hover:text-gray-500 transition">Bukan Lagi Tentangmu</h4>
-                        </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-lg text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Rp 100.000</p>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Rp 85.000</p>
                         </div>
                     </a>
 
-                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20PILU" target="_blank" class="min-w-[220px] md:min-w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] block shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Amalia Nabil</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white group-hover:text-gray-500 transition">PILU</h4>
+                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Tanpamu" target="_blank" class="min-w-[200px] md:min-w-[260px] snap-start cursor-pointer group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Ach. Sufyan Wahyudi</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">Tanpamu</h4>
                         </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-lg text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Rp 85.000</p>
-                        </div>
-                    </a>
-
-                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20The%20Word%20Bears%20Witness%20to%20us%20Together" target="_blank" class="min-w-[220px] md:min-w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] block shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Licchi Angelica</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white group-hover:text-gray-500 transition">The Word Bears Witness to us Together</h4>
-                        </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-lg text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Rp 125.000</p>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Rp 85.000</p>
                         </div>
                     </a>
 
-                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Ragam%20Hias%20Jawa%20Daerah%20Malang" target="_blank" class="min-w-[220px] md:min-w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] block shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Alfina Rosita Oktafiana</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white group-hover:text-gray-500 transition">Ragam Hias Jawa Daerah Malang</h4>
+                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Bukan%20Lagi%20Tentangmu" target="_blank" class="min-w-[200px] md:min-w-[260px] snap-start cursor-pointer group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Amalia Nabil</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">Bukan Lagi Tentangmu</h4>
                         </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-lg text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Rp 85.000</p>
-                        </div>
-                    </a>
-
-                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Ensiklopedia%20Arjuna" target="_blank" class="min-w-[220px] md:min-w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] block shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Firnanda Maulidya</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white transition">Ensiklopedia Arjuna</h4>
-                        </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-lg text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Rp 100.000</p>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Rp 100.000</p>
                         </div>
                     </a>
 
-                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Formula%20Kepenulisan" target="_blank" class="min-w-[220px] md:min-w-[300px] snap-start cursor-pointer group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] block shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Ach. Sufyan Wahyudi</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white transition">Formula Kepenulisan</h4>
+                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20PILU" target="_blank" class="min-w-[200px] md:min-w-[260px] snap-start cursor-pointer group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Amalia Nabil</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">PILU</h4>
                         </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-lg text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Rp 55.000</p>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Rp 85.000</p>
+                        </div>
+                    </a>
+
+                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20The%20Word%20Bears%20Witness%20to%20us%20Together" target="_blank" class="min-w-[200px] md:min-w-[260px] snap-start cursor-pointer group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Licchi Angelica</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">The Word Bears Witness to us Together</h4>
+                        </div>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Rp 125.000</p>
+                        </div>
+                    </a>
+
+                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Ragam%20Hias%20Jawa%20Daerah%20Malang" target="_blank" class="min-w-[200px] md:min-w-[260px] snap-start cursor-pointer group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Alfina Rosita Oktafiana</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">Ragam Hias Jawa Daerah Malang</h4>
+                        </div>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Rp 85.000</p>
+                        </div>
+                    </a>
+
+                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Ensiklopedia%20Arjuna" target="_blank" class="min-w-[200px] md:min-w-[260px] snap-start cursor-pointer group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Firnanda Maulidya</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">Ensiklopedia Arjuna</h4>
+                        </div>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Rp 100.000</p>
+                        </div>
+                    </a>
+
+                    <a href="https://wa.me/6288294448222?text=Halo%20Media%20Tulisan%20Manusia,%20saya%20tertarik%20membeli%20buku%20Formula%20Kepenulisan" target="_blank" class="min-w-[200px] md:min-w-[260px] snap-start cursor-pointer group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Ach. Sufyan Wahyudi</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">Formula Kepenulisan</h4>
+                        </div>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Rp 55.000</p>
                         </div>
                     </a>
                 </div>
@@ -350,228 +362,230 @@
             <!-- SEKSI HAK CIPTA TERBARU -->
             <section id="hak-cipta-terbaru" class="pt-8 pb-4 relative z-10">
                 <div class="px-5 md:px-10 mb-8 flex items-center justify-center text-center">
-                    <h3 class="text-2xl md:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+                    <h3 class="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight">
                         Hak Cipta Terbaru
                     </h3>
                 </div>
-                <div class="flex flex-row overflow-x-auto gap-5 md:gap-8 px-5 md:px-10 pb-8 no-scrollbar snap-x">
-                    <div class="min-w-[220px] md:min-w-[300px] snap-start group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Sertifikat HKI</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white transition">Potensi Kopi sebagai penggerak UMKM Desa</h4>
+                <!-- Kartu HKI dengan struktur flex-1 yang rapat -->
+                <div class="flex flex-row overflow-x-auto gap-4 md:gap-6 px-5 md:px-10 pb-8 no-scrollbar snap-x">
+                    
+                    <div class="min-w-[200px] md:min-w-[260px] snap-start group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Sertifikat HKI</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">Potensi Kopi sebagai penggerak UMKM Desa</h4>
                         </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Rara Ayunda DKK</p>
-                        </div>
-                    </div>
-
-                    <div class="min-w-[220px] md:min-w-[300px] snap-start group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Sertifikat HKI</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white transition">ARPAS</h4>
-                        </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Agus Santoso</p>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Rara Ayunda DKK</p>
                         </div>
                     </div>
 
-                    <div class="min-w-[220px] md:min-w-[300px] snap-start group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Sertifikat HKI</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white transition">Purelam</h4>
+                    <div class="min-w-[200px] md:min-w-[260px] snap-start group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Sertifikat HKI</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">ARPAS</h4>
                         </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Nila Krisna Dkk</p>
-                        </div>
-                    </div>
-
-                    <div class="min-w-[220px] md:min-w-[300px] snap-start group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Sertifikat HKI</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white transition">Infografis Anti Bullying</h4>
-                        </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Endah Fatika Arum</p>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Agus Santoso</p>
                         </div>
                     </div>
 
-                    <div class="min-w-[220px] md:min-w-[300px] snap-start group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Sertifikat HKI</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white transition">Media Kartu Alat Musik</h4>
+                    <div class="min-w-[200px] md:min-w-[260px] snap-start group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Sertifikat HKI</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">Purelam</h4>
                         </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Saskya Putri Ayu</p>
-                        </div>
-                    </div>
-
-                    <div class="min-w-[220px] md:min-w-[300px] snap-start group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Sertifikat HKI</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white transition">Media Diorama Tekstur (Diotek)</h4>
-                        </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Olivia Eka Khusdianti</p>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Nila Krisna Dkk</p>
                         </div>
                     </div>
 
-                    <div class="min-w-[220px] md:min-w-[300px] snap-start group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Sertifikat HKI</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white transition">E-Modul Ragam Hias Jawa Daerah Malang</h4>
+                    <div class="min-w-[200px] md:min-w-[260px] snap-start group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Sertifikat HKI</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">Infografis Anti Bullying</h4>
                         </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Alfina Rosita Oktafiana</p>
-                        </div>
-                    </div>
-
-                    <div class="min-w-[220px] md:min-w-[300px] snap-start group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Sertifikat HKI</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white transition">Ensiklopedia Arjuna (Tokoh Wayang)</h4>
-                        </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Firnanda Maulidya Firdausy</p>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Endah Fatika Arum</p>
                         </div>
                     </div>
 
-                    <div class="min-w-[220px] md:min-w-[300px] snap-start group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Sertifikat HKI</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white transition">Doopamine</h4>
+                    <div class="min-w-[200px] md:min-w-[260px] snap-start group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Sertifikat HKI</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">Media Kartu Alat Musik</h4>
                         </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Melany Fang Siau Ling</p>
-                        </div>
-                    </div>
-
-                    <div class="min-w-[220px] md:min-w-[300px] snap-start group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Sertifikat HKI</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white transition">Gamefest</h4>
-                        </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Teguh Dwi Pramono</p>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Saskya Putri Ayu</p>
                         </div>
                     </div>
 
-                    <div class="min-w-[220px] md:min-w-[300px] snap-start group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Sertifikat HKI</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white transition">E-Randuagung</h4>
+                    <div class="min-w-[200px] md:min-w-[260px] snap-start group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Sertifikat HKI</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">Media Diorama Tekstur (Diotek)</h4>
                         </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">KKN Unikama 2024</p>
-                        </div>
-                    </div>
-
-                    <div class="min-w-[220px] md:min-w-[300px] snap-start group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Sertifikat HKI</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white transition">Tapuk</h4>
-                        </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Nurul Khodaifi Dkk</p>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Olivia Eka Khusdianti</p>
                         </div>
                     </div>
 
-                    <div class="min-w-[220px] md:min-w-[300px] snap-start group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Sertifikat HKI</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white transition">Alodie Sea</h4>
+                    <div class="min-w-[200px] md:min-w-[260px] snap-start group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Sertifikat HKI</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">E-Modul Ragam Hias Jawa Daerah Malang</h4>
                         </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Roidah Salma Mahmuddah</p>
-                        </div>
-                    </div>
-
-                    <div class="min-w-[220px] md:min-w-[300px] snap-start group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Sertifikat HKI</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white transition">Ecodible packaging</h4>
-                        </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Candra Prasetyo</p>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Alfina Rosita Oktafiana</p>
                         </div>
                     </div>
 
-                    <div class="min-w-[220px] md:min-w-[300px] snap-start group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Sertifikat HKI</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white transition">Gerd Candy</h4>
+                    <div class="min-w-[200px] md:min-w-[260px] snap-start group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Sertifikat HKI</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">Ensiklopedia Arjuna (Tokoh Wayang)</h4>
                         </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Nifi Noer Holishoh</p>
-                        </div>
-                    </div>
-
-                    <div class="min-w-[220px] md:min-w-[300px] snap-start group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Sertifikat HKI</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white transition">Carya Quest</h4>
-                        </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Ahmad Zahidan Al Faruq</p>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Firnanda Maulidya Firdausy</p>
                         </div>
                     </div>
 
-                    <div class="min-w-[220px] md:min-w-[300px] snap-start group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Sertifikat HKI</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white transition">Healin Exploration</h4>
+                    <div class="min-w-[200px] md:min-w-[260px] snap-start group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Sertifikat HKI</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">Doopamine</h4>
                         </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Alvino Helya</p>
-                        </div>
-                    </div>
-
-                    <div class="min-w-[220px] md:min-w-[300px] snap-start group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Sertifikat HKI</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white transition">Pro Pupa Farm</h4>
-                        </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Adi Saputra</p>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Melany Fang Siau Ling</p>
                         </div>
                     </div>
 
-                    <div class="min-w-[220px] md:min-w-[300px] snap-start group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Sertifikat HKI</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white transition">MC Nusantara</h4>
+                    <div class="min-w-[200px] md:min-w-[260px] snap-start group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Sertifikat HKI</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">Gamefest</h4>
                         </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Fistra Deka Elfira</p>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Teguh Dwi Pramono</p>
                         </div>
                     </div>
 
-                    <div class="min-w-[220px] md:min-w-[300px] snap-start group glass rounded-[2.5rem] p-6 md:p-8 hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[200px] md:min-h-[240px] shadow-lg">
-                        <div class="w-full">
-                            <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold mb-2">Sertifikat HKI</p>
-                            <h4 class="font-bold text-sm sm:text-base md:text-xl leading-snug text-gray-900 dark:text-white transition">Tulisanmanusia</h4>
+                    <div class="min-w-[200px] md:min-w-[260px] snap-start group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Sertifikat HKI</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">E-Randuagung</h4>
                         </div>
-                        <div class="w-full border-t border-gray-300 dark:border-gray-700 my-3 opacity-60"></div>
-                        <div class="w-full">
-                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-200 font-extrabold tracking-wide">Ach. Sufyan Wahyudi</p>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">KKN Unikama 2024</p>
+                        </div>
+                    </div>
+
+                    <div class="min-w-[200px] md:min-w-[260px] snap-start group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Sertifikat HKI</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">Tapuk</h4>
+                        </div>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Nurul Khodaifi Dkk</p>
+                        </div>
+                    </div>
+
+                    <div class="min-w-[200px] md:min-w-[260px] snap-start group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Sertifikat HKI</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">Alodie Sea</h4>
+                        </div>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Roidah Salma Mahmuddah</p>
+                        </div>
+                    </div>
+
+                    <div class="min-w-[200px] md:min-w-[260px] snap-start group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Sertifikat HKI</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">Ecodible packaging</h4>
+                        </div>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Candra Prasetyo</p>
+                        </div>
+                    </div>
+
+                    <div class="min-w-[200px] md:min-w-[260px] snap-start group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Sertifikat HKI</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">Gerd Candy</h4>
+                        </div>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Nifi Noer Holishoh</p>
+                        </div>
+                    </div>
+
+                    <div class="min-w-[200px] md:min-w-[260px] snap-start group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Sertifikat HKI</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">Carya Quest</h4>
+                        </div>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Ahmad Zahidan Al Faruq</p>
+                        </div>
+                    </div>
+
+                    <div class="min-w-[200px] md:min-w-[260px] snap-start group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Sertifikat HKI</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">Healin Exploration</h4>
+                        </div>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Alvino Helya</p>
+                        </div>
+                    </div>
+
+                    <div class="min-w-[200px] md:min-w-[260px] snap-start group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Sertifikat HKI</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">Pro Pupa Farm</h4>
+                        </div>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Adi Saputra</p>
+                        </div>
+                    </div>
+
+                    <div class="min-w-[200px] md:min-w-[260px] snap-start group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Sertifikat HKI</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">MC Nusantara</h4>
+                        </div>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Fistra Deka Elfira</p>
+                        </div>
+                    </div>
+
+                    <div class="min-w-[200px] md:min-w-[260px] snap-start group glass rounded-[2rem] p-5 md:p-7 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between items-center text-center min-h-[190px] md:min-h-[220px] shadow-lg">
+                        <div class="w-full flex-1 flex flex-col justify-center items-center py-2">
+                            <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-1">Sertifikat HKI</p>
+                            <h4 class="font-bold text-[13px] md:text-[16px] leading-snug text-gray-900 dark:text-white transition line-clamp-3">Tulisanmanusia</h4>
+                        </div>
+                        <div class="w-full border-t border-gray-300 dark:border-gray-700 opacity-60 my-2"></div>
+                        <div class="w-full pb-1">
+                            <p class="text-sm md:text-base text-gray-900 dark:text-gray-100 font-extrabold tracking-wide">Ach. Sufyan Wahyudi</p>
                         </div>
                     </div>
                 </div>
@@ -580,7 +594,7 @@
             <!-- SEKSI PENCARIAN PDKI -->
             <section class="px-5 md:px-10 pt-4 pb-12 relative z-10 max-w-4xl mx-auto">
                 <div class="glass p-8 md:p-12 rounded-[2.5rem] shadow-xl text-center hover:scale-[1.01] transition duration-500 animate-fade-up">
-                    <img src="djki.png" alt="Logo DJKI" class="h-14 md:h-20 w-auto object-contain mx-auto mb-5 drop-shadow-sm animate-pulse-slow">
+                    <img src="djki.png" alt="Logo DJKI" class="h-14 md:h-20 w-auto object-contain mx-auto mb-5 drop-shadow-sm">
                     <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-900 dark:text-white mb-3 tracking-tight w-full leading-tight">Penelusuran Hak Cipta (PDKI)</h3>
                     <p class="text-sm md:text-base text-gray-800 dark:text-gray-300 mb-8 font-medium max-w-2xl mx-auto">Masukkan judul karya atau nama pencipta untuk langsung melacak status legalitasnya di database resmi Direktorat Jenderal Kekayaan Intelektual.</p>
                     
@@ -593,34 +607,34 @@
                 </div>
             </section>
 
-            <!-- SEKSI PERSUASI / LAYANAN -->
+            <!-- SEKSI PERSUASI / LAYANAN (Perataan Kiri-Kanan/Sejajar) -->
             <section id="layanan" class="px-5 md:px-10 pt-10 pb-4 md:py-10 relative z-10 max-w-5xl mx-auto">
                 <div class="md:flex md:gap-8">
                     <!-- Promo Naskah -->
-                    <div class="glass p-8 md:p-10 rounded-[2rem] shadow-lg mb-6 md:mb-0 hover:shadow-2xl transition duration-500 flex-1 flex flex-col justify-between">
+                    <div class="glass p-6 md:p-10 rounded-[2rem] shadow-lg mb-6 md:mb-0 hover:shadow-2xl transition duration-500 flex-1 flex flex-col justify-between animate-fade-up">
                         <div>
-                            <div class="flex items-center gap-3 md:gap-4 mb-4">
-                                <div class="p-3 bg-gray-900 dark:bg-white rounded-full text-white dark:text-gray-900 animate-pulse-slow flex-shrink-0">
+                            <div class="flex flex-col sm:flex-row items-center sm:items-start justify-center sm:justify-start gap-3 md:gap-4 mb-4 text-center sm:text-left">
+                                <div class="p-3 bg-gray-900 dark:bg-white rounded-full text-white dark:text-gray-900 flex-shrink-0">
                                     <svg class="w-6 h-6 md:w-8 md:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
                                 </div>
-                                <h3 class="text-lg sm:text-xl md:text-2xl font-extrabold text-gray-900 dark:text-white tracking-tight text-left">Kenapa Menerbitkan di Sini?</h3>
+                                <h3 class="text-xl md:text-2xl font-extrabold text-gray-900 dark:text-white tracking-tight w-full leading-tight">Kenapa Menerbitkan di Sini?</h3>
                             </div>
-                            <p class="text-xs sm:text-sm md:text-base text-gray-800 dark:text-gray-300 leading-relaxed font-medium text-justify">
+                            <p class="text-xs sm:text-sm md:text-[15px] text-gray-800 dark:text-gray-300 leading-relaxed font-medium text-justify">
                                 Kami merawat gagasan literatur Anda ke tingkat kualitas tertinggi melalui kurasi mendalam, penyuntingan komprehensif, desain profesional, serta penomoran standar internasional QRCBN/ISBN secara transparan dan terpercaya.
                             </p>
                         </div>
                     </div>
 
                     <!-- Promo HKI -->
-                    <div class="glass p-8 md:p-10 rounded-[2rem] shadow-lg hover:shadow-2xl transition duration-500 flex-1 flex flex-col justify-between">
+                    <div class="glass p-6 md:p-10 rounded-[2rem] shadow-lg transition duration-500 flex-1 flex flex-col justify-between hover:shadow-2xl animate-fade-up" style="animation-delay: 0.1s;">
                         <div>
-                            <div class="flex items-center gap-3 md:gap-4 mb-4">
-                                <div class="p-3 bg-gray-900 dark:bg-white rounded-full text-white dark:text-gray-900 animate-pulse-slow flex-shrink-0">
+                            <div class="flex flex-col sm:flex-row items-center sm:items-start justify-center sm:justify-start gap-3 md:gap-4 mb-4 text-center sm:text-left">
+                                <div class="p-3 bg-gray-900 dark:bg-white rounded-full text-white dark:text-gray-900 flex-shrink-0">
                                     <svg class="w-6 h-6 md:w-8 md:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
                                 </div>
-                                <h3 class="text-lg sm:text-xl md:text-2xl font-extrabold text-gray-900 dark:text-white tracking-tight text-left">Pentingnya Hak Cipta</h3>
+                                <h3 class="text-xl md:text-2xl font-extrabold text-gray-900 dark:text-white tracking-tight w-full leading-tight">Pentingnya Hak Cipta</h3>
                             </div>
-                            <p class="text-xs sm:text-sm md:text-base text-gray-800 dark:text-gray-300 leading-relaxed font-medium text-justify">
+                            <p class="text-xs sm:text-sm md:text-[15px] text-gray-800 dark:text-gray-300 leading-relaxed font-medium text-justify">
                                 Perlindungan hukum atas kekayaan intelektual adalah benteng utama penjaga orisinalitas karya dari plagiarisme. Kami membantu proses pendaftaran Hak Cipta di DJKI Kemenkumham dengan cepat, aman, dan berkeabsahan penuh.
                             </p>
                         </div>
@@ -631,9 +645,9 @@
             <!-- INFORMASI BIAYA -->
             <section class="px-5 md:px-10 pt-4 pb-8 relative z-10 max-w-4xl mx-auto">
                 <div class="glass p-8 md:p-12 rounded-[2.5rem] shadow-xl hover:scale-[1.01] transition duration-500 animate-fade-up">
-                    <div class="text-center mb-10">
-                        <h3 class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight">Informasi Biaya</h3>
-                        <p class="text-sm md:text-base text-gray-800 dark:text-gray-300 mt-2 font-medium">Investasi terbaik untuk melindungi dan mempublikasikan mahakarya Anda.</p>
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight">Informasi Biaya</h3>
+                        <p class="text-xs sm:text-sm md:text-base text-gray-800 dark:text-gray-300 mt-2 font-medium">Investasi terbaik untuk melindungi dan mempublikasikan mahakarya Anda.</p>
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
@@ -641,7 +655,7 @@
                         <div class="bg-white/70 dark:bg-black/40 p-6 md:p-8 rounded-[2rem] border border-gray-300 dark:border-gray-700 text-center hover:shadow-xl transition duration-300 flex flex-col justify-between">
                             <div>
                                 <h4 class="text-xl md:text-2xl font-extrabold text-gray-900 dark:text-white mb-2">Penerbitan Buku</h4>
-                                <p class="text-sm text-gray-700 dark:text-gray-400 mb-6 font-medium">Cetak, Layout, QRCBN & Distribusi</p>
+                                <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-400 mb-6 font-medium">Cetak, Layout, QRCBN & Distribusi</p>
                                 
                                 <div class="flex justify-between items-center border-b border-gray-400 dark:border-gray-600 pb-3 mb-3 text-left">
                                     <span class="text-xs sm:text-sm md:text-base font-bold text-gray-900 dark:text-gray-200">Standar</span>
@@ -661,7 +675,7 @@
                         <div class="bg-white/70 dark:bg-black/40 p-6 md:p-8 rounded-[2rem] border border-gray-300 dark:border-gray-700 text-center hover:shadow-xl transition duration-300 flex flex-col justify-between">
                             <div>
                                 <h4 class="text-xl md:text-2xl font-extrabold text-gray-900 dark:text-white mb-2">Daftar Hak Cipta</h4>
-                                <p class="text-sm text-gray-700 dark:text-gray-400 mb-6 font-medium">Sertifikat Resmi Kemenkumham</p>
+                                <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-400 mb-6 font-medium">Sertifikat Resmi Kemenkumham</p>
                                 <div class="flex justify-between items-center border-b border-gray-400 dark:border-gray-600 pb-3 mb-3 text-left">
                                     <span class="text-xs sm:text-sm md:text-base font-bold text-gray-900 dark:text-gray-200">Karya Tulis</span>
                                     <span class="text-xs sm:text-sm md:text-lg font-extrabold text-gray-900 dark:text-white">Rp 800.000</span>
@@ -723,7 +737,6 @@
                         Media Tulisan Manusia merupakan platform eksklusif yang berdedikasi mengangkat literatur ke tingkat yang lebih tinggi. Kami percaya bahwa setiap karya berhak mendapatkan apresiasi terbaik.
                     </p>
                     
-                    <!-- Link Cepat ke Halaman Bawah -->
                     <div class="flex flex-wrap justify-center gap-4 md:gap-6 text-xs md:text-sm font-bold text-gray-800 dark:text-gray-300 mb-8">
                         <a href="#" onclick="bukaHalaman('beranda'); return false;" class="hover:text-gray-500 transition">Beranda</a>
                         <a href="#" onclick="bukaHalaman('syarat'); return false;" class="hover:text-gray-500 transition">Syarat & Ketentuan</a>
@@ -754,28 +767,28 @@
                 &larr; Kembali ke Beranda
             </button>
             <div class="glass p-8 md:p-14 rounded-[2rem] md:rounded-[3rem] shadow-2xl">
-                <h2 class="text-3xl md:text-4xl font-extrabold mb-6 text-gray-900 dark:text-white tracking-tight border-b border-gray-300 dark:border-gray-700 pb-4 text-center">Syarat & Ketentuan</h2>
+                <h2 class="text-2xl md:text-3xl font-extrabold mb-6 text-gray-900 dark:text-white tracking-tight border-b border-gray-300 dark:border-gray-700 pb-4 text-center">Syarat & Ketentuan</h2>
                 
-                <div class="space-y-6 text-sm md:text-base text-gray-800 dark:text-gray-300 leading-relaxed font-medium text-center">
+                <div class="space-y-6 text-[11px] sm:text-xs md:text-[15px] text-gray-800 dark:text-gray-300 leading-relaxed font-medium text-left">
                     <p>Selamat datang di <strong>Media Tulisan Manusia</strong>. Sebelum menggunakan layanan kami, harap membaca dengan saksama persyaratan dan ketentuan di bawah ini. Penggunaan layanan kami menandakan persetujuan Anda terhadap seluruh poin berikut:</p>
                     
                     <div>
-                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">1. Orisinalitas Karya</h4>
+                        <h4 class="font-bold text-gray-900 dark:text-white text-sm sm:text-base md:text-lg mb-1.5 text-left">1. Orisinalitas Karya</h4>
                         <p>Klien menjamin bahwa seluruh materi, naskah, atau karya intelektual yang diserahkan adalah murni hasil karya sendiri (orisinal), tidak memuat unsur plagiarisme, serta tidak melanggar hak cipta pihak ketiga mana pun. Segala tuntutan hukum yang timbul akibat sengketa keaslian karya sepenuhnya menjadi tanggung jawab Klien.</p>
                     </div>
 
                     <div>
-                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">2. Etika Konten</h4>
+                        <h4 class="font-bold text-gray-900 dark:text-white text-sm sm:text-base md:text-lg mb-1.5 text-left">2. Etika Konten</h4>
                         <p>Karya yang diajukan tidak boleh memuat konten yang berpotensi memicu kebencian (SARA), pornografi, ujaran kebencian, pencemaran nama baik, atau bertentangan dengan perundang-undangan yang berlaku di Negara Kesatuan Republik Indonesia.</p>
                     </div>
 
                     <div>
-                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">3. Layanan Hak Cipta (HKI)</h4>
+                        <h4 class="font-bold text-gray-900 dark:text-white text-sm sm:text-base md:text-lg mb-1.5 text-left">3. Layanan Hak Cipta (HKI)</h4>
                         <p>Media Tulisan Manusia bertindak sebagai fasilitator legalitas yang membantu proses administrasi Hak Cipta ke Direktorat Jenderal Kekayaan Intelektual (DJKI) Kemenkumham RI. Hak Cipta dan seluruh kepemilikan komersial tetap dipegang penuh oleh Pencipta karya.</p>
                     </div>
 
                     <div>
-                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">4. Kebijakan Pembayaran & Pengembalian Dana</h4>
+                        <h4 class="font-bold text-gray-900 dark:text-white text-sm sm:text-base md:text-lg mb-1.5 text-left">4. Kebijakan Pembayaran & Pengembalian Dana</h4>
                         <p>Semua biaya layanan yang tercantum dan disepakati di awal bersifat mengikat. Proses penerbitan atau pendaftaran HKI akan dimulai setelah pembayaran diterima sesuai dengan syarat termin pembayaran kami. Biaya yang telah disetorkan tidak dapat dikembalikan (<em>non-refundable</em>) apabila klien membatalkan proyek secara sepihak.</p>
                     </div>
                 </div>
@@ -788,23 +801,23 @@
                 &larr; Kembali ke Beranda
             </button>
             <div class="glass p-8 md:p-14 rounded-[2rem] md:rounded-[3rem] shadow-2xl">
-                <h2 class="text-3xl md:text-4xl font-extrabold mb-6 text-gray-900 dark:text-white tracking-tight border-b border-gray-300 dark:border-gray-700 pb-4 text-center">Kebijakan Privasi</h2>
+                <h2 class="text-2xl md:text-3xl font-extrabold mb-6 text-gray-900 dark:text-white tracking-tight border-b border-gray-300 dark:border-gray-700 pb-4 text-center">Kebijakan Privasi</h2>
                 
-                <div class="space-y-6 text-sm md:text-base text-gray-800 dark:text-gray-300 leading-relaxed font-medium text-center">
+                <div class="space-y-6 text-[11px] sm:text-xs md:text-[15px] text-gray-800 dark:text-gray-300 leading-relaxed font-medium text-left">
                     <p>Privasi Anda adalah prioritas tertinggi kami. <strong>Media Tulisan Manusia</strong> berkomitmen penuh untuk menjaga keamanan, kerahasiaan, dan integritas data pribadi serta karya intelektual yang Anda percayakan kepada kami.</p>
                     
                     <div>
-                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">1. Jaminan Kerahasiaan Naskah (NDA)</h4>
+                        <h4 class="font-bold text-gray-900 dark:text-white text-sm sm:text-base md:text-lg mb-1.5 text-left">1. Jaminan Kerahasiaan Naskah (NDA)</h4>
                         <p>Setiap naskah atau karya yang Anda kirimkan untuk proses peninjauan, penyuntingan, atau pendaftaran HKI dilindungi oleh prinsip <em>Non-Disclosure Agreement</em> (NDA) kami. Kami tidak akan mempublikasikan, menggandakan, atau mendistribusikan karya Anda kepada pihak eksternal tanpa izin tertulis dari Anda.</p>
                     </div>
 
                     <div>
-                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">2. Pengumpulan Data Pribadi</h4>
+                        <h4 class="font-bold text-gray-900 dark:text-white text-sm sm:text-base md:text-lg mb-1.5 text-left">2. Pengumpulan Data Pribadi</h4>
                         <p>Kami hanya mengumpulkan informasi yang esensial, seperti salinan Kartu Tanda Penduduk (KTP), Nama Lengkap, Email, dan Nomor Telepon. Data ini digunakan secara eksklusif untuk administrasi legalitas penerbitan (QRCBN/ISBN) dan pendaftaran sertifikat Hak Cipta di Kementerian Hukum dan HAM RI.</p>
                     </div>
 
                     <div>
-                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">3. Keamanan Data</h4>
+                        <h4 class="font-bold text-gray-900 dark:text-white text-sm sm:text-base md:text-lg mb-1.5 text-left">3. Keamanan Data</h4>
                         <p>Data pribadi Anda disimpan dalam sistem digital yang aman dengan protokol enkripsi standar industri. Kami tidak akan memperjualbelikan, menyewakan, atau membagikan data identitas Anda kepada pihak ketiga untuk kepentingan pemasaran.</p>
                     </div>
                 </div>
@@ -818,29 +831,29 @@
             </button>
             
             <div class="glass p-8 md:p-14 rounded-[2rem] md:rounded-[3rem] shadow-2xl">
-                <div class="text-center mb-10">
-                    <h2 class="text-3xl md:text-5xl font-extrabold mb-4 text-gray-900 dark:text-white tracking-tight">Hubungi Kami</h2>
-                    <p class="text-sm md:text-base text-gray-700 dark:text-gray-300 font-medium">Tim kami siap membantu mewujudkan karya dan melindungi legalitas Anda.</p>
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl md:text-3xl font-extrabold mb-3 text-gray-900 dark:text-white tracking-tight text-center">Hubungi Kami</h2>
+                    <p class="text-xs md:text-sm text-gray-700 dark:text-gray-300 font-medium text-center">Tim kami siap membantu mewujudkan karya dan melindungi legalitas Anda.</p>
                 </div>
 
-                <div class="md:flex gap-10">
+                <div class="md:flex gap-10 text-left">
                     <!-- Informasi Kontak -->
-                    <div class="flex-1 space-y-6 mb-10 md:mb-0 text-center md:text-left">
+                    <div class="flex-1 space-y-6 mb-10 md:mb-0 text-left">
                         <div>
-                            <p class="text-xs text-gray-500 uppercase tracking-widest font-bold mb-1">WhatsApp & Telepon</p>
-                            <p class="font-bold text-base md:text-lg text-gray-900 dark:text-white">0882 9444 8222</p>
+                            <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold mb-1">WhatsApp & Telepon</p>
+                            <p class="font-bold text-sm md:text-lg text-gray-900 dark:text-white">0882 9444 8222</p>
                         </div>
                         <div>
-                            <p class="text-xs text-gray-500 uppercase tracking-widest font-bold mb-1">Email Resmi</p>
+                            <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold mb-1">Email Resmi</p>
                             <p class="font-bold text-xs sm:text-sm md:text-base text-gray-900 dark:text-white break-all">ptmediatulisanmanusia@gmail.com</p>
                         </div>
                         <div>
-                            <p class="text-xs text-gray-500 uppercase tracking-widest font-bold mb-1">Jam Operasional</p>
-                            <p class="font-medium text-sm text-gray-800 dark:text-gray-300">Senin - Sabtu: 09.00 - 17.00 WIB<br>Minggu: Tutup</p>
+                            <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold mb-1">Jam Operasional</p>
+                            <p class="font-medium text-xs md:text-sm text-gray-800 dark:text-gray-300 leading-relaxed">Senin - Sabtu: 09.00 - 17.00 WIB<br>Minggu: Tutup</p>
                         </div>
                         <div>
-                            <p class="text-xs text-gray-500 uppercase tracking-widest font-bold mb-1">Virtual Office Kami</p>
-                            <p class="font-medium text-sm text-gray-800 dark:text-gray-300 space-y-2">
+                            <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold mb-1">Virtual Office Kami</p>
+                            <p class="font-medium text-xs md:text-sm text-gray-800 dark:text-gray-300 space-y-1.5 leading-relaxed">
                                 <span class="block">Jl. Supriyadi No. 48, Malang</span>
                                 <span class="block">Jl. Raya Malang-Surabaya No. 101, Pasuruan</span>
                             </p>
@@ -848,13 +861,13 @@
                     </div>
 
                     <!-- Form Pesan -->
-                    <div class="flex-1">
-                        <form onsubmit="kirimPesanKontak(event)" class="space-y-5">
-                            <input type="text" id="kontak-nama" required placeholder="Nama Lengkap Anda" class="w-full bg-white/70 dark:bg-black/60 border border-gray-300 dark:border-gray-700 rounded-2xl p-4 text-sm focus:outline-none focus:border-gray-500 transition font-medium text-gray-900 dark:text-white">
-                            <input type="email" id="kontak-email" required placeholder="Alamat Email Anda" class="w-full bg-white/70 dark:bg-black/60 border border-gray-300 dark:border-gray-700 rounded-2xl p-4 text-sm focus:outline-none focus:border-gray-500 transition font-medium text-gray-900 dark:text-white">
-                            <textarea id="kontak-pesan" required placeholder="Tuliskan pesan atau pertanyaan Anda di sini..." rows="4" class="w-full bg-white/70 dark:bg-black/60 border border-gray-300 dark:border-gray-700 rounded-2xl p-4 text-sm focus:outline-none focus:border-gray-500 transition font-medium text-gray-900 dark:text-white"></textarea>
-                            <button type="submit" class="w-full bg-gray-900 dark:bg-white text-white dark:text-black font-extrabold py-4 rounded-full shadow-lg uppercase tracking-widest text-sm hover:scale-105 transition-transform duration-300">
-                                Kirim Pesan ke Email
+                    <div class="flex-1 text-left">
+                        <form onsubmit="kirimPesanKontak(event)" class="space-y-4">
+                            <input type="text" id="kontak-nama" required placeholder="Nama Lengkap Anda" class="w-full bg-white/70 dark:bg-black/60 border border-gray-300 dark:border-gray-700 rounded-2xl p-4 text-xs md:text-sm focus:outline-none focus:border-gray-500 transition font-medium text-gray-900 dark:text-white">
+                            <input type="email" id="kontak-email" required placeholder="Alamat Email Anda" class="w-full bg-white/70 dark:bg-black/60 border border-gray-300 dark:border-gray-700 rounded-2xl p-4 text-xs md:text-sm focus:outline-none focus:border-gray-500 transition font-medium text-gray-900 dark:text-white">
+                            <textarea id="kontak-pesan" required placeholder="Tuliskan pesan atau pertanyaan Anda di sini..." rows="4" class="w-full bg-white/70 dark:bg-black/60 border border-gray-300 dark:border-gray-700 rounded-2xl p-4 text-xs md:text-sm focus:outline-none focus:border-gray-500 transition font-medium text-gray-900 dark:text-white"></textarea>
+                            <button type="submit" class="w-full bg-gray-900 dark:bg-white text-white dark:text-black font-extrabold py-4 rounded-full shadow-lg uppercase tracking-widest text-xs md:text-sm hover:scale-105 transition-transform duration-300 mt-2">
+                                Kirim Pesan
                             </button>
                         </form>
                     </div>
