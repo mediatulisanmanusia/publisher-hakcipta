@@ -68,6 +68,38 @@
             background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.01) 1px, transparent 2px);
         }
 
+        /* Latar Belakang Logo Berulang */
+        .logo-pattern-overlay {
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 1400px;
+            background-image: url('96361_2.png');
+            background-repeat: repeat;
+            /* Diubah menjadi auto untuk tinggi agar logo tidak lonjong */
+            background-size: 90px auto; 
+            transform: rotate(-10deg); 
+            filter: grayscale(100%) brightness(35%); 
+            opacity: 0.15; 
+            z-index: 0;
+            pointer-events: none;
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);
+        }
+        
+        .dark .logo-pattern-overlay {
+            opacity: 0.12;
+            filter: grayscale(100%) brightness(150%);
+        }
+
+        @media (min-width: 768px) {
+            .logo-pattern-overlay {
+                background-size: 140px auto; /* Diubah agar tidak lonjong di layar besar */
+                height: 1600px; 
+            }
+        }
+
         /* Efek Kaca (Glassmorphism) */
         .glass {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.65) 0%, rgba(245, 245, 250, 0.35) 100%);
@@ -75,7 +107,7 @@
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.6);
             box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.15), inset 0 -8px 25px -5px rgba(0, 0, 0, 0.1);
-            transform: translateZ(0); /* Akselerasi Hardware GPU */
+            transform: translateZ(0); 
         }
         .dark .glass {
             background: linear-gradient(135deg, rgba(25, 25, 28, 0.55) 0%, rgba(10, 10, 12, 0.35) 100%);
@@ -164,15 +196,17 @@
             });
         }
 
-        // Script Animasi Auto-Scroll Mulus (Katalog, HKI, & Mitra)
+        // Script Animasi Auto-Scroll Mulus (Loop Berputar Searah)
         document.addEventListener("DOMContentLoaded", function() {
             function autoScroll(id) {
                 const el = document.getElementById(id);
                 if (!el) return;
                 
+                // Menduplikasi konten di dalam container agar bisa loop memutar tanpa henti
+                el.innerHTML += el.innerHTML;
+                
                 let isPaused = false;
-                let speed = 0.6; // Kecepatan scroll (px)
-                let direction = 1; // 1 untuk ke kanan, -1 untuk ke kiri
+                let speed = 0.8; // Kecepatan scroll (px)
 
                 // Pause animasi saat disentuh/di-hover
                 el.addEventListener('mouseenter', () => isPaused = true);
@@ -182,16 +216,14 @@
 
                 function step() {
                     if (!isPaused) {
-                        el.scrollLeft += speed * direction;
+                        el.scrollLeft += speed;
                         
-                        // Cek jika mentok, putar arah
-                        if (el.scrollLeft >= (el.scrollWidth - el.clientWidth) - 1) {
-                            direction = -1; // Balik ke kiri
-                        } else if (el.scrollLeft <= 0) {
-                            direction = 1; // Balik ke kanan
+                        // Jika sudah mencapai setengah perjalanan (masuk ke area duplikat), kembalikan ke awal mulus
+                        if (el.scrollLeft >= el.scrollWidth / 2) {
+                            el.scrollLeft -= el.scrollWidth / 2;
                         }
                     }
-                    requestAnimationFrame(step); // Looping frame-by-frame (sangat mulus)
+                    requestAnimationFrame(step); // Looping frame-by-frame
                 }
                 requestAnimationFrame(step);
             }
@@ -210,6 +242,9 @@
 
         <!-- Latar Belakang Pola Bintik -->
         <div class="pattern-overlay"></div>
+        
+        <!-- Latar Belakang Logo Berulang -->
+        <div class="logo-pattern-overlay"></div>
 
         <!-- Elemen Bayangan Blur Statis -->
         <div class="absolute top-10 -left-10 w-96 h-96 bg-black/5 dark:bg-white/5 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[100px] z-0"></div>
@@ -1081,7 +1116,7 @@
                             <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold mb-1">Virtual Office Kami</p>
                             <p class="font-medium text-xs md:text-sm text-gray-800 dark:text-gray-300 space-y-1.5 leading-relaxed">
                                 <span class="block">Jl. Supriyadi No. 48, Malang</span>
-                                <span class="block">Jl. Raya Malang-Surabaya No. 101, Pasuruan</span>
+                                <span class="block">Jl. Raya Sukorejo No. 101, Pasuruan</span>
                             </p>
                         </div>
                     </div>
