@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Media Tulisan Manusia - Publisher & Legalitas Hak Cipta</title>
+    <title>Media Tulisan Manusia - Publisher & Consultan Hak Cipta</title>
     
     <!-- Favicon / Logo Tab Browser -->
     <link rel="icon" type="image/png" href="favicon.png">
@@ -77,11 +77,10 @@
             height: 1400px;
             background-image: url('96361_2.png');
             background-repeat: repeat;
-            /* Diubah menjadi auto untuk tinggi agar logo tidak lonjong */
-            background-size: 90px auto; 
-            transform: rotate(-10deg); 
-            filter: grayscale(100%) brightness(35%); 
-            opacity: 0.15; 
+            background-size: 70px auto; 
+            transform: rotate(-20deg); 
+            filter: grayscale(100%) brightness(25%); 
+            opacity: 0.10; 
             z-index: 0;
             pointer-events: none;
             -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);
@@ -95,7 +94,7 @@
 
         @media (min-width: 768px) {
             .logo-pattern-overlay {
-                background-size: 140px auto; /* Diubah agar tidak lonjong di layar besar */
+                background-size: 140px auto; 
                 height: 1600px; 
             }
         }
@@ -228,10 +227,11 @@
                 requestAnimationFrame(step);
             }
 
-            // Inisiasi 3 Container Scroll
+            // Inisiasi 4 Container Scroll (termasuk Sorot Media)
             autoScroll('scroll-katalog');
             autoScroll('scroll-hki');
             autoScroll('scroll-mitra');
+            autoScroll('scroll-media');
         });
     </script>
 </head>
@@ -754,17 +754,17 @@
                 </div>
             </section>
 
-            <!-- SEKSI PENCARIAN PDKI -->
+            <!-- SEKSI PENCARIAN DJKI -->
             <section class="px-5 md:px-10 pt-4 pb-12 relative z-10 max-w-4xl mx-auto">
                 <div class="glass p-8 md:p-12 rounded-[2.5rem] text-center transition duration-500 animate-fade-up">
                     <img src="djki.png" alt="Logo DJKI" class="h-14 md:h-20 w-auto object-contain mx-auto mb-5 drop-shadow-sm">
                     <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-900 dark:text-white mb-3 tracking-tight w-full leading-tight">Penelusuran Hak Cipta</h3>
-                    <p class="text-sm md:text-base text-gray-800 dark:text-gray-300 mb-8 font-medium max-w-2xl mx-auto">Masukkan judul ciptaam atau nama pencipta untuk menelusuri legalitasnya di database resmi Direktorat Jenderal Kekayaan Intelektual (DJKI).</p>
+                    <p class="text-sm md:text-base text-gray-800 dark:text-gray-300 mb-8 font-medium max-w-2xl mx-auto">Masukkan judul ciptaan atau nama pencipta untuk menelusuri status legalitasnya di database resmi Direktorat Jenderal Kekayaan Intelektual.</p>
                     
                     <form onsubmit="cariDJKI(event)" class="flex flex-col sm:flex-row gap-3 justify-center max-w-2xl mx-auto">
-                        <input type="text" id="input-keyword-djki" required placeholder="Cth: Tulisanmanusia / Ach. Sufyan Wahyudi" class="flex-grow bg-white/70 dark:bg-black/60 border border-gray-300 dark:border-gray-700 rounded-full px-5 py-4 text-[10px] sm:text-xs md:text-sm focus:outline-none focus:border-gray-500 transition font-medium text-gray-900 dark:text-white shadow-inner">
+                        <input type="text" id="input-keyword-djki" required placeholder="Ex: Tulisanmanusia/Ach. Sufyan Wahyudi" class="flex-grow bg-white/70 dark:bg-black/60 border border-gray-300 dark:border-gray-700 rounded-full px-5 py-4 text-[10px] sm:text-xs md:text-sm focus:outline-none focus:border-gray-500 transition font-medium text-gray-900 dark:text-white shadow-inner">
                         <button type="submit" class="bg-gray-900 dark:bg-white text-white dark:text-black font-extrabold py-4 px-8 rounded-full shadow-lg uppercase tracking-widest text-xs md:text-sm hover:scale-105 transition-transform duration-300 flex-shrink-0">
-                            Telusuri
+                            Cari di PDKI
                         </button>
                     </form>
                 </div>
@@ -880,17 +880,17 @@
                     <p class="text-[11px] sm:text-sm md:text-base text-gray-800 dark:text-gray-300 mb-6 md:mb-8 font-medium">Hubungi kami melalui WhatsApp untuk mengirimkan naskah atau mendaftarkan Hak Cipta.</p>
                     <div class="flex flex-col md:flex-row justify-center gap-4">
                         <a href="https://wa.me/6288294448222?text=Halo%20PT%20Media%20Tulisan%20Manusia,%20saya%20ingin%20mengirimkan%20naskah%20untuk%20diterbitkan." target="_blank" class="w-full md:w-auto md:px-10 bg-gray-900 dark:bg-white text-white dark:text-black font-extrabold py-4 rounded-full shadow-lg uppercase tracking-widest text-[11px] sm:text-sm hover:scale-105 transition-transform duration-300 inline-block text-center">
-                            Kirim Naskah via WA
+                            Kirim Naskah
                         </a>
                         <a href="https://wa.me/6288294448222?text=Halo%20PT%20Media%20Tulisan%20Manusia,%20saya%20ingin%20mendaftarkan%20Hak%20Cipta%20karya%20saya." target="_blank" class="w-full md:w-auto md:px-10 glass border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white font-extrabold py-3.5 rounded-full shadow-sm uppercase tracking-widest text-[11px] sm:text-sm hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 inline-block text-center">
-                            Daftar Hak Cipta via WA
+                            Daftar Hak Cipta
                         </a>
                     </div>
                 </div>
             </section>
 
             <!-- SEKSI MITRA & KLIEN (AUTO-SCROLL) -->
-            <section class="pt-4 pb-12 relative z-10 w-full overflow-hidden">
+            <section class="pt-4 pb-8 relative z-10 w-full overflow-hidden">
                 <div class="px-5 md:px-10 mb-6 flex items-center justify-center text-center">
                     <h4 class="text-lg md:text-xl font-extrabold text-gray-900 dark:text-white tracking-tight">
                         Mitra & Klien Kami
@@ -990,20 +990,47 @@
                 </div>
             </section>
 
-            <!-- SEKSI FORM KONTAK BERANDA -->
-            <section class="px-5 md:px-10 pt-4 pb-16 md:pb-24 relative z-10 max-w-xl mx-auto">
-                <div class="glass p-6 md:p-8 rounded-[2rem] text-center transition duration-500 animate-fade-up hover:shadow-xl">
-                    <h3 class="text-[17px] md:text-2xl font-extrabold text-gray-900 dark:text-white mb-2 tracking-tight">Kirim Pesan Langsung</h3>
-                    <p class="text-[11px] sm:text-xs md:text-sm text-gray-800 dark:text-gray-300 mb-5 font-medium">Punya pertanyaan spesifik? Kirimkan pesan, kami akan merespons via email.</p>
+            <!-- SEKSI SOROT MEDIA (AUTO-SCROLL) -->
+            <section class="pt-4 pb-12 relative z-10 w-full overflow-hidden">
+                <div class="px-5 md:px-10 mb-6 flex items-center justify-center text-center">
+                    <h4 class="text-lg md:text-xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+                        Sorot Media
+                    </h4>
+                </div>
+                <div id="scroll-media" class="flex flex-row overflow-x-auto gap-3 sm:gap-4 md:gap-5 px-5 md:px-10 pb-4 no-scrollbar hover:cursor-grab active:cursor-grabbing w-full">
                     
-                    <form onsubmit="kirimPesanKontak(event)" class="space-y-4">
-                        <input type="text" required placeholder="Nama Lengkap Anda" class="input-nama w-full bg-white/70 dark:bg-black/60 border border-gray-300 dark:border-gray-700 rounded-2xl p-3.5 text-xs md:text-sm focus:outline-none focus:border-gray-500 transition font-medium text-gray-900 dark:text-white shadow-inner">
-                        <input type="email" required placeholder="Alamat Email Anda" class="input-email w-full bg-white/70 dark:bg-black/60 border border-gray-300 dark:border-gray-700 rounded-2xl p-3.5 text-xs md:text-sm focus:outline-none focus:border-gray-500 transition font-medium text-gray-900 dark:text-white shadow-inner">
-                        <textarea required placeholder="Tuliskan pesan atau pertanyaan Anda..." rows="3" class="input-pesan w-full bg-white/70 dark:bg-black/60 border border-gray-300 dark:border-gray-700 rounded-2xl p-3.5 text-xs md:text-sm focus:outline-none focus:border-gray-500 transition font-medium text-gray-900 dark:text-white shadow-inner"></textarea>
-                        <button type="submit" class="w-full bg-gray-900 dark:bg-white text-white dark:text-black font-extrabold py-3.5 rounded-full shadow-lg uppercase tracking-widest text-[10px] sm:text-xs hover:scale-105 transition-transform duration-300 mt-1">
-                            Kirim Pesan Sekarang
-                        </button>
-                    </form>
+                    <a href="https://www.wartacakrawalamedia.com/" target="_blank" class="min-w-[130px] w-[130px] h-[80px] sm:min-w-[170px] sm:w-[170px] sm:h-[100px] md:min-w-[200px] md:w-[200px] md:h-[120px] flex-shrink-0 group glass rounded-[1.5rem] md:rounded-[2rem] p-3 md:p-5 transition-all duration-300 flex items-center justify-center hover:-translate-y-2 hover:shadow-lg">
+                        <img src="media1.png" alt="Sorot Media 1" class="w-full h-full object-contain filter drop-shadow-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                    </a>
+                    
+                    <a href="https://tugujatim.id/" target="_blank" class="min-w-[130px] w-[130px] h-[80px] sm:min-w-[170px] sm:w-[170px] sm:h-[100px] md:min-w-[200px] md:w-[200px] md:h-[120px] flex-shrink-0 group glass rounded-[1.5rem] md:rounded-[2rem] p-3 md:p-5 transition-all duration-300 flex items-center justify-center hover:-translate-y-2 hover:shadow-lg">
+                        <img src="media2.png" alt="Sorot Media 2" class="w-full h-full object-contain filter drop-shadow-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                    </a>
+                    
+                    <a href="https://www.detik.com/" target="_blank" class="min-w-[130px] w-[130px] h-[80px] sm:min-w-[170px] sm:w-[170px] sm:h-[100px] md:min-w-[200px] md:w-[200px] md:h-[120px] flex-shrink-0 group glass rounded-[1.5rem] md:rounded-[2rem] p-3 md:p-5 transition-all duration-300 flex items-center justify-center hover:-translate-y-2 hover:shadow-lg">
+                        <img src="media3.png" alt="Sorot Media 3" class="w-full h-full object-contain filter drop-shadow-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                    </a>
+
+                    <a href="https://tugumalang.id/" target="_blank" class="min-w-[130px] w-[130px] h-[80px] sm:min-w-[170px] sm:w-[170px] sm:h-[100px] md:min-w-[200px] md:w-[200px] md:h-[120px] flex-shrink-0 group glass rounded-[1.5rem] md:rounded-[2rem] p-3 md:p-5 transition-all duration-300 flex items-center justify-center hover:-translate-y-2 hover:shadow-lg">
+                        <img src="media4.png" alt="Sorot Media 4" class="w-full h-full object-contain filter drop-shadow-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                    </a>
+
+                    <a href="https://jatimtimes.com/" target="_blank" class="min-w-[130px] w-[130px] h-[80px] sm:min-w-[170px] sm:w-[170px] sm:h-[100px] md:min-w-[200px] md:w-[200px] md:h-[120px] flex-shrink-0 group glass rounded-[1.5rem] md:rounded-[2rem] p-3 md:p-5 transition-all duration-300 flex items-center justify-center hover:-translate-y-2 hover:shadow-lg">
+                        <img src="media5.png" alt="Sorot Media 5" class="w-full h-full object-contain filter drop-shadow-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                    </a>
+
+                    <a href="https://www.timesindonesia.co.id/" target="_blank" class="min-w-[130px] w-[130px] h-[80px] sm:min-w-[170px] sm:w-[170px] sm:h-[100px] md:min-w-[200px] md:w-[200px] md:h-[120px] flex-shrink-0 group glass rounded-[1.5rem] md:rounded-[2rem] p-3 md:p-5 transition-all duration-300 flex items-center justify-center hover:-translate-y-2 hover:shadow-lg">
+                        <img src="media6.png" alt="Sorot Media 6" class="w-full h-full object-contain filter drop-shadow-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                    </a>
+
+                    <a href="https://www.malangtimes.com/" target="_blank" class="min-w-[130px] w-[130px] h-[80px] sm:min-w-[170px] sm:w-[170px] sm:h-[100px] md:min-w-[200px] md:w-[200px] md:h-[120px] flex-shrink-0 group glass rounded-[1.5rem] md:rounded-[2rem] p-3 md:p-5 transition-all duration-300 flex items-center justify-center hover:-translate-y-2 hover:shadow-lg">
+                        <img src="media7.png" alt="Sorot Media 7" class="w-full h-full object-contain filter drop-shadow-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                    </a>
+
+                    <a href="https://rri.co.id/" target="_blank" class="min-w-[130px] w-[130px] h-[80px] sm:min-w-[170px] sm:w-[170px] sm:h-[100px] md:min-w-[200px] md:w-[200px] md:h-[120px] flex-shrink-0 group glass rounded-[1.5rem] md:rounded-[2rem] p-3 md:p-5 transition-all duration-300 flex items-center justify-center hover:-translate-y-2 hover:shadow-lg">
+                        <img src="media8.png" alt="Sorot Media 8" class="w-full h-full object-contain filter drop-shadow-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                    </a>
+
                 </div>
             </section>
 
@@ -1013,7 +1040,7 @@
                     
                     <img src="96361_2.png" alt="Logo PT Media Tulisan Manusia" class="w-56 sm:w-64 md:w-80 h-auto object-contain mb-4 drop-shadow-lg rounded-2xl">
                     
-                    <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-500 uppercase tracking-[0.2em] font-bold mb-4">Publisher & Legalitas Hak Cipta</p>
+                    <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-500 uppercase tracking-[0.2em] font-bold mb-4">Publisher & Consultan Hak Cipta</p>
                     
                     <h3 class="font-bold text-sm sm:text-base md:text-2xl mb-2 md:mb-3 text-gray-900 dark:text-white">Tentang Kami</h3>
                     <p class="text-[10px] sm:text-xs md:text-sm text-gray-800 dark:text-gray-300 leading-relaxed mb-6 max-w-xl mx-auto font-medium text-center px-2">
@@ -1132,13 +1159,13 @@
                         </div>
                         <div>
                             <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold mb-1">Jam Operasional</p>
-                            <p class="font-medium text-xs md:text-sm text-gray-800 dark:text-gray-300 leading-relaxed">Senin - Sabtu: 09.00 - 16.00 WIB<br>Minggu: Tutup</p>
+                            <p class="font-medium text-xs md:text-sm text-gray-800 dark:text-gray-300 leading-relaxed">Senin - Sabtu: 09.00 - 17.00 WIB<br>Minggu: Tutup</p>
                         </div>
                         <div>
-                            <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold mb-1">Virtual Office</p>
+                            <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold mb-1">Virtual Office Kami</p>
                             <p class="font-medium text-xs md:text-sm text-gray-800 dark:text-gray-300 space-y-1.5 leading-relaxed">
                                 <span class="block">Jl. Supriyadi No. 48, Malang</span>
-                                <span class="block">Jl. Raya Sukorejo No. 101, Pasuruan</span>
+                                <span class="block">Jl. Raya Malang-Surabaya No. 101, Pasuruan</span>
                             </p>
                         </div>
                     </div>
