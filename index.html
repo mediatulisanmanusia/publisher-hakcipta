@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" href="cipta.png">
 
     <!-- Preload Gambar Utama agar langsung muncul tanpa loading -->
-    <link rel="preload" as="image" href="cipta.png">
+    <link rel="preload" as="image" href="cipta.png" fetchpriority="high">
 
     <!-- Import Font Simpel & Elegan (Poppins) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,7 +33,7 @@
                     },
                     animation: {
                         'fade-up': 'fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                        'pulse-logo': 'pulseLogo 1.5s ease-in-out infinite', /* Animasi untuk Loading */
+                        'pulse-logo': 'pulseLogo 1.5s ease-in-out infinite',
                     },
                     keyframes: {
                         fadeUp: {
@@ -61,7 +61,6 @@
             background: linear-gradient(135deg, #ffffff 0%, #f4f4f5 50%, #e4e4e7 100%);
         }
         .dark .bg-custom-gradient {
-            /* Diubah menjadi lebih gelap lagi sesuai instruksi (nyaris hitam pekat) */
             background: linear-gradient(135deg, #000b1a 0%, #000308 50%, #000000 100%);
         }
 
@@ -128,18 +127,16 @@
     <script>
         let isLoggedIn = false;
 
-        // Script untuk menghilangkan loading screen setelah 3 detik
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                const loader = document.getElementById('loading-screen');
-                if(loader) {
-                    loader.style.opacity = '0'; // Animasi fade out
-                    setTimeout(() => {
-                        loader.style.display = 'none'; // Dihapus dari tampilan
-                    }, 500);
-                }
-            }, 3000); // 3000 ms = 3 detik
-        });
+        // Script untuk Loading Screen - Menghitung 3 detik SECARA INSTAN saat halaman dibuka
+        setTimeout(function() {
+            const loader = document.getElementById('loading-screen');
+            if(loader) {
+                loader.style.opacity = '0'; // Animasi fade out
+                setTimeout(() => {
+                    loader.style.display = 'none'; // Dihapus dari tampilan
+                }, 500);
+            }
+        }, 3000); // 3000 ms = Tepat 3 detik sejak kode ini terbaca browser
 
         function toggleTema() {
             document.documentElement.classList.toggle('dark');
@@ -262,7 +259,7 @@
 
     <!-- LAYAR LOADING SCREEN -->
     <div id="loading-screen" class="fixed inset-0 z-[9999] bg-gray-100 flex items-center justify-center transition-opacity duration-500 ease-in-out">
-        <img src="cipta.png" alt="Loading Media Tulisan Manusia" class="h-20 md:h-28 w-auto object-contain animate-pulse-logo">
+        <img src="cipta.png" fetchpriority="high" alt="Loading Media Tulisan Manusia" class="h-20 md:h-28 w-auto object-contain animate-pulse-logo">
     </div>
 
     <!-- Container Utama -->
@@ -284,7 +281,7 @@
             <div class="flex items-center gap-3 cursor-pointer" onclick="bukaHalaman('beranda')">
                 <!-- Mode Terang Header Logo -->
                 <img src="cipta.png" alt="Maskot PT Media Tulisan Manusia" class="h-12 md:h-16 w-auto object-contain drop-shadow-sm rounded-lg dark:hidden">
-                <!-- Mode Gelap Header Logo (Sementara tetap pakai cipta.png sesuai arahan) -->
+                <!-- Mode Gelap Header Logo -->
                 <img src="cipta.png" alt="Maskot PT Media Tulisan Manusia" class="h-12 md:h-16 w-auto object-contain drop-shadow-sm rounded-lg hidden dark:block">
             </div>
             
