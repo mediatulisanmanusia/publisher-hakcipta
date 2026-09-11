@@ -127,7 +127,7 @@
     <script>
         let isLoggedIn = false;
 
-        // Script untuk Loading Screen - Menghitung 4 detik SECARA INSTAN saat halaman dibuka
+        // Script untuk Loading Screen - Menghitung 5 detik SECARA INSTAN saat halaman dibuka
         setTimeout(function() {
             const loader = document.getElementById('loading-screen');
             if(loader) {
@@ -279,10 +279,10 @@
         <!-- HEADER / NAVBAR MELAYANG -->
         <header class="fixed top-4 left-0 right-0 mx-auto w-11/12 max-w-[1200px] glass rounded-full px-5 py-3 flex items-center justify-between z-50 shadow-lg">
             <div class="flex items-center gap-3 cursor-pointer flex-shrink-0" onclick="bukaHalaman('beranda')">
-                <!-- Mode Terang Header Logo (Persegi Panjang) -->
-                <img src="rev1.png" alt="Logo PT Media Tulisan Manusia" class="h-7 sm:h-9 md:h-11 w-auto max-w-[160px] sm:max-w-[200px] md:max-w-[250px] object-contain drop-shadow-sm dark:hidden">
-                <!-- Mode Gelap Header Logo (Persegi Panjang) -->
-                <img src="rev2.png" alt="Logo PT Media Tulisan Manusia" class="h-7 sm:h-9 md:h-11 w-auto max-w-[160px] sm:max-w-[200px] md:max-w-[250px] object-contain drop-shadow-sm hidden dark:block">
+                <!-- Mode Terang Header Logo (Diperbesar h-10 untuk HP, melebar sampai 220px) -->
+                <img src="terang rev1.png" alt="Logo PT Media Tulisan Manusia" class="h-10 sm:h-12 md:h-14 w-auto max-w-[180px] sm:max-w-[220px] md:max-w-[280px] object-contain drop-shadow-sm dark:hidden">
+                <!-- Mode Gelap Header Logo (Diperbesar h-10 untuk HP, melebar sampai 220px) -->
+                <img src="rev2.png" alt="Logo PT Media Tulisan Manusia" class="h-10 sm:h-12 md:h-14 w-auto max-w-[180px] sm:max-w-[220px] md:max-w-[280px] object-contain drop-shadow-sm hidden dark:block">
             </div>
             
             <nav class="hidden md:flex items-center gap-8 font-semibold text-sm text-gray-600 dark:text-gray-400">
