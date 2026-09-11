@@ -29,7 +29,7 @@
                     colors: {
                         dark: '#050505',
                         darker: '#000000',
-                        warnautama: '#1B1B1B' /* Warna baru sesuai instruksi */
+                        warnautama: '#1B1B1B' 
                     },
                     animation: {
                         'fade-up': 'fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
@@ -61,7 +61,6 @@
             background: linear-gradient(135deg, #ffffff 0%, #f4f4f5 50%, #e4e4e7 100%);
         }
         .dark .bg-custom-gradient {
-            /* Disesuaikan dengan warna #1B1B1B untuk mode gelap */
             background: linear-gradient(135deg, #1B1B1B 0%, #0a0a0a 50%, #000000 100%);
         }
 
@@ -128,7 +127,7 @@
     <script>
         let isLoggedIn = false;
 
-        // Script untuk Loading Screen - Menghitung 3 detik SECARA INSTAN saat halaman dibuka
+        // Script untuk Loading Screen - Menghitung 4 detik SECARA INSTAN saat halaman dibuka
         setTimeout(function() {
             const loader = document.getElementById('loading-screen');
             if(loader) {
@@ -137,7 +136,7 @@
                     loader.style.display = 'none'; // Dihapus dari tampilan
                 }, 500);
             }
-        }, 4000); // 4000 ms = Tepat 4 detik sejak kode ini terbaca browser
+        }, 4000); // 4000 ms = Tepat 4 detik
 
         function toggleTema() {
             document.documentElement.classList.toggle('dark');
@@ -260,7 +259,7 @@
 
     <!-- LAYAR LOADING SCREEN -->
     <div id="loading-screen" class="fixed inset-0 z-[9999] bg-gray-100 flex items-center justify-center transition-opacity duration-500 ease-in-out">
-        <img src="cipta.png" fetchpriority="high" alt="Loading Media Tulisan Manusia" class="h-20 md:h-28 w-auto object-contain animate-pulse-logo">
+        <img src="berolahraga.png" fetchpriority="high" alt="Loading Media Tulisan Manusia" class="h-20 md:h-28 w-auto object-contain animate-pulse-logo">
     </div>
 
     <!-- Container Utama -->
@@ -1086,22 +1085,21 @@
                 <div class="relative z-10 flex flex-col items-center w-full">
                     
                     <!-- Mode Terang Footer Logo -->
-                    <img src="new1.png" loading="lazy" decoding="async" alt="Logo PT Media Tulisan Manusia" class="w-56 sm:w-64 md:w-80 h-auto object-contain mb-4 drop-shadow-lg rounded-2xl dark:hidden">
+                    <img src="new1.png" loading="lazy" decoding="async" alt="Logo PT Media Tulisan Manusia" class="w-56 sm:w-64 md:w-80 h-auto object-contain mb-6 drop-shadow-lg rounded-2xl dark:hidden">
                     <!-- Mode Gelap Footer Logo -->
-                    <img src="new2.png" loading="lazy" decoding="async" alt="Logo PT Media Tulisan Manusia" class="w-56 sm:w-64 md:w-80 h-auto object-contain mb-4 drop-shadow-lg rounded-2xl hidden dark:block">
-                    
-                    <p class="text-[10px] md:text-xs text-gray-600 dark:text-gray-500 uppercase tracking-[0.2em] font-bold mb-4">Penerbit & Konsultan Hak Cipta</p>
+                    <img src="new2.png" loading="lazy" decoding="async" alt="Logo PT Media Tulisan Manusia" class="w-56 sm:w-64 md:w-80 h-auto object-contain mb-6 drop-shadow-lg rounded-2xl hidden dark:block">
                     
                     <h3 class="font-bold text-sm sm:text-base md:text-2xl mb-2 md:mb-3 text-warnautama dark:text-white">Tentang Kami</h3>
                     <p class="text-[10px] sm:text-xs md:text-sm text-gray-800 dark:text-gray-300 leading-relaxed mb-6 max-w-xl mx-auto font-medium text-center px-2">
                         Media Tulisan Manusia merupakan platform eksklusif yang berdedikasi mengangkat literatur ke tingkat yang lebih tinggi. Kami percaya bahwa setiap karya berhak mendapatkan apresiasi terbaik.
                     </p>
                     
-                    <div class="flex flex-wrap justify-center gap-4 md:gap-6 text-[11px] sm:text-xs md:text-sm font-bold text-gray-800 dark:text-gray-300 mb-8">
-                        <a href="#" onclick="bukaHalaman('beranda'); return false;" class="hover:text-warnautama transition">Beranda</a>
-                        <a href="#" onclick="bukaHalaman('syarat'); return false;" class="hover:text-warnautama transition">Syarat & Ketentuan</a>
-                        <a href="#" onclick="bukaHalaman('privasi'); return false;" class="hover:text-warnautama transition">Kebijakan Privasi</a>
-                        <a href="#" onclick="bukaHalaman('hubungi'); return false;" class="hover:text-warnautama transition">Hubungi Kami</a>
+                    <!-- Menu Footer (Dibuat sejajar dalam 1 baris untuk layar HP) -->
+                    <div class="flex flex-row flex-nowrap items-center justify-center w-full gap-2 sm:gap-4 md:gap-6 text-[7px] min-[320px]:text-[8px] min-[375px]:text-[9px] sm:text-xs md:text-sm font-bold text-gray-800 dark:text-gray-300 mb-8 overflow-hidden px-1">
+                        <a href="#" onclick="bukaHalaman('beranda'); return false;" class="hover:text-warnautama transition whitespace-nowrap">Beranda</a>
+                        <a href="#" onclick="bukaHalaman('syarat'); return false;" class="hover:text-warnautama transition whitespace-nowrap">Syarat & Ketentuan</a>
+                        <a href="#" onclick="bukaHalaman('privasi'); return false;" class="hover:text-warnautama transition whitespace-nowrap">Kebijakan Privasi</a>
+                        <a href="#" onclick="bukaHalaman('hubungi'); return false;" class="hover:text-warnautama transition whitespace-nowrap">Hubungi Kami</a>
                     </div>
 
                     <div class="flex flex-row flex-nowrap items-center justify-center gap-2 sm:gap-4 md:gap-10 mb-8 glass py-3 md:py-4 px-4 sm:px-6 md:px-8 rounded-full inline-flex border border-gray-200 dark:border-gray-800 shadow-sm w-[95%] sm:w-auto mx-auto overflow-hidden">
@@ -1116,7 +1114,8 @@
                         </a>
                     </div>
                     
-                    <p class="text-[9px] sm:text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold w-full text-center Copyright ">&copy; Since 2022. All rights reserved.</p>
+                    <!-- Copyright Text (Dibuat sejajar dalam 1 baris untuk layar HP) -->
+                    <p class="text-[7.5px] min-[320px]:text-[8px] min-[375px]:text-[9px] sm:text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold w-full text-center whitespace-nowrap">PT. MEDIA TULISAN MANUSIA - ALL RIGHTS RESERVED.</p>
                 </div>
             </footer>
         </div>
