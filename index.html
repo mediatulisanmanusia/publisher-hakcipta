@@ -136,7 +136,7 @@
                     loader.style.display = 'none'; // Dihapus dari tampilan
                 }, 500);
             }
-        }, 4000); // 4000 ms = Tepat 4 detik
+        }, 5000); // 5000 ms = Tepat 5 detik sejak kode ini terbaca browser
 
         function toggleTema() {
             document.documentElement.classList.toggle('dark');
@@ -278,11 +278,11 @@
 
         <!-- HEADER / NAVBAR MELAYANG -->
         <header class="fixed top-4 left-0 right-0 mx-auto w-11/12 max-w-[1200px] glass rounded-full px-5 py-3 flex items-center justify-between z-50 shadow-lg">
-            <div class="flex items-center gap-3 cursor-pointer" onclick="bukaHalaman('beranda')">
-                <!-- Mode Terang Header Logo -->
-                <img src="cipta.png" alt="Maskot PT Media Tulisan Manusia" class="h-12 md:h-16 w-auto object-contain drop-shadow-sm rounded-lg dark:hidden">
-                <!-- Mode Gelap Header Logo -->
-                <img src="cipta.png" alt="Maskot PT Media Tulisan Manusia" class="h-12 md:h-16 w-auto object-contain drop-shadow-sm rounded-lg hidden dark:block">
+            <div class="flex items-center gap-3 cursor-pointer flex-shrink-0" onclick="bukaHalaman('beranda')">
+                <!-- Mode Terang Header Logo (Persegi Panjang) -->
+                <img src="rev1.png" alt="Logo PT Media Tulisan Manusia" class="h-7 sm:h-9 md:h-11 w-auto max-w-[160px] sm:max-w-[200px] md:max-w-[250px] object-contain drop-shadow-sm dark:hidden">
+                <!-- Mode Gelap Header Logo (Persegi Panjang) -->
+                <img src="rev2.png" alt="Logo PT Media Tulisan Manusia" class="h-7 sm:h-9 md:h-11 w-auto max-w-[160px] sm:max-w-[200px] md:max-w-[250px] object-contain drop-shadow-sm hidden dark:block">
             </div>
             
             <nav class="hidden md:flex items-center gap-8 font-semibold text-sm text-gray-600 dark:text-gray-400">
