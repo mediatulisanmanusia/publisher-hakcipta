@@ -416,7 +416,7 @@
                 });
             }
 
-            // Logika Penyimpanan Riwayat
+                        // Logika Penyimpanan Riwayat
             let pertanyaanTerakhir = "";
             let sudahDisapa = false;
 
@@ -444,24 +444,17 @@
                     const lowerText = text.toLowerCase();
                     let botReply = "";
 
-                    // LOGIKA KATA KUNCI
-                    const isSapaan = ["halo", "hai", "hi", "p", "assalamualaikum", "pagi", "siang", "sore", "malam"].includes(lowerText);
-                    const isPenerbitan = lowerText.includes("terbit") || lowerText.includes("penerbitan") || lowerText.includes("buku");
-                    const isHKI = lowerText.includes("hki") || lowerText.includes("hak cipta") || lowerText.includes("karya");
-                    const isTentangWeb = lowerText.includes("tentang") || lowerText.includes("media tulisan manusia") || lowerText.includes("kantor") || lowerText.includes("profil");
+                    // LOGIKA KATA KUNCI (DIPERLUAS SESUAI ARAHAN)
+                    const isSapaan = ["halo", "hai", "hi", "p", "assalamualaikum", "pagi", "siang", "sore", "malam"].some(kata => lowerText.includes(kata));
+                    const isPenerbitan = ["terbit", "penerbit", "penerbitan", "menerbitkan", "buku", "cetak", "naskah"].some(kata => lowerText.includes(kata));
+                    const isHKI = ["hki", "hak cipta", "djki", "karya", "sertifikat"].some(kata => lowerText.includes(kata));
 
                     if (isSapaan && !sudahDisapa) {
-                        // Jika menyapa pertama kali
                         botReply = "Kabar baik, terima kasih telah menyapa! 😊 \n\nBagaimana dengan Anda? Ada yang bisa saya bantu terkait penerbitan buku atau konsultasi Hak Cipta (HKI)?";
                         sudahDisapa = true;
                     } 
                     else if (isSapaan && sudahDisapa) {
-                        // Jika menyapa lagi, tidak perlu basa basi panjang
                         botReply = "Iya, silakan. Ada pertanyaan apa yang bisa saya bantu?";
-                    }
-                    else if (isTentangWeb) {
-                        botReply = "Media Tulisan Manusia hadir sebagai startup profesional di bidang Penerbitan Buku dan Konsultan Hak Cipta. Kami mendampingi perjalanan kreatif Anda, baik untuk personal maupun korporat, dari pengeditan naskah hingga perlindungan Hak Cipta di DJKI Kemenkumham. \n\nAda layanan spesifik yang ingin Anda ketahui?";
-                        sudahDisapa = true;
                     }
                     else if (isPenerbitan) {
                         botReply = "Untuk informasi lengkap mengenai paket, fasilitas, dan ketentuan penerbitan buku di Media Tulisan Manusia, Anda bisa langsung membaca dan mengunduh filenya di sini:<br><br>👉 <a href='https://mediatulisanmanusia.online/ketentuan.pdf' target='_blank' style='color: #0366d6; font-weight: bold; text-decoration: underline;'>Ketentuan Penerbitan (PDF)</a><br><br>Jika ada pertanyaan spesifik lainnya, silakan tanyakan lagi ya!";
@@ -472,7 +465,6 @@
                         sudahDisapa = true;
                     } 
                     else {
-                        // Jika pertanyaan di luar itu, atau pertanyaan lanjutan -> Muncul Tombol WA
                         const waNumber = "6288294448222";
                         const waMessage = encodeURIComponent("Halo admin Media Tulisan Manusia, saya ingin berdiskusi mengenai: " + pertanyaanTerakhir);
                         const waLink = `https://wa.me/${waNumber}?text=${waMessage}`;
