@@ -147,18 +147,20 @@
             const keyword = document.getElementById('input-keyword-djki').value.trim();
             if (keyword) {
                 const url = `https://pdki-indonesia.dgip.go.id/search?type=hakcipta&keyword=${encodeURIComponent(keyword)}`;
-                // Memunculkan kotak iframe pencarian di halaman yang sama
-                document.getElementById('iframe-djki').src = url;
-                document.getElementById('modal-djki').classList.remove('hidden');
+                
+                // Menentukan ukuran popup agar seperti kotak modal (setengah layar)
+                const width = 400; // Lebar disesuaikan untuk ukuran HP/kotak
+                const height = 650; // Tinggi kotak
+                
+                // Menghitung posisi agar kotak popup muncul tepat di tengah layar
+                const left = (screen.width / 2) - (width / 2);
+                const top = (screen.height / 2) - (height / 2);
+
+                // Membuka link dalam jendela popup yang melayang
+                window.open(url, 'PopupDJKI', `width=${width},height=${height},top=${top},left=${left},toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes`);
             } else {
                 alert('Silakan masukkan judul karya atau nama pencipta yang ingin dicari.');
             }
-        }
-
-        function tutupModalDJKI() {
-            // Menutup kotak iframe
-            document.getElementById('modal-djki').classList.add('hidden');
-            document.getElementById('iframe-djki').src = '';
         }
 
         function bukaHalaman(idHalaman) {
@@ -1242,21 +1244,6 @@
             </div>
         </div>
 
-    </div>
-
-    <!-- MODAL PENCARIAN DJKI -->
-    <div id="modal-djki" class="fixed inset-0 z-[99999] hidden flex items-center justify-center bg-black/70 backdrop-blur-sm transition-opacity">
-        <div class="relative w-[90%] md:w-1/2 h-[50vh] md:h-[70vh] bg-white dark:bg-warnautama rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden flex flex-col border border-gray-300 dark:border-gray-700">
-            <!-- Header Modal -->
-            <div class="flex justify-between items-center px-4 py-3 bg-gray-100 dark:bg-black border-b border-gray-300 dark:border-gray-700">
-                <h3 class="font-bold text-xs md:text-sm text-warnautama dark:text-white">Hasil Pencarian DJKI</h3>
-                <button onclick="tutupModalDJKI()" class="text-gray-500 hover:text-red-500 transition font-bold text-lg md:text-xl leading-none">&times;</button>
-            </div>
-            <!-- Iframe Container -->
-            <div class="flex-grow w-full h-full bg-gray-50 dark:bg-gray-900 relative">
-                <iframe id="iframe-djki" src="" class="w-full h-full border-none" title="Pencarian DJKI"></iframe>
-            </div>
-        </div>
     </div>
 </body>
 </html>
