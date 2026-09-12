@@ -127,40 +127,55 @@
     <script>
         let isLoggedIn = false;
 
-        // Script untuk Loading Screen - Menghitung 5 detik SECARA INSTAN saat halaman dibuka
+        // Script untuk Loading Screen
         setTimeout(function() {
             const loader = document.getElementById('loading-screen');
             if(loader) {
-                loader.style.opacity = '0'; // Animasi fade out
+                loader.style.opacity = '0';
                 setTimeout(() => {
-                    loader.style.display = 'none'; // Dihapus dari tampilan
+                    loader.style.display = 'none';
                 }, 500);
             }
-        }, 5000); // 5000 ms = Tepat 5 detik sejak kode ini terbaca browser
+        }, 5000); 
 
         function toggleTema() {
             document.documentElement.classList.toggle('dark');
         }
 
+        // ================= FUNGSI PENCARIAN QRCBN =================
+        function cariQRCBN(event) {
+            event.preventDefault();
+            const keyword = document.getElementById('input-keyword-qrcbn').value.trim();
+            if (keyword) {
+                // Link pencarian QRCBN, menggunakan format query ?s= (umum digunakan website)
+                const url = `https://qrcbn.com/?s=${encodeURIComponent(keyword)}`;
+                
+                // Panggil iframe modal untuk mencoba apakah QRCBN mengizinkan
+                document.getElementById('judul-modal-pencarian').innerText = 'Hasil Pencarian QRCBN';
+                document.getElementById('iframe-pencarian').src = url;
+                document.getElementById('modal-pencarian').classList.remove('hidden');
+            } else {
+                alert('Silakan masukkan Nomor QRCBN yang ingin dicari.');
+            }
+        }
+
+        // ================= FUNGSI PENCARIAN DJKI =================
         function cariDJKI(event) {
             event.preventDefault();
             const keyword = document.getElementById('input-keyword-djki').value.trim();
             if (keyword) {
                 const url = `https://pdki-indonesia.dgip.go.id/search?type=hakcipta&keyword=${encodeURIComponent(keyword)}`;
-                
-                // Menentukan ukuran popup agar seperti kotak modal (setengah layar)
-                const width = 400; // Lebar disesuaikan untuk ukuran HP/kotak
-                const height = 650; // Tinggi kotak
-                
-                // Menghitung posisi agar kotak popup muncul tepat di tengah layar
-                const left = (screen.width / 2) - (width / 2);
-                const top = (screen.height / 2) - (height / 2);
-
-                // Membuka link dalam jendela popup yang melayang
-                window.open(url, 'PopupDJKI', `width=${width},height=${height},top=${top},left=${left},toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes`);
+                // Tetap menggunakan tab baru untuk DJKI karena mereka pasti memblokir iframe
+                window.open(url, '_blank');
             } else {
                 alert('Silakan masukkan judul karya atau nama pencipta yang ingin dicari.');
             }
+        }
+
+        // Fungsi untuk menutup Modal Iframe
+        function tutupModalPencarian() {
+            document.getElementById('modal-pencarian').classList.add('hidden');
+            document.getElementById('iframe-pencarian').src = '';
         }
 
         function bukaHalaman(idHalaman) {
@@ -225,19 +240,17 @@
             });
         }
 
-        // Script Animasi Auto-Scroll Mulus (Loop Berputar Searah)
+        // Script Animasi Auto-Scroll
         document.addEventListener("DOMContentLoaded", function() {
             function autoScroll(id) {
                 const el = document.getElementById(id);
                 if (!el) return;
 
-                // Menduplikasi konten di dalam container agar bisa loop memutar tanpa henti
                 el.innerHTML += el.innerHTML;
 
                 let isPaused = false;
-                let speed = 0.8; // Kecepatan scroll (px)
+                let speed = 0.8; 
 
-                // Pause animasi saat disentuh/di-hover
                 el.addEventListener('mouseenter', () => isPaused = true);
                 el.addEventListener('mouseleave', () => isPaused = false);
                 el.addEventListener('touchstart', () => isPaused = true, {passive: true});
@@ -246,18 +259,15 @@
                 function step() {
                     if (!isPaused) {
                         el.scrollLeft += speed;
-
-                        // Jika sudah mencapai setengah perjalanan (masuk ke area duplikat), kembalikan ke awal mulus
                         if (el.scrollLeft >= el.scrollWidth / 2) {
                             el.scrollLeft -= el.scrollWidth / 2;
                         }
                     }
-                    requestAnimationFrame(step); // Looping frame-by-frame
+                    requestAnimationFrame(step); 
                 }
                 requestAnimationFrame(step);
             }
 
-            // Inisiasi 4 Container Scroll (termasuk Sorot Media)
             autoScroll('scroll-katalog');
             autoScroll('scroll-hki');
             autoScroll('scroll-mitra');
@@ -289,9 +299,7 @@
         <!-- HEADER / NAVBAR MELAYANG -->
         <header class="fixed top-4 left-0 right-0 mx-auto w-11/12 max-w-[1200px] glass rounded-full px-5 py-3 flex items-center justify-between z-50 shadow-lg">
             <div class="flex items-center gap-3 cursor-pointer flex-shrink-0" onclick="bukaHalaman('beranda')">
-                <!-- Mode Terang Header Logo (Diperbesar h-10 untuk HP, melebar sampai 220px) -->
                 <img src="rev1.png" alt="Logo PT Media Tulisan Manusia" class="h-10 sm:h-12 md:h-14 w-auto max-w-[180px] sm:max-w-[220px] md:max-w-[280px] object-contain drop-shadow-sm dark:hidden">
-                <!-- Mode Gelap Header Logo (Diperbesar h-10 untuk HP, melebar sampai 220px) -->
                 <img src="rev2.png" alt="Logo PT Media Tulisan Manusia" class="h-10 sm:h-12 md:h-14 w-auto max-w-[180px] sm:max-w-[220px] md:max-w-[280px] object-contain drop-shadow-sm hidden dark:block">
             </div>
 
@@ -794,6 +802,22 @@
                 </div>
             </section>
 
+            <!-- SEKSI PENCARIAN QRCBN (BARU DITAMBAHKAN) -->
+            <section class="px-5 md:px-10 pt-4 pb-6 relative z-10 max-w-4xl mx-auto">
+                <div class="glass p-8 md:p-12 rounded-[2.5rem] text-center transition duration-500 animate-fade-up">
+                    <img src="qrcbn.png" loading="lazy" decoding="async" alt="Logo QRCBN" class="h-14 md:h-20 w-auto object-contain mx-auto mb-5 drop-shadow-sm">
+                    <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-warnautama dark:text-white mb-3 tracking-tight w-full leading-tight">Penelusuran QRCBN Buku</h3>
+                    <p class="text-sm md:text-base text-gray-800 dark:text-gray-300 mb-8 font-medium max-w-2xl mx-auto">Masukkan nomor QRCBN buku untuk menelusuri status pendaftarannya di database resmi QRCBN.</p>
+
+                    <form onsubmit="cariQRCBN(event)" class="flex flex-col sm:flex-row gap-3 justify-center max-w-2xl mx-auto">
+                        <input type="text" id="input-keyword-qrcbn" required placeholder="Ex: 62-39-XXXX-X" class="flex-grow bg-white/70 dark:bg-black/60 border border-gray-300 dark:border-gray-700 rounded-full px-5 py-4 text-[10px] sm:text-xs md:text-sm focus:outline-none focus:border-gray-500 transition font-medium text-warnautama dark:text-white shadow-inner">
+                        <button type="submit" class="bg-warnautama dark:bg-white text-white dark:text-black font-extrabold py-4 px-8 rounded-full shadow-lg uppercase tracking-widest text-xs md:text-sm hover:scale-105 transition-transform duration-300 flex-shrink-0">
+                            Telusuri
+                        </button>
+                    </form>
+                </div>
+            </section>
+
             <!-- SEKSI PENCARIAN DJKI -->
             <section class="px-5 md:px-10 pt-4 pb-12 relative z-10 max-w-4xl mx-auto">
                 <div class="glass p-8 md:p-12 rounded-[2.5rem] text-center transition duration-500 animate-fade-up">
@@ -1244,6 +1268,21 @@
             </div>
         </div>
 
+    </div>
+
+    <!-- MODAL PENCARIAN IFRAME (UNTUK QRCBN / TEST) -->
+    <div id="modal-pencarian" class="fixed inset-0 z-[99999] hidden flex items-center justify-center bg-black/70 backdrop-blur-sm transition-opacity">
+        <div class="relative w-[90%] md:w-3/4 lg:w-2/3 h-[70vh] md:h-[80vh] bg-white dark:bg-warnautama rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden flex flex-col border border-gray-300 dark:border-gray-700">
+            <!-- Header Modal -->
+            <div class="flex justify-between items-center px-5 py-4 bg-gray-100 dark:bg-black border-b border-gray-300 dark:border-gray-700">
+                <h3 id="judul-modal-pencarian" class="font-bold text-sm md:text-base text-warnautama dark:text-white">Hasil Pencarian</h3>
+                <button onclick="tutupModalPencarian()" class="text-gray-500 hover:text-red-500 transition font-bold text-xl md:text-2xl leading-none">&times;</button>
+            </div>
+            <!-- Iframe Container -->
+            <div class="flex-grow w-full h-full bg-gray-50 dark:bg-gray-900 relative">
+                <iframe id="iframe-pencarian" src="" class="w-full h-full border-none" title="Pencarian"></iframe>
+            </div>
+        </div>
     </div>
 </body>
 </html>
