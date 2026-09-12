@@ -383,25 +383,15 @@
                 setTimeout(() => chatWindow.classList.add("hidden"), 300);
             });
 
-            function addMessageToUI(text, sender) {
+                        function addMessageToUI(text, sender) {
                 const msgDiv = document.createElement("div");
                 msgDiv.className = sender === "user" ? "flex items-end justify-end gap-2 mt-3 animate-fade-up shrink-0" : "flex items-start gap-2 mt-3 animate-fade-up shrink-0";
                 
                 let innerHTML = "";
                 if (sender === "user") {
-                    // Penambahan class 'whitespace-pre-wrap' agar paragraf/enter terbaca rapi
-                    innerHTML = `
-                        <div class="bg-warnautama dark:bg-white text-white dark:text-black px-4 py-2 rounded-2xl rounded-tr-sm max-w-[85%] shadow-md leading-relaxed font-medium text-[11px] sm:text-xs border border-warnautama/50 whitespace-pre-wrap break-words">
-                            ${text}
-                        </div>
-                    `;
+                    innerHTML = `<div class="bg-warnautama dark:bg-white text-white dark:text-black px-4 py-2 rounded-2xl rounded-tr-sm max-w-[85%] shadow-md leading-relaxed font-medium text-[11px] sm:text-xs border border-warnautama/50 whitespace-pre-wrap break-words">${text}</div>`;
                 } else {
-                    innerHTML = `
-                        <img src="cipta.png" alt="Cipta" class="w-7 h-7 md:w-8 md:h-8 rounded-full flex-shrink-0 object-cover shadow-md border border-gray-200 dark:border-gray-700 bg-white">
-                        <div class="bg-white/90 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-4 py-2 rounded-2xl rounded-tl-sm max-w-[85%] shadow-sm border border-gray-200 dark:border-gray-700 leading-relaxed font-medium text-[11px] sm:text-xs break-words">
-                            ${text}
-                        </div>
-                    `;
+                    innerHTML = `<img src="cipta.png" alt="Cipta" class="w-7 h-7 md:w-8 md:h-8 rounded-full flex-shrink-0 object-cover shadow-md border border-gray-200 dark:border-gray-700 bg-white"><div class="bg-white/90 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-4 py-2 rounded-2xl rounded-tl-sm max-w-[85%] shadow-sm border border-gray-200 dark:border-gray-700 leading-relaxed font-medium text-[11px] sm:text-xs break-words">${text}</div>`;
                 }
                 
                 msgDiv.innerHTML = innerHTML;
