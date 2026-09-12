@@ -247,7 +247,7 @@
                 el.innerHTML += el.innerHTML;
 
                 let isPaused = false;
-                let speed = 0.25; // Kecepatan diubah menjadi 0.25 agar lebih lambat dan smooth
+                let speed = 0.25; 
 
                 el.addEventListener('mouseenter', () => isPaused = true);
                 el.addEventListener('mouseleave', () => isPaused = false);
@@ -270,15 +270,55 @@
             autoScroll('scroll-hki');
             autoScroll('scroll-mitra');
             autoScroll('scroll-media');
+            
+            // FUNGSI SCROLL TO TOP DINAMIS
+            const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+            let scrollTimeout;
+
+            window.addEventListener("scroll", () => {
+                // Munculkan tombol saat di-scroll
+                if (window.scrollY > 100) {
+                    scrollToTopBtn.classList.remove("translate-y-20", "opacity-0", "pointer-events-none");
+                    scrollToTopBtn.classList.add("translate-y-0", "opacity-100");
+                } else {
+                    // Sembunyikan jika berada di paling atas
+                    scrollToTopBtn.classList.add("translate-y-20", "opacity-0", "pointer-events-none");
+                    scrollToTopBtn.classList.remove("translate-y-0", "opacity-100");
+                }
+
+                // Reset timer setiap kali user nge-scroll
+                clearTimeout(scrollTimeout);
+
+                // Set timer untuk menyembunyikan tombol jika berhenti scroll selama 1.5 detik
+                scrollTimeout = setTimeout(() => {
+                    scrollToTopBtn.classList.add("translate-y-20", "opacity-0", "pointer-events-none");
+                    scrollToTopBtn.classList.remove("translate-y-0", "opacity-100");
+                }, 1500);
+            });
+
+            // Fungsi klik untuk scroll ke atas
+            scrollToTopBtn.addEventListener("click", () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
         });
     </script>
 </head>
-<body class="bg-gray-100 text-warnautama dark:text-white font-sans pb-4 md:pb-0 transition-colors duration-500">
+<body class="bg-gray-100 text-warnautama dark:text-white font-sans pb-4 md:pb-0 transition-colors duration-500 relative">
 
     <!-- LAYAR LOADING SCREEN -->
     <div id="loading-screen" class="fixed inset-0 z-[9999] bg-gray-100 flex items-center justify-center transition-opacity duration-500 ease-in-out">
         <img src="berolahraga.png" fetchpriority="high" alt="Loading Media Tulisan Manusia" class="h-64 md:h-96 w-auto object-contain animate-pulse-logo">
     </div>
+
+    <!-- TOMBOL SCROLL TO TOP DINAMIS (DI TENGAH BAWAH) -->
+    <button id="scrollToTopBtn" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] p-3 md:p-4 rounded-full glass shadow-xl border border-warnautama/20 dark:border-white/20 text-warnautama dark:text-white transition-all duration-500 transform translate-y-20 opacity-0 pointer-events-none hover:scale-110 hover:bg-white/80 dark:hover:bg-black/80" aria-label="Scroll to top">
+        <svg class="w-5 h-5 md:w-6 md:h-6 font-bold" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
+        </svg>
+    </button>
 
     <!-- Container Utama -->
     <div class="max-w-7xl mx-auto min-h-screen relative shadow-2xl bg-custom-gradient overflow-hidden transition-all duration-700">
@@ -1357,4 +1397,3 @@
     </div>
 </body>
 </html>
-
