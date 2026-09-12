@@ -348,9 +348,6 @@
                 setTimeout(() => chatWindow.classList.add("hidden"), 300);
             });
 
-            // LOGIKA JEMBATAN API (URL Terbaru Terpasang)
-            const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzp1zcYRcnMvFAhl1AzY-9sHGcZXmcF8k--5f7m8afNkw9dReLiDy1SpjcfK85JpK2M/exec";
-
             let chatHistory = [
                 {
                     role: "user",
@@ -391,10 +388,14 @@
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             }
 
-                        async function handleSend() {
+             // Tambahkan variabel ini untuk mengingat tahapan obrolan
+            let tahapPercakapan = 0;
+
+            async function handleSend() {
                 const text = chatInput.value.trim();
                 if (!text) return;
                 
+                // Menampilkan pesan pengguna di layar
                 addMessageToUI(text, "user");
                 chatInput.value = "";
                 
@@ -403,37 +404,41 @@
                 typingIndicator.classList.add("flex");
                 scrollToBottom();
                 
-                chatHistory.push({ role: "user", parts: [{ text: text }] });
-
-                try {
-                    const response = await fetch(WEB_APP_URL, {
-                        method: "POST",
-                        headers: { "Content-Type": "text/plain;charset=utf-8" },
-                        body: JSON.stringify({ contents: chatHistory })
-                    });
-                    
-                    const data = await response.json();
-                    
+                // Jeda 1 detik agar terlihat seperti AI sedang mengetik
+                setTimeout(() => {
                     typingIndicator.classList.add("hidden");
                     typingIndicator.classList.remove("flex");
 
-                    if(data.candidates && data.candidates.length > 0) {
-                        const botReply = data.candidates[0].content.parts[0].text;
+                    // Deteksi kata sapaan umum
+                    const sapaan = ["halo", "hai", "hi", "p", "assalamualaikum", "pagi", "siang", "sore", "malam"];
+                    const apakahSapaan = sapaan.includes(text.toLowerCase());
+
+                    // LOGIKA ALUR PERCAKAPAN
+                    if (tahapPercakapan === 0 || apakahSapaan) {
+                        // TAHAP 1: Balasan sapaan awal
+                        const botReply = "Halo! Saya Cipta, asisten virtual Media Tulisan Manusia. Ada yang bisa saya bantu tentang penerbitan buku atau Hak Cipta (HKI) hari ini?";
                         addMessageToUI(botReply, "model");
-                        chatHistory.push({ role: "model", parts: [{ text: botReply }] });
-                    } else if(data.error) {
-                        // MEMBONGKAR [object Object]
-                        const pesanAsli = data.error.message ? data.error.message : JSON.stringify(data.error);
-                        addMessageToUI("Pesan dari Google: " + pesanAsli, "model");
+                        
+                        // Kunci ke tahap berikutnya
+                        tahapPercakapan = 1; 
+
                     } else {
-                        addMessageToUI("Silakan hubungi admin langsung melalui WhatsApp di nomor 088294448222.", "model");
+                        // TAHAP 2: Pengguna sudah bertanya, arahkan ke WA
+                        const waNumber = "6288294448222";
+                        // Membawa teks pertanyaan pengunjung langsung ke draft WhatsApp
+                        const waMessage = encodeURIComponent("Halo admin Media Tulisan Manusia, saya ingin berdiskusi mengenai: " + text);
+                        const waLink = `https://wa.me/${waNumber}?text=${waMessage}`;
+
+                        const botReply1 = "Terima kasih atas pertanyaannya! Agar saya bisa memberikan detail lengkap dan solusi yang paling tepat, mari lanjutkan diskusi ini langsung dengan tim spesialis kami.";
+                        addMessageToUI(botReply1, "model");
+                        
+                        // Menampilkan link WA di pesan terpisah agar mudah diklik
+                        const botReply2 = `👉 Silakan klik link berikut untuk chat via WhatsApp:\n\n${waLink}`;
+                        addMessageToUI(botReply2, "model");
                     }
-                } catch (error) {
-                    console.error("API Error:", error);
-                    typingIndicator.classList.add("hidden");
-                    typingIndicator.classList.remove("flex");
-                    addMessageToUI("Sistem Cipta tidak dapat terhubung. Silakan hubungi admin langsung melalui WhatsApp.", "model");
-                }
+                    
+                    scrollToBottom();
+                }, 1000);
             }
 
             sendChat.addEventListener("click", handleSend);
