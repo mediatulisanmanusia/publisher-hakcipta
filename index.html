@@ -388,57 +388,62 @@
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             }
 
-             // Tambahkan variabel ini untuk mengingat tahapan obrolan
-            let tahapPercakapan = 0;
+                         // Tambahkan ini di bagian atas untuk mengingat pertanyaan terakhir pengunjung
+            let pertanyaanTerakhir = "";
 
             async function handleSend() {
                 const text = chatInput.value.trim();
                 if (!text) return;
                 
-                // Menampilkan pesan pengguna di layar
+                // Menyimpan teks untuk disisipkan ke link WhatsApp nanti
+                pertanyaanTerakhir = text;
+                
                 addMessageToUI(text, "user");
                 chatInput.value = "";
                 
-                // Tampilkan Animasi Mengetik
                 typingIndicator.classList.remove("hidden");
                 typingIndicator.classList.add("flex");
                 scrollToBottom();
                 
-                // Jeda 1 detik agar terlihat seperti AI sedang mengetik
                 setTimeout(() => {
                     typingIndicator.classList.add("hidden");
                     typingIndicator.classList.remove("flex");
 
-                    // Deteksi kata sapaan umum
-                    const sapaan = ["halo", "hai", "hi", "p", "assalamualaikum", "pagi", "siang", "sore", "malam"];
-                    const apakahSapaan = sapaan.includes(text.toLowerCase());
+                    const lowerText = text.toLowerCase();
+                    let botReply = "";
 
-                    // LOGIKA ALUR PERCAKAPAN
-                    if (tahapPercakapan === 0 || apakahSapaan) {
-                        // TAHAP 1: Balasan sapaan awal
-                        const botReply = "Halo! Saya Cipta, asisten virtual Media Tulisan Manusia. Ada yang bisa saya bantu tentang penerbitan buku atau Hak Cipta (HKI) hari ini?";
-                        addMessageToUI(botReply, "model");
+                    // LOGIKA KATA KUNCI
+                    const isSapaan = ["halo", "hai", "hi", "p", "assalamualaikum", "pagi", "siang", "sore", "malam"].includes(lowerText);
+                    const isPenerbitan = lowerText.includes("terbit") || lowerText.includes("penerbitan") || lowerText.includes("buku");
+                    const isHKI = lowerText.includes("hki") || lowerText.includes("hak cipta") || lowerText.includes("karya");
+
+                    if (isSapaan) {
+                        // 1. Jika Menyapa
+                        botReply = "Halo! Saya Cipta, asisten virtual Media Tulisan Manusia. Ada yang bisa saya bantu tentang penerbitan buku atau pendaftaran Hak Cipta (HKI) hari ini?";
                         
-                        // Kunci ke tahap berikutnya
-                        tahapPercakapan = 1; 
-
+                    } else if (isPenerbitan) {
+                        // 2. Jika Bertanya Penerbitan
+                        botReply = "Untuk informasi lengkap mengenai paket, fasilitas, dan ketentuan penerbitan buku di Media Tulisan Manusia, Anda bisa langsung membaca dan mengunduh filenya di sini:<br><br>👉 <a href='https://mediatulisanmanusia.online/ketentuan.pdf' target='_blank' style='color: #0366d6; font-weight: bold; text-decoration: underline;'>Ketentuan Penerbitan (PDF)</a><br><br>Jika ada pertanyaan spesifik lainnya, silakan tanyakan lagi ya!";
+                        
+                    } else if (isHKI) {
+                        // 3. Jika Bertanya HKI
+                        botReply = "Untuk informasi detail dan mengunduh file Kategori Hak Cipta (HKI), silakan kunjungi tautan berikut:<br><br>👉 <a href='https://mediatulisanmanusia.online/kategori.pdf' target='_blank' style='color: #0366d6; font-weight: bold; text-decoration: underline;'>Kategori Hak Cipta (PDF)</a><br><br>Ada hal spesifik lain yang ingin ditanyakan?";
+                        
                     } else {
-                        // TAHAP 2: Pengguna sudah bertanya, arahkan ke WA
+                        // 4. Jika pertanyaan di luar itu, atau pertanyaan lanjutan -> Muncul Tombol WA
                         const waNumber = "6288294448222";
-                        // Membawa teks pertanyaan pengunjung langsung ke draft WhatsApp
-                        const waMessage = encodeURIComponent("Halo admin Media Tulisan Manusia, saya ingin berdiskusi mengenai: " + text);
+                        // Pertanyaan otomatis masuk ke draft WA
+                        const waMessage = encodeURIComponent("Halo admin Media Tulisan Manusia, saya ingin berdiskusi mengenai: " + pertanyaanTerakhir);
                         const waLink = `https://wa.me/${waNumber}?text=${waMessage}`;
 
-                        const botReply1 = "Terima kasih atas pertanyaannya! Agar saya bisa memberikan detail lengkap dan solusi yang paling tepat, mari lanjutkan diskusi ini langsung dengan tim spesialis kami.";
-                        addMessageToUI(botReply1, "model");
-                        
-                        // Menampilkan link WA di pesan terpisah agar mudah diklik
-                        const botReply2 = `👉 Silakan klik link berikut untuk chat via WhatsApp:\n\n${waLink}`;
-                        addMessageToUI(botReply2, "model");
+                        // Tombol HTML hijau yang rapi
+                        botReply = `Untuk pertanyaan tersebut, agar mendapat penjelasan yang lebih komprehensif, mari diskusikan langsung dengan tim spesialis kami.<br><br>
+                        <a href="${waLink}" target="_blank" style="display: block; background-color: #25D366; color: white; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: bold; text-align: center; margin-top: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">💬 Chat Admin di WhatsApp</a>`;
                     }
                     
+                    addMessageToUI(botReply, "model");
                     scrollToBottom();
-                }, 1000);
+                }, 800);
             }
 
             sendChat.addEventListener("click", handleSend);
