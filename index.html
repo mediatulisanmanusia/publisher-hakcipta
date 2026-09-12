@@ -147,10 +147,10 @@
             event.preventDefault();
             const keyword = document.getElementById('input-keyword-qrcbn').value.trim();
             if (keyword) {
-                // Link pencarian QRCBN, menggunakan format query ?s= (umum digunakan website)
-                const url = `https://qrcbn.com/?s=${encodeURIComponent(keyword)}`;
+                // MENGUBAH FORMAT LINK LANGSUNG KE HASIL (DETAIL BUKU)
+                // Biasanya web scan QR menggunakan path /detail/ atau /book/
+                const url = `https://qrcbn.com/detail/${encodeURIComponent(keyword)}`;
                 
-                // Panggil iframe modal untuk mencoba apakah QRCBN mengizinkan
                 document.getElementById('judul-modal-pencarian').innerText = 'Hasil Pencarian QRCBN';
                 document.getElementById('iframe-pencarian').src = url;
                 document.getElementById('modal-pencarian').classList.remove('hidden');
@@ -158,6 +158,7 @@
                 alert('Silakan masukkan Nomor QRCBN yang ingin dicari.');
             }
         }
+
 
         // ================= FUNGSI PENCARIAN DJKI =================
         function cariDJKI(event) {
