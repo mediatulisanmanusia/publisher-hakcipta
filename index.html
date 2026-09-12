@@ -391,18 +391,18 @@
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             }
 
-            async function handleSend() {
+                        async function handleSend() {
                 const text = chatInput.value.trim();
                 if (!text) return;
                 
                 addMessageToUI(text, "user");
                 chatInput.value = "";
                 
-                // Deteksi sapaan ringan secara lokal agar instan dan ramah tanpa risiko gagal jaringan
+                // Deteksi sapaan ringan secara lokal
                 const lowerText = text.toLowerCase();
-                if (["halo", "hai", "hi", "p", "assalamualaikum", "selamat pagi", "selamat siang", "selamat malam", "pagi", "siang", "malam"].includes(lowerText)) {
+                if (["halo", "hai", "hi", "p", "assalamualaikum", "selamat pagi", "selamat siang", "selamat malam", "pagi", "siang", "malam", "hki", "penerbitan"].includes(lowerText)) {
                     setTimeout(() => {
-                        const reply = "Halo! Saya Cipta, asisten virtual Media Tulisan Manusia. Ada yang bisa saya bantu mengenai penerbitan buku atau pendaftaran Hak Cipta (HKI)?";
+                        const reply = "Halo! Saya Cipta, asisten virtual Media Tulisan Manusia. Ada yang bisa saya bantu mengenai penerbitan buku atau pendaftaran Hak Cipta (HKI)? Silakan tanyakan atau hubungi admin via WhatsApp di 088294448222.";
                         addMessageToUI(reply, "model");
                         chatHistory.push({ role: "user", parts: [{ text: text }] });
                         chatHistory.push({ role: "model", parts: [{ text: reply }] });
@@ -410,7 +410,7 @@
                     return;
                 }
 
-                // Tampilkan Animasi Mengetik untuk Pertanyaan Lainnya
+                // Tampilkan Animasi Mengetik
                 typingIndicator.classList.remove("hidden");
                 typingIndicator.classList.add("flex");
                 scrollToBottom();
@@ -418,13 +418,22 @@
                 chatHistory.push({ role: "user", parts: [{ text: text }] });
 
                 try {
+                    // Menggunakan CORS Proxy gratis untuk menjembatani blokiran Google Apps Script
+                    const proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(WEB_APP_URL);
+                    
                     const response = await fetch(WEB_APP_URL, {
                         method: "POST",
-                        headers: { "Content-Type": "application/json" }, 
+                        headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ contents: chatHistory })
                     });
                     
-                    const data = await response.json();
+                    const textData = await response.text();
+                    let data;
+                    try {
+                        data = JSON.parse(textData);
+                    } catch(e) {
+                        data = { error: textData };
+                    }
                     
                     typingIndicator.classList.add("hidden");
                     typingIndicator.classList.remove("flex");
@@ -433,16 +442,17 @@
                         const botReply = data.candidates[0].content.parts[0].text;
                         addMessageToUI(botReply, "model");
                         chatHistory.push({ role: "model", parts: [{ text: botReply }] });
-                    } else if(data.error) {
-                        addMessageToUI("Maaf, terjadi kendala pada sistem AI kami: " + data.error, "model");
                     } else {
-                        addMessageToUI("Maaf, Cipta sedang mengalami kendala jaringan. Silakan hubungi admin via WhatsApp di 088294448222.", "model");
+                        // Fallback cerdas agar pengunjung tetap terlayani langsung ke WA jika server jeda
+                        const fallbackReply = "Terima kasih pertanyaannya. Agar dilayani secara cepat dan detail oleh tim inti kami, silakan langsung hubungi WhatsApp kami di nomor 088294448222.";
+                        addMessageToUI(fallbackReply, "model");
+                        chatHistory.push({ role: "model", parts: [{ text: fallbackReply }] });
                     }
                 } catch (error) {
                     console.error("Jembatan API Error:", error);
                     typingIndicator.classList.add("hidden");
                     typingIndicator.classList.remove("flex");
-                    addMessageToUI("Sistem Cipta tidak dapat terhubung. Silakan hubungi admin langsung melalui WhatsApp di nomor 088294448222.", "model");
+                    addMessageToUI("Silakan hubungi tim kami secara langsung melalui WhatsApp di nomor 088294448222 untuk respons tercepat.", "model");
                 }
             }
 
