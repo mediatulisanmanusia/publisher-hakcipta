@@ -348,8 +348,8 @@
                 setTimeout(() => chatWindow.classList.add("hidden"), 300);
             });
 
-            // LOGIKA JEMBATAN API
-            const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwuswXVWdb4zASV0_dWZ3ygDPsH1g_lPmD6fVdHSfN4jWyGq8XHIBw7XSPYmONVCHM/exec"; 
+            // LOGIKA JEMBATAN API (URL Terbaru Terpasang)
+            const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxKR8QDdImRJ1c58dEY2e2AdCQ5GXXVlGI1kjf2JsMghwtKCVyJ0T8LU_ir9NVh0su1/exec"; 
 
             let chatHistory = [
                 {
@@ -493,11 +493,11 @@
                 </div>
             </div>
             
-            <!-- Area Input Pengetikan -->
+            <!-- Area Input Pengetikan (Diperbaiki agar tombol kirim rapi di HP) -->
             <div class="p-3 bg-white/90 dark:bg-gray-900/90 border-t border-gray-200 dark:border-gray-800 flex gap-2 items-center backdrop-blur-md flex-shrink-0">
-                <input type="text" id="chat-input" placeholder="Tanya Cipta di sini..." class="flex-1 bg-gray-100 dark:bg-black border border-gray-300 dark:border-gray-700 rounded-full px-4 py-3 text-xs md:text-sm focus:outline-none focus:border-warnautama dark:focus:border-white transition-colors font-medium text-warnautama dark:text-white shadow-inner">
-                <!-- Tombol Kirim Chat warna utama -->
-                <button id="send-chat" class="w-10 h-10 bg-warnautama dark:bg-white text-white dark:text-black rounded-full shadow-lg hover:scale-105 transition-transform flex items-center justify-center flex-shrink-0 border border-white/20">
+                <input type="text" id="chat-input" placeholder="Tanya Cipta di sini..." class="flex-1 bg-gray-100 dark:bg-black border border-gray-300 dark:border-gray-700 rounded-full px-4 py-3 text-xs md:text-sm focus:outline-none focus:border-warnautama dark:focus:border-white transition-colors font-medium text-warnautama dark:text-white shadow-inner min-w-0">
+                <!-- Tombol Kirim Chat berdampingan rapi -->
+                <button id="send-chat" class="w-10 h-10 bg-warnautama dark:bg-white text-white dark:text-black rounded-full shadow-md hover:scale-105 transition-transform flex items-center justify-center flex-shrink-0 border border-white/20">
                     <svg class="w-4 h-4 translate-x-[-1px] translate-y-[1px]" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
                 </button>
             </div>
@@ -1594,4 +1594,3 @@
     </div>
 </body>
 </html>
-
