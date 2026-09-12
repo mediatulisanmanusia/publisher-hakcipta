@@ -358,7 +358,7 @@
                 },
                 {
                     role: "model",
-                    parts: [{ text: "Halo, saya Cipta. Saya mengerti instruksi tersebut. Saya siap melayani pengunjung website Media Tulisan Manusia secara profesional khusus untuk topik penerbitan dan hak cipta. Saya akan langsung mengarahkan mereka ke WhatsApp 088294448222 atau halaman Hubungi Kami jika pertanyaannya di luar konteks yang diizinkan atau jika membutuhkan penanganan spesifik lanjutan dari admin." }]
+                    parts: [{ text: "Halo! Ada yang bisa saya bantu tentang penerbitan buku atau Hak Cipta hari ini di Media Tulisan Manusia?" }]
                 }
             ];
 
@@ -398,7 +398,19 @@
                 addMessageToUI(text, "user");
                 chatInput.value = "";
                 
-                // Tampilkan Animasi Mengetik
+                // Deteksi sapaan ringan secara lokal agar instan dan ramah tanpa risiko gagal jaringan
+                const lowerText = text.toLowerCase();
+                if (["halo", "hai", "hi", "p", "assalamualaikum", "selamat pagi", "selamat siang", "selamat malam", "pagi", "siang", "malam"].includes(lowerText)) {
+                    setTimeout(() => {
+                        const reply = "Halo! Saya Cipta, asisten virtual Media Tulisan Manusia. Ada yang bisa saya bantu mengenai penerbitan buku atau pendaftaran Hak Cipta (HKI)?";
+                        addMessageToUI(reply, "model");
+                        chatHistory.push({ role: "user", parts: [{ text: text }] });
+                        chatHistory.push({ role: "model", parts: [{ text: reply }] });
+                    }, 500);
+                    return;
+                }
+
+                // Tampilkan Animasi Mengetik untuk Pertanyaan Lainnya
                 typingIndicator.classList.remove("hidden");
                 typingIndicator.classList.add("flex");
                 scrollToBottom();
@@ -408,7 +420,7 @@
                 try {
                     const response = await fetch(WEB_APP_URL, {
                         method: "POST",
-                        headers: { "Content-Type": "text/plain;charset=utf-8" }, 
+                        headers: { "Content-Type": "application/json" }, 
                         body: JSON.stringify({ contents: chatHistory })
                     });
                     
@@ -421,6 +433,8 @@
                         const botReply = data.candidates[0].content.parts[0].text;
                         addMessageToUI(botReply, "model");
                         chatHistory.push({ role: "model", parts: [{ text: botReply }] });
+                    } else if(data.error) {
+                        addMessageToUI("Maaf, terjadi kendala pada sistem AI kami: " + data.error, "model");
                     } else {
                         addMessageToUI("Maaf, Cipta sedang mengalami kendala jaringan. Silakan hubungi admin via WhatsApp di 088294448222.", "model");
                     }
@@ -1594,3 +1608,4 @@
     </div>
 </body>
 </html>
+
