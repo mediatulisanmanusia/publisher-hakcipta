@@ -391,7 +391,7 @@
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             }
 
-            async function handleSend() {
+                        async function handleSend() {
                 const text = chatInput.value.trim();
                 if (!text) return;
                 
@@ -406,7 +406,6 @@
                 chatHistory.push({ role: "user", parts: [{ text: text }] });
 
                 try {
-                    // Mengirim ke Apps Script dengan metode Anti-CORS (text/plain)
                     const response = await fetch(WEB_APP_URL, {
                         method: "POST",
                         headers: { "Content-Type": "text/plain;charset=utf-8" },
@@ -423,15 +422,17 @@
                         addMessageToUI(botReply, "model");
                         chatHistory.push({ role: "model", parts: [{ text: botReply }] });
                     } else if(data.error) {
-                        addMessageToUI("Maaf, terjadi kendala sistem: " + data.error, "model");
+                        // MEMBONGKAR [object Object]
+                        const pesanAsli = data.error.message ? data.error.message : JSON.stringify(data.error);
+                        addMessageToUI("Pesan dari Google: " + pesanAsli, "model");
                     } else {
-                        addMessageToUI("Sistem Cipta tidak dapat terhubung. Silakan hubungi admin langsung melalui WhatsApp di nomor 088294448222.", "model");
+                        addMessageToUI("Silakan hubungi admin langsung melalui WhatsApp di nomor 088294448222.", "model");
                     }
                 } catch (error) {
                     console.error("API Error:", error);
                     typingIndicator.classList.add("hidden");
                     typingIndicator.classList.remove("flex");
-                    addMessageToUI("Sistem Cipta tidak dapat terhubung. Silakan hubungi admin langsung melalui WhatsApp di nomor 088294448222.", "model");
+                    addMessageToUI("Sistem Cipta tidak dapat terhubung. Silakan hubungi admin langsung melalui WhatsApp.", "model");
                 }
             }
 
