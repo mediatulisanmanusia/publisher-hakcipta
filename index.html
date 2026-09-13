@@ -441,8 +441,8 @@
                     const isSudahDisapa = ["ingin bertanya", "mau bertanya", "mau nanya", "nanya", "bertanya"].some(kata => lowerText.includes(kata));
   
                     if (isSapaan) {
-                        botReply = "Kabar baik, terima kasih telah menyapa! 😊 Ada yang bisa saya bantu terkait penerbitan buku atau konsultasi Hak Cipta (HKI)?";
-                        sudahDisapa = true;
+                        botReply = "Terima kasih telah menyapa! 😊 Ada yang bisa saya bantu terkait penerbitan buku atau konsultasi Hak Cipta (HKI)?";
+                        sudahDisapa = false;
                     } 
                     else if (isSudahDisapa) {
                         botReply = "Iya, silakan. Ada pertanyaan apa yang bisa saya bantu? tentang Penerbitan Buku atau HKI?";
