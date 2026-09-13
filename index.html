@@ -436,15 +436,16 @@
 
                     // LOGIKA KATA KUNCI (DIPERLUAS SESUAI ARAHAN)
                     const isSapaan = ["halo", "hai", "hi", "p", "assalamualaikum", "pagi", "siang", "sore", "malam"].some(kata => lowerText.includes(kata));
-                    const isPenerbitan = ["terbit", "penerbit", "penerbitan", "menerbitkan", "buku", "cetak", "naskah"].some(kata => lowerText.includes(kata));
-                    const isHKI = ["hki", "hak cipta", "djki", "karya", "sertifikat"].some(kata => lowerText.includes(kata));
-
-                    if (isSapaan && !sudahDisapa) {
-                        botReply = "Kabar baik, terima kasih telah menyapa! 😊 \n\nBagaimana dengan Anda? Ada yang bisa saya bantu terkait penerbitan buku atau konsultasi Hak Cipta (HKI)?";
+                    const isPenerbitan = ["penerbitan", "terbit", "penerbit", "menerbitkan", "buku", "cetak", "naskah", "ketentuan", "syarat"].some(kata => lowerText.includes(kata));
+                    const isHKI = ["hki", "hak cipta", "djki", "karya", "sertifikat", "legalitas", "cipta"].some(kata => lowerText.includes(kata));
+                    const isSudahDisapa = ["ingin bertanya", "mau bertanya", "mau nanya", "nanya", "bertanya"].some(kata => lowerText.includes(kata));
+  
+                    if (isSapaan) {
+                        botReply = "Kabar baik, terima kasih telah menyapa! 😊 Ada yang bisa saya bantu terkait penerbitan buku atau konsultasi Hak Cipta (HKI)?";
                         sudahDisapa = true;
                     } 
-                    else if (isSapaan && sudahDisapa) {
-                        botReply = "Iya, silakan. Ada pertanyaan apa yang bisa saya bantu?";
+                    else if (isSudahDisapa) {
+                        botReply = "Iya, silakan. Ada pertanyaan apa yang bisa saya bantu? tentang Penerbitan Buku atau HKI?";
                     }
                     else if (isPenerbitan) {
                         botReply = "Untuk informasi lengkap mengenai paket, fasilitas, dan ketentuan penerbitan buku di Media Tulisan Manusia, Anda bisa langsung membaca dan mengunduh filenya di sini:<br><br>👉 <a href='https://mediatulisanmanusia.online/ketentuan.pdf' target='_blank' style='color: #0366d6; font-weight: bold; text-decoration: underline;'>Ketentuan Penerbitan (PDF)</a><br><br>Jika ada pertanyaan spesifik lainnya, silakan tanyakan lagi ya!";
@@ -459,7 +460,7 @@
                         const waMessage = encodeURIComponent("Halo admin Media Tulisan Manusia, saya ingin berdiskusi mengenai: " + pertanyaanTerakhir);
                         const waLink = `https://wa.me/${waNumber}?text=${waMessage}`;
 
-                        botReply = `Untuk pertanyaan tersebut, agar mendapat penjelasan yang lebih komprehensif, mari diskusikan langsung dengan tim spesialis kami.<br><br>
+                        botReply = `Terima kasih, agar mendapat penjelasan yang lebih komprehensif, mari diskusikan langsung dengan tim spesialis kami.<br><br>
                         <a href="${waLink}" target="_blank" style="display: block; background-color: #25D366; color: white; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: bold; text-align: center; margin-top: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">💬 Chat Admin di WhatsApp</a>`;
                         sudahDisapa = true;
                     }
