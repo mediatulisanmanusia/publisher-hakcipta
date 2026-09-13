@@ -338,10 +338,10 @@
             const typingIndicator = document.getElementById("typing-indicator");
             const jumpToBottomBtn = document.getElementById("jump-to-bottom");
 
-            // Textarea Auto-resize (Membesar mengikuti teks)
+            // Textarea Auto-resize
             chatInput.addEventListener('input', function() {
-                this.style.height = '42px'; // Reset sementara
-                this.style.height = (this.scrollHeight) + 'px'; // Set ukuran baru sesuai teks
+                this.style.height = '42px'; 
+                this.style.height = (this.scrollHeight) + 'px'; 
             });
 
             // Munculkan Tombol Scroll To Bottom di dalam chat jika digulir ke atas
@@ -383,7 +383,7 @@
                 setTimeout(() => chatWindow.classList.add("hidden"), 300);
             });
 
-                        function addMessageToUI(text, sender) {
+            function addMessageToUI(text, sender) {
                 const msgDiv = document.createElement("div");
                 msgDiv.className = sender === "user" ? "flex items-end justify-end gap-2 mt-3 animate-fade-up shrink-0" : "flex items-start gap-2 mt-3 animate-fade-up shrink-0";
                 
@@ -406,9 +406,10 @@
                 });
             }
 
-                        // Logika Penyimpanan Riwayat
+            // Logika Penyimpanan Riwayat
             let pertanyaanTerakhir = "";
             let sudahDisapa = false;
+            let topikTerakhir = ""; 
 
             async function handleSend() {
                 const text = chatInput.value.trim();
@@ -434,29 +435,58 @@
                     const lowerText = text.toLowerCase();
                     let botReply = "";
 
-                    // LOGIKA KATA KUNCI (DIPERLUAS SESUAI ARAHAN)
-                    const isSapaan = ["halo", "hai", "hi", "p", "assalamualaikum", "pagi", "siang", "sore", "malam"].some(kata => lowerText.includes(kata));
-                    const isPenerbitan = ["Penerbitan", "Terbit" "terbit", "penerbit", "penerbitan", "menerbitkan", "buku", "cetak", "naskah", "menerbitkan", "ketentuan", "syarat terbit", "keterntuan menerbitkan"].some(kata => lowerText.includes(kata));
-                    const isHKI = ["hki", "HKI", "Hak Cipta", "hak cipta", "djki", "karya", "sertifikat", "legalitas", "cipta", "Sertifikasi"].some(kata => lowerText.includes(kata));
-                    const isSudahDisapa= ["ingin bertanya", "mau bertanya", "mau nanya,", "nanya", "bertanya"].some(kata => lowerText.includes(kata));
-                  
-                    if (isSapaan) {
-                        botReply = "Kabar baik, terima kasih telah menyapa! 😊 Ada yang bisa saya bantu terkait penerbitan buku atau konsultasi Hak Cipta (HKI)?";
+                    // LOGIKA KATA KUNCI (DIPERBAIKI)
+                    const kataList = lowerText.split(/\s+/);
+                    const isSapaan = ["halo", "hai", "hi", "p", "assalamualaikum", "pagi", "siang", "sore", "malam"].some(sapa => kataList.includes(sapa));
+
+                    const isPenerbitan = ["penerbitan", "terbit", "penerbit", "menerbitkan", "buku", "cetak", "naskah", "ketentuan", "syarat"].some(kata => lowerText.includes(kata));
+                    const isHKI = ["hki", "hak cipta", "djki", "karya", "sertifikat", "legalitas", "cipta"].some(kata => lowerText.includes(kata));
+                    const isSudahDisapa = ["ingin bertanya", "mau bertanya", "mau nanya", "nanya", "bertanya"].some(kata => lowerText.includes(kata));
+                    const isTerimaKasih = ["terima kasih", "terimakasih", "makasih", "thanks", "tks"].some(kata => lowerText.includes(kata));
+
+                    const waNumber = "6288294448222";
+
+                    if (isSapaan && !sudahDisapa) {
+                        botReply = "Kabar baik, terima kasih telah menyapa! 😊 Ada yang bisa Mas Cipta bantu terkait penerbitan buku atau konsultasi Hak Cipta (HKI)?";
                         sudahDisapa = true;
                     } 
-                    else if (isSudahDisapa) {
-                        botReply = "Iya, silakan. Ada pertanyaan apa yang bisa saya bantu? tentang Penerbitan Buku atau HKI?";
+                    else if (isSapaan && sudahDisapa) {
+                        botReply = "Iya, silakan. Ada pertanyaan apa yang bisa saya bantu?";
+                    }
+                    else if (isTerimaKasih) {
+                        botReply = "Sama-sama! Terima kasih telah menghubungi Media Tulisan Manusia. Semoga karya Anda sukses selalu! 🙏✨";
                     }
                     else if (isPenerbitan) {
-                        botReply = "Untuk informasi lengkap mengenai paket, fasilitas, dan ketentuan penerbitan buku di Media Tulisan Manusia, Anda bisa langsung membaca dan mengunduh filenya di sini:<br><br>👉 <a href='https://mediatulisanmanusia.online/ketentuan.pdf' target='_blank' style='color: #0366d6; font-weight: bold; text-decoration: underline;'>Ketentuan Penerbitan (PDF)</a><br><br>Jika ada pertanyaan spesifik lainnya, silakan tanyakan lagi ya!";
+                        if (topikTerakhir === "penerbitan") {
+                            // Pertanyaan sejenis/lanjutan langsung ke WA
+                            const waMessage = encodeURIComponent("Halo admin Media Tulisan Manusia, saya ingin bertanya lebih lanjut seputar penerbitan: " + pertanyaanTerakhir);
+                            const waLink = `https://wa.me/${waNumber}?text=${waMessage}`;
+                            botReply = `Untuk pertanyaan lanjutan seputar penerbitan tersebut, mari diskusikan langsung dengan tim spesialis kami via WhatsApp:<br><br><a href="${waLink}" target="_blank" style="display: block; background-color: #25D366; color: white; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: bold; text-align: center; margin-top: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">💬 Chat Admin di WhatsApp</a>`;
+                        } else {
+                            // Topik baru/beda jenis, kirim link PDF dulu
+                            topikTerakhir = "penerbitan";
+                            botReply = "Tentu, dengan senang hati! Untuk informasi lengkap mengenai paket, fasilitas, dan ketentuan penerbitan buku di Media Tulisan Manusia, silakan baca dan unduh filenya di sini:<br><br>👉 <a href='https://mediatulisanmanusia.online/ketentuan.pdf' target='_blank' style='color: #0366d6; font-weight: bold; text-decoration: underline;'>Ketentuan Penerbitan (PDF)</a><br><br>Ada hal lain yang ingin ditanyakan?";
+                        }
                         sudahDisapa = true;
                     } 
                     else if (isHKI) {
-                        botReply = "Untuk informasi detail dan mengunduh file Kategori Hak Cipta (HKI), silakan kunjungi tautan berikut:<br><br>👉 <a href='https://mediatulisanmanusia.online/kategori.pdf' target='_blank' style='color: #0366d6; font-weight: bold; text-decoration: underline;'>Kategori Hak Cipta (PDF)</a><br><br>Ada hal spesifik lain yang ingin ditanyakan?";
+                        if (topikTerakhir === "hki") {
+                            // Pertanyaan sejenis/lanjutan langsung ke WA
+                            const waMessage = encodeURIComponent("Halo admin Media Tulisan Manusia, saya ingin bertanya lebih lanjut seputar Hak Cipta (HKI): " + pertanyaanTerakhir);
+                            const waLink = `https://wa.me/${waNumber}?text=${waMessage}`;
+                            botReply = `Untuk pertanyaan lanjutan seputar Hak Cipta tersebut, mari diskusikan langsung dengan tim spesialis kami via WhatsApp:<br><br><a href="${waLink}" target="_blank" style="display: block; background-color: #25D366; color: white; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: bold; text-align: center; margin-top: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">💬 Chat Admin di WhatsApp</a>`;
+                        } else {
+                            // Topik baru/beda jenis, kirim link PDF dulu
+                            topikTerakhir = "hki";
+                            botReply = "Tentu, dengan senang hati! Untuk informasi detail dan mengunduh file Kategori Hak Cipta (HKI), silakan kunjungi tautan berikut:<br><br>👉 <a href='https://mediatulisanmanusia.online/kategori.pdf' target='_blank' style='color: #0366d6; font-weight: bold; text-decoration: underline;'>Kategori Hak Cipta (PDF)</a><br><br>Ada hal spesifik lain yang ingin ditanyakan?";
+                        }
                         sudahDisapa = true;
                     } 
+                    else if (isSudahDisapa) {
+                        botReply = "Iya, silakan. Ada pertanyaan apa yang bisa saya bantu tentang Penerbitan Buku atau HKI?";
+                    }
                     else {
-                        const waNumber = "6288294448222";
+                        // Pertanyaan umum / di luar kategori
                         const waMessage = encodeURIComponent("Halo admin Media Tulisan Manusia, saya ingin berdiskusi mengenai: " + pertanyaanTerakhir);
                         const waLink = `https://wa.me/${waNumber}?text=${waMessage}`;
 
@@ -475,7 +505,7 @@
             // Tangani tombol Enter agar bisa mengirim, dan Shift+Enter untuk baris baru
             chatInput.addEventListener("keydown", (e) => {
                 if (e.key === "Enter" && !e.shiftKey) {
-                    e.preventDefault(); // Mencegah pembuatan baris baru (enter kosong) saat chat dikirim
+                    e.preventDefault(); 
                     handleSend();
                 }
             });
@@ -518,7 +548,7 @@
                 <button id="close-chat" class="relative z-10 w-8 h-8 rounded-full flex items-center justify-center hover:bg-red-500 hover:text-white transition-colors text-white font-bold text-lg">&times;</button>
             </div>
             
-            <!-- Area Pesan (Scrollable & Fleksibel mengisi ruang kosong) -->
+            <!-- Area Pesan -->
             <div id="chat-messages" class="flex-grow overflow-y-auto p-4 space-y-2 bg-gray-50/50 dark:bg-black/50 text-sm flex flex-col chat-scrollbar relative">
                 <!-- Pesan Pembuka dari Bot -->
                 <div class="flex items-start gap-2 mt-auto shrink-0">
@@ -528,7 +558,7 @@
                     </div>
                 </div>
                 
-                <!-- Indikator Loading (Awalnya Disembunyikan) -->
+                <!-- Indikator Loading -->
                 <div id="typing-indicator" class="hidden items-start gap-2 mt-3 animate-fade-up shrink-0">
                     <img src="cipta.png" alt="Cipta" class="w-7 h-7 rounded-full flex-shrink-0 object-cover shadow-md border border-gray-200 dark:border-gray-700 bg-white">
                     <div class="bg-white/90 dark:bg-gray-800 px-4 py-3 rounded-2xl rounded-tl-sm shadow-sm border border-gray-200 dark:border-gray-700 flex items-center h-9 typing-indicator">
@@ -537,7 +567,7 @@
                 </div>
             </div>
 
-            <!-- Tombol Jump to Bottom (Melayang di dalam chat) -->
+            <!-- Tombol Jump to Bottom -->
             <button id="jump-to-bottom" class="hidden absolute bottom-[80px] left-1/2 transform -translate-x-1/2 w-8 h-8 bg-white dark:bg-gray-700 rounded-full shadow-[0_4px_10px_rgba(0,0,0,0.2)] text-warnautama dark:text-white flex items-center justify-center border border-gray-200 dark:border-gray-600 hover:bg-gray-100 transition-colors z-20">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
             </button>
@@ -552,14 +582,12 @@
             </div>
         </div>
 
-        <!-- Wadah Tombol Buka Chat & Gelembung Sapaan -->
+        <!-- Wadah Tombol Buka Chat -->
         <div class="relative flex items-end">
-            <!-- Icon Chat Murni Tanpa Background/Border (Diperbesar) -->
             <button id="chat-trigger" class="relative z-10 hover:scale-110 transition-transform duration-300 drop-shadow-2xl focus:outline-none translate-y-2">
                 <img src="Menyapa.png" alt="Cipta Menyapa" class="w-16 h-16 md:w-20 md:h-20 object-contain drop-shadow-[0_5px_15px_rgba(0,0,0,0.3)]">
             </button>
             
-            <!-- Gelembung Sapaan Otomatis (Akan hilang setelah 6 detik) -->
             <div id="greeting-bubble" class="absolute left-16 md:left-20 bottom-4 bg-warnautama dark:bg-white text-white dark:text-warnautama px-4 py-2 rounded-2xl rounded-bl-sm shadow-xl font-bold text-[10px] md:text-xs whitespace-nowrap opacity-100 transition-opacity duration-500 border border-white/20 dark:border-black/10 z-0">
                 Halo saya Cipta 👋
             </div>
@@ -604,7 +632,7 @@
 
         <div class="h-20 md:h-28"></div>
 
-        <!-- ================= Halaman-konten ================= -->
+        <!-- ================= HALAMAN BERANDA ================= -->
         <div id="hal-beranda" class="halaman-konten animate-fade-up relative z-10">
 
             <section class="relative mx-3 md:mx-6 rounded-[2.5rem] md:rounded-[4rem] overflow-hidden flex flex-col justify-center items-center text-center py-12 px-6 sm:px-8 md:p-14 glass transition-all duration-700">
@@ -616,7 +644,7 @@
                 </p>
                 <div class="w-16 h-[3px] bg-warnakedua dark:bg-gray-300 mx-auto rounded-full mb-4 z-10"></div>
                 <p class="text-[11px] md:text-base text-warnaketiga dark:text-gray-300 font-medium z-10 max-w-xl leading-relaxed">
-                    Eksplorasikan karyamu tanpa batas bersama <br> <strong/>Media Tulisan Manusia</strong>
+                    Eksplorasikan karyamu tanpa batas bersama <br> <strong>Media Tulisan Manusia</strong>
                 </p>
             </section>
 
@@ -624,7 +652,7 @@
                 <div class="glass p-8 md:p-12 rounded-[2.5rem] transition duration-500">
                     <h3 class="text-lg sm:text-xl md:text-3xl font-extrabold text-warnautama dark:text-white mb-4 tracking-tight leading-snug text-center">DEDIKASI UNTUK KARYA</h3>
                     <p class="text-[11px] sm:text-xs md:text-base text-gray-800 dark:text-gray-300 leading-relaxed font-medium mb-8 md:mb-10 text-justify md:text-center">
-                        <stroong class="text-warnautama dark:text-white">Membangun karya besar butuh lebih dari sekadar transaksi bisnis. <strong/>Media Tulisan Manusia</strong> hadir sebagai startup profesional di bidang <strong/>Penerbitan Buku</strong> dan <strong/>Konsultan Hak Cipta</strong> yang mendampingi perjalanan kreatif Anda, baik untuk kebutuhan personal maupun korporat. Kami memastikan ide Anda dikurasi secara mendalam, dicetak eksklusif, dan memiliki perisai hukum yang kuat terhadap plagiarisme.
+                        Membangun karya besar butuh lebih dari sekadar transaksi bisnis. <strong>Media Tulisan Manusia</strong> hadir sebagai startup profesional di bidang <strong>Penerbitan Buku</strong> dan <strong>Konsultan Hak Cipta</strong> yang mendampingi perjalanan kreatif Anda, baik untuk kebutuhan personal maupun korporat. Kami memastikan ide Anda dikurasi secara mendalam, dicetak eksklusif, dan memiliki perisai hukum yang kuat terhadap plagiarisme.
                     </p>
 
                     <a href="https://instagram.com/mediatulisanmanusia" target="_blank" class="block w-full max-w-lg mx-auto bg-warnautama dark:bg-white px-3 sm:px-4 py-4 md:py-6 rounded-3xl shadow-lg transition duration-300 hover:scale-[1.05] cursor-pointer" title="Lihat Portofolio Klien di Instagram">
@@ -642,7 +670,7 @@
                 </div>
             </section>
 
-            <!-- Terbitan Terbaru dengan GAMBAR BUKU -->
+            <!-- BUKU TERBARU -->
             <section id="katalog" class="pt-16 md:pt-24 relative z-10">
                 <div class="px-5 md:px-10 mb-8 flex items-center justify-center text-center">
                     <h4 class="text-2xl md:text-3xl font-extrabold text-warnautama dark:text-white tracking-tight">
@@ -653,7 +681,6 @@
 
                     <div class="min-w-[200px] md:min-w-[260px] flex-shrink-0 group glass rounded-[2rem] p-5 md:p-6 transition-all duration-300 flex flex-col justify-between items-center text-center h-auto hover:shadow-xl hover:-translate-y-2">
                         <div class="w-full flex flex-col justify-center items-center">
-                            <!-- Logo QRCBN + Jarak Dirapatkan -->
                             <img src="qrcbn.png" loading="lazy" decoding="async" alt="Logo QRCBN" class="h-6 md:h-8 w-auto object-contain mb-1 opacity-80 drop-shadow-sm">
                             <p class="text-[9px] md:text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold mb-0.5 text-center">Sashavalia Rahma Putri DKK</p>
                             <h4 class="font-bold text-[12px] md:text-[14px] leading-tight text-warnautama dark:text-white transition line-clamp-2 text-center">Merawat Warisan Menjaga Identitas</h4>
@@ -888,6 +915,7 @@
                 </div>
             </section>
 
+            <!-- HAK CIPTA TERBARU -->
             <section id="hak-cipta-terbaru" class="pt-8 pb-4 relative z-10">
                 <div class="px-5 md:px-10 mb-8 flex items-center justify-center text-center">
                     <h4 class="text-2xl md:text-3xl font-extrabold text-warnautama dark:text-white tracking-tight">
@@ -1643,3 +1671,4 @@
     </div>
 </body>
 </html>
+
