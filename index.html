@@ -435,25 +435,25 @@
                     let botReply = "";
 
                     // LOGIKA KATA KUNCI (DIPERLUAS SESUAI ARAHAN)
-                    const isSapaan = ["halo", "hai", "hi", "p", "assalamualaikum", "pagi", "siang", "sore", "malam"].some(kata => lowerText.includes(kata));
+                    const isSapaan = ["halo", "hai", "hi", "assalamualaikum", "pagi", "siang", "sore", "malam"].some(kata => lowerText.includes(kata));
                     const isPenerbitan = ["penerbitan", "terbit", "penerbit", "menerbitkan", "buku", "cetak", "naskah", "ketentuan", "syarat"].some(kata => lowerText.includes(kata));
                     const isHKI = ["hki", "hak cipta", "djki", "karya", "sertifikat", "legalitas", "cipta"].some(kata => lowerText.includes(kata));
                     const isSudahDisapa = ["ingin bertanya", "mau bertanya", "mau nanya", "nanya", "bertanya"].some(kata => lowerText.includes(kata));
   
                     if (isSapaan) {
                         botReply = "Terima kasih telah menyapa! 😊 Ada yang bisa saya bantu terkait penerbitan buku atau konsultasi Hak Cipta (HKI)?";
-                        sudahDisapa = false;
+                        sudahDisapa = true;
                     } 
                     else if (isSudahDisapa) {
                         botReply = "Iya, silakan. Ada pertanyaan apa yang bisa saya bantu? tentang Penerbitan Buku atau HKI?";
                     }
                     else if (isPenerbitan) {
                         botReply = "Untuk informasi lengkap mengenai paket, fasilitas, dan ketentuan penerbitan buku di Media Tulisan Manusia, Anda bisa langsung membaca dan mengunduh filenya di sini:<br><br>👉 <a href='https://mediatulisanmanusia.online/ketentuan.pdf' target='_blank' style='color: #0366d6; font-weight: bold; text-decoration: underline;'>Ketentuan Penerbitan (PDF)</a><br><br>Jika ada pertanyaan spesifik lainnya, silakan tanyakan lagi ya!";
-                        sudahDisapa = false;
+                        sudahDisapa = true;
                     } 
                     else if (isHKI) {
                         botReply = "Untuk informasi detail dan mengunduh file Kategori Hak Cipta (HKI), silakan kunjungi tautan berikut:<br><br>👉 <a href='https://mediatulisanmanusia.online/kategori.pdf' target='_blank' style='color: #0366d6; font-weight: bold; text-decoration: underline;'>Kategori Hak Cipta (PDF)</a><br><br>Ada hal spesifik lain yang ingin ditanyakan?";
-                        sudahDisapa = false;
+                        sudahDisapa = true;
                     } 
                     else {
                         const waNumber = "6288294448222";
